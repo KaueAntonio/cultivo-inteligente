@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale Conosco</title>
+    <link rel="shortcut icon" href="icone.ico">
+    <link rel="stylesheet" href="inicialcss.css">
+</head>
+<body class="body">
+   
+    <!--
+        Menu Superior
+    -->
+
+    <div class="menutopo">
+        
+            <p><h1>Fale Conosco</h1></p>
+
+            <span class="textolink"><a class="acor" href="inicial.html">Home</a>&#160
+                <a class="acor" href="dadoshistoricos.html">Dados Históricos</a>&#160
+                <a class="acor" href="comofunciona.html">Como Funciona</a>
+                <a class="acor" href="bancodedados.html">Acompanhe</a>&#160
+            </span>  
+    </div>
+    
+    <!--
+        Contúdo da página
+    -->
+
+    <div class="caixatexto3">
+        <h1 style="text-align: center;">Como podemos ajudar?</h1><br>
+        
+        <form action="inicial.html" method="post" name="form">
+            
+            <p> 
+                &#160&#160Nome:<br /> 
+                &#160&#160<input name="nome" type="text" size="30" name="nome" class="inputtexto" placeholder="Nome"> 
+                
+            </p>   
+            
+            <p>
+                &#160&#160E-mail:<br /> 
+                &#160&#160<input name="email" type="text" size="30" name="replyto" class="inputtexto" placeholder="Email"> 
+            </p>   
+            
+            <p>
+                &#160&#160Assunto:<br /> 
+                &#160&#160<input name="assunto" type="text" size="30" name="replyto" class="inputtexto" placeholder="Assunto"> 
+            </p>  
+
+            <p> 
+                &#160&#160Comentários:<br /> 
+                &#160&#160<input name="comentario" type="text" size="30" name="Comentarios" class="caixacomentario" placeholder="Digite sua mensagem aqui"> 
+            </p>     
+            
+            
+
+            <p> 
+                &#160&#160<input type="submit" name="submit" value="Enviar" class="botao" onclick=enviaremail();>
+            </p> 
+            </form>
+        
+    </div>
+
+</body>
+</html>
+
+<script>
+    function enviaremail(){
+    alert("Sua mensagem foi enviada com sucesso!");
+    }
+</script>

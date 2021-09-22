@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icone.ico">
+    <link rel="stylesheet" href="inicialcss.css">
+    <title>Cadastro</title>
+</head>
+<body>
+  <div class="menutopo">
+
+    <span class="textolink">
+        <a class="acor" href="inicial.html">Home</a>
+    </span>
+</div>
+    <div class="login-page">
+        <div class="form">
+          <form class="register-form" method="POST" action="novologin.html">
+            <input class="inputt" type="text" placeholder="Usuário">
+            <input class="inputt" type="password" placeholder="Senha"/>
+            <input class="inputt" type="text" placeholder="Email"/>
+            <input class="btnin" type="submit" value="Cadastrar" onclick="cadastrar()">
+            <p class="textobaixol">Ja é registrado? <a href="novologin.html">Faça login!</a></p>
+          </form>
+          
+        </div>
+      </div>
+</body>
+</html>
+<script>
+    function cadastrar(){
+        alert('Cadastrado! Faça o login para continuar');
+    }
+</script>

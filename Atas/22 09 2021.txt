@@ -1,0 +1,23 @@
+Data: 22/09/2021
+
+Participantes presentes:
+	Kauê
+	João
+	Luiz
+	Gabriel
+	Beatriz
+	Daniela
+
+Assuntos discutidos:
+
+	- Recepção e análise so sensor DHT11 de temperatura e umidade.
+	- 
+	- 
+	- 
+	- 
+	- 
+
+Plano de ação:
+
+- Refatorar o código do DHT11 para o uso do projeto.
+

@@ -1,0 +1,23 @@
+Data: 20/09/2021
+
+Participantes presentes:
+	Kauê
+	João
+	Luiz
+	Gabriel
+	Beatriz
+	Daniela
+
+Assuntos discutidos:
+
+	- Definido o tema do projeto.
+	- Agrupamento dos entregáveis anteriores.
+	- Discussão sobre cargos e responsabilidades.
+	- Adição dos novos membros da equipe no App de GP.
+	- 
+	- 
+
+Plano de ação:
+
+- Fazer um banco de dados com todo o conteúdo recebido na semana.
+- Criar um repositório no github para o projeto.

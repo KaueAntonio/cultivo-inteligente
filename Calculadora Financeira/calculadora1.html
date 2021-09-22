@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simule</title>
+    <link rel="shortcut icon" href="icone.ico">
+    <link rel="stylesheet" href="inicialcss.css">
+</head>
+
+<body class="body">
+
+    <!--
+        Menu Superior
+    -->
+
+    <div class="menutopo">
+
+
+        <span class="textolink"><a class="acor" href="inicial.html">Home</a>
+            <a class="acor" href="bancodedados.html">Acompanhe</a>
+            <a class="acor" href="comofunciona.html">Como Funciona</a>
+            <a href="quemsomos1.html">Quem Somos</a>
+            <a class="acor" href="contatos.html">Fale Conosco</a>
+            <a href="novologin.html" style="float: right;">Login</a>
+        </span>
+    </div>
+
+    <!--
+        Conteúdo da página
+    -->
+
+    <div class="caixatexto3">
+        <h1 style="text-align: center;">Simule seus lucros e gastos com a Cultivo Inteligente</h1><br>
+
+
+        <p>
+            &#160&#160Qual o tamanho da sua plantação?<br />
+            &#160&#160<input id="hectares" class="inputfc" type="text" placeholder="Em Hectares">
+
+        </p>
+
+        <p>
+            &#160&#160Qual o preço cobrado por m³ de água na sua região?<br />
+            &#160&#160<input id="valor_cubico" class="inputfc" type="text" placeholder="Metros cúbicos (x/m³)">
+        </p>
+        <p>
+            &#160&#160<button class="botao2" onclick="lucro()">Calcular Lucros</button>
+        </p>
+        <div id="div_msg" class="caixatexto4" style="display: none;"></div>
+    </div>
+
+
+
+
+</body>
+
+</html>
+
+<script>
+    function lucro() {
+        var ax_qtd_plantas = hectares.value * 7000; // média de 7000 plantas por hectare
+
+        var ax_vlr_agua1 = ax_qtd_plantas * 232.5; //quantidade de plantas vezes o consumo mensal SEM gotejamento (7,5L * 31 dias)
+        var ax_agua1m3 = ax_vlr_agua1 / 1000; // litros transformados em volume (cúbico)
+        var ax_vlr_total1 = ax_agua1m3 * valor_cubico.value; // volume vezes a taxa por m³
+
+        var ax_vlr_agua2 = ax_qtd_plantas * 155; //quantidade de plantas vezes o consumo mensal COM gotejamento (5L * 31 dias)
+        var ax_agua2m3 = ax_vlr_agua2 / 1000; // litros transformados em volume (cúbico)
+        var ax_vlr_total2 = ax_agua2m3 * valor_cubico.value; //volume vezes a taxa por m³
+
+        var ax_lucro_mes = ax_vlr_total1 - ax_vlr_total2; //diferença do valor gasto por mês sem/com gotejamento
+        var ax_lucro_ano = ax_lucro_mes * 12; //diferença mensal transformada em diferença anual
+
+        div_msg.style.display = 'block';
+
+        div_msg.innerHTML = (
+            `<br>Por <u>mês</u>, sua plantação consome ${ax_agua1m3.toFixed(2)}m³ o equivalente a <b>R$ ${ax_vlr_total1.toFixed(2)}</b><br><br>
+        Usando <u>nosso sistema</u> você consome ${ax_agua2m3.toFixed(2)}m³ o equivalente a <b>R$ ${ax_vlr_total2.toFixed(2)}</b>
+        <h3>Garantindo um lucro de <u>R$ ${ax_lucro_mes.toFixed(2)} por mês</u> em economia de água, sendo assim, você economiza <u>R$ ${ax_lucro_ano.toFixed(2) } por ano</u>.</h3>`);
+    };
+</script>

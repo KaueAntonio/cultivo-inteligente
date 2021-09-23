@@ -1,0 +1,26 @@
+Data: 23/09/2021
+
+Participantes presentes:
+	Kauê
+	João
+	Luiz
+	Gabriel
+	Beatriz
+	Daniela
+
+Assuntos discutidos:
+
+	- Criação do Diagrama de solução do negócio e Diagrama de solução técnica.
+	- 
+	- 
+	- 
+	- 
+	- 
+
+Plano de ação:
+
+- Juntar os Diagramas feitos pelos membros do grupo em um só.
+	Data de Entrega: 30/09/2021
+- 
+
+

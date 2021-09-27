@@ -1,0 +1,399 @@
+/* Importando fontes através de links */
+@import url(https://fonts.googleapis.com/css?family=PT+Sans);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+/* Criando uma animação pros links do menu superior */
+@keyframes alinks{
+    from {background-color: #5faa8b;}
+    to {background-color: darkgreen;}
+}
+
+
+/* Definindo o estilo do body */
+body {
+    font-family: 'Roboto', Arial, Verdana ;
+
+/* Os comandos nesse bloco servem pra definir o background como gradiente e deixando a fonte um pouco mais suave */
+    background: -webkit-linear-gradient(right, #76b852, #9db895);                                           /**/
+    background: -moz-linear-gradient(right, #76b852, #9db895);                                              /**/
+    background: -o-linear-gradient(right, #76b852, #9db895);                                               /**/
+    background: linear-gradient(to left, #76b852, #9db895);                                                /**/ 
+    -webkit-font-smoothing: antialiased;                                                                       /**/
+    -moz-osx-font-smoothing: grayscale;                                                                        /**/
+/*------------------------------------------------------------------------------------------------------------------*/
+
+    width:100%;
+    margin: 0 auto;
+
+    /* Este comando serve para quebrar a linha conforme o tamanho da tela */
+    word-wrap:break-word;
+  }
+
+
+
+
+/* Aqui eu especifico como que será o menu superior */
+.menutopo {
+    background-color: #5faa8b;
+    text-align: center;
+    font-size: 75%;
+    height: 50px;
+    width: 100%;
+    border-bottom: 2px solid darkgreen;
+    margin-bottom: 10px;
+
+    /* Colocando um background gradiente e uma sombra preta por tras da caixa de texto */
+    background: -webkit-linear-gradient(right, #768f74, #5faa8b);
+    background: -moz-linear-gradient(right, #768f74, #5faa8b);
+    background: -o-linear-gradient(right, #768f74, #5faa8b);
+    background: linear-gradient(to left, #768f74, #5faa8b);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 1.5px 1.5px 0 rgba(0, 0, 0, 0.24);
+}
+
+
+/* Aqui a caixa de texto de conteúdo das páginas */
+.caixatexto3{
+    background-color: #b1ceae;
+    border: 3px solid rgb(173, 230, 173);
+    height: 97%;
+    text-align: left;
+    margin-left: 8px;  
+    margin-right: 8px;
+
+    /* border-radius para arredondar a borda de acordo com o valor que eu escolho */
+    border-radius: 10px;
+
+    /* box shadow para colocar uma sombra atras da caixa de texto*/
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.caixatexto3 h1{
+    text-align: center;
+}
+
+.caixatexto3 h2{
+    text-align: center;
+}
+
+.caixatexto3 h3{
+    text-align: center;
+}
+
+/* Classe onde cria uma imagem de fundo,  centralizada e sem repetir se for muito pequena */
+/* Páginas secundarias + caixa de texto*/ 
+.imagemctt {
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-image: url('contato.png');
+    background-position: center;
+    
+}
+
+/* Pintando o link do menu */
+a.acor:visited {
+    color: white;
+}
+
+
+.textolink {
+    font-size: 20px;
+
+    /* overflow especifica quando o conteúdo de um elemento de nível de bloco deve ser cortado, exibido com barras de rolagem ou se transborda do elemento */
+    overflow: auto;
+    
+    color: white;
+    height: 100%;
+}
+
+.textolink a{
+    color: white;
+
+    /* Aqui eu tiro as decorações que a tag a deixa no texto (por exemplo o sublinhado que fica mostrando que aquele texto é um link) */
+    text-decoration: none;
+
+    /* Display flex pra tranformar todos os elementos filhos quando o pai diminui*/
+    display: flex;
+    height: 100%;
+
+    /* Colocando o texto no centro de cada parte do menu e colocando float left para ele nao ficar uma lista  na pagina inteira */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    float: left;
+
+    font-size: 18px;
+    width: 15%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Definindo aqui o que acontece quando eu coloco o mouse por cima do texto do menu */
+.textolink a:hover{
+    font-weight: bold;
+    background-color: darkgreen;
+
+    /* Aqui eu chamo a animação de quando eu passar o mouse por cima do link o background fica verde escuro */
+    animation-name: alinks;
+    animation-duration: 1.5s;
+}
+
+/* Caixa de Texto de Conteúdos*/
+
+.caixatextobaixo {  
+    margin:  10px;
+    text-align: center;
+    max-height: 97%;
+    background-color: #b1ceae;
+    border: 3px solid rgb(173, 230, 173);
+    height: 97%;
+
+    /* border-radius para arredondar as bordas da caixa */
+    border-radius: 10px;
+
+    /* Aqui eu coloco uma sombra atras da caixa de texto */
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+
+/* Estilos da calculadora */
+.caixatexto3{
+    background-color: #b1ceae;
+    border: 3px solid rgb(173, 230, 173);
+    height: 97%;
+    text-align: left;
+    flex-direction: row;  
+    margin: 8px;  
+}
+
+.caixatexto4{
+    background-color: #91ad8e;
+    border: 3px solid rgb(173, 230, 173);
+    height: 97%;
+    text-align: left;
+    flex-direction: row;  
+    margin: 8px;  
+    text-align: center;
+}
+
+
+.botao2 {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 6px;
+    width: 160px;
+    border-radius: 10px;
+}
+
+/* Botão do formulário de fale conosco */
+
+.botao {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+
+    /* padding é a distancia do conteúdo para a borda, no caso abaixo especifico 15px*/
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    margin-right: 6px;
+    width: 110px;
+
+    /* border radius para arredondar a borda do botao */
+    border-radius: 10px;
+}
+
+/* Aqui eu especifico que quando eu passar o mosue em cima do botao eu quero que o texto fique em negrito*/
+.botao:hover {
+    font-weight: bold;
+}
+
+
+
+
+/* Formulario de login */
+
+.form {
+    position: relative;
+    background: #FFFFFF;
+    padding: 45px;
+    text-align: center;
+    border: 5px solid rgb(173, 230, 173);
+    margin: 0 auto 100px;
+
+    /* Colocando uma sombra atras do formulario */
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    
+    /* Border radius faz as bordas ficarem arredondadas */
+    border-radius: 20px;
+}
+
+.login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+.inputt {
+    font-family: "Roboto", sans-serif;
+    background: #f2f2f2;
+    width: 100%;
+    border: 1px solid darkgreen;
+    border-radius: 20px;
+    margin-bottom:15px;
+    font-size: 14px;
+    
+    /* box-sizing: border -box;As propriedades de largura (width) e de altura (height) incluem o tamanho padding size e a propriedade border, mas não incluem a propriedade margin */
+    box-sizing: border-box;
+    
+    /* Padding se refere a distancia do conteudo pra borda */
+    padding: 15px;
+}
+.btnin:hover{
+    font-weight: bold;
+}
+
+.btnin {
+    font-family: "Roboto", sans-serif;
+    /* text-tranform serve apra eu mudar a caixa do conteudo, para tudo minuscolo ou maiusculo (no caso uppercase é maiusculo) */
+    text-transform: uppercase;
+    background: #4CAF50;
+    width: 100%;
+    
+    /* Definindo como 0 o tamanho da borda do formulario pois ele quando criado ja vem com uma borda pre-setada */
+    border: 0;
+    
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    border-radius: 10px;
+    
+    /* Quando o cursor passar por cima do botao ele vira a maozinha */
+    cursor: pointer;
+}
+
+/* Aqui defino o background do botao quando eu passo o mouse por cima, quando ele esta ativo, e quando ele esta focado */
+.form .btnin:hover,.form .btnin:active,.form .btnin:focus {
+    background: #43A047;
+}
+
+/* Aqui é o estilo da frase no final do form de "Não tem login? Cadastre-se!" */
+.form .textobaixol {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+.form .textobaixol a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+
+/* Outro estilo pro form fale conosco e pra calculadora*/
+
+
+
+.inputfc {
+    font-family: "Roboto", sans-serif;
+    background: #f2f2f2;
+    width: 350px;
+    border: 1px solid darkgreen;
+    
+    /* Border radius faz as bordas ficarem arredondadas */
+    border-radius: 20px;
+    margin: 0 0 15px;
+    font-size: 14px;
+    
+    /* Padding se refere a distancia do conteudo pra borda */
+    padding: 15px;
+}
+
+
+
+/* MENU LATERAL ANTIGO 
+
+.imgplantinha {
+    width: 50%;
+    align-items: center;
+}
+
+
+.menu {
+    background-color: #5faa8b;
+    border: 3px solid rgb(173, 230, 173);
+    width: 250px;
+    height: 97%;
+    position: fixed;
+    float: left;
+    flex-direction: row;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+.textoembaixo {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.menu h1 {
+    float:left;
+    margin: 20px;
+    color: white;
+    font-size: 25px;
+    padding-bottom: 50px;
+    border-bottom: 6px solid rgb(173, 230, 173);
+    border-radius: 10px;
+}
+
+
+.menu h3 {
+    font-weight: 100;
+}
+
+.menu ul {
+    list-style-type: none;
+    float: left;
+    margin-top: 20px;
+}
+
+.menu li {
+    margin: 0 0 20px 0;
+}
+
+.menu a {
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+}
+.menu a:hover {
+    font-weight: bold;
+}
+*/
+
+/* Imagem do menu 
+
+.imgcss {
+    border: 4px solid rgb(173, 230, 173);
+    margin-top: 30px;
+    height: 187px;
+    border-radius: 30px;
+}
+
+.divimg {
+    text-align: center;
+}
+
+.login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+    
+} */

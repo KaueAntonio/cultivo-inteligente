@@ -1,8 +1,7 @@
 /* Importando fontes através de links */
-@import url(https://fonts.googleapis.com/css?family=PT+Sans);
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-/* Criando uma animação pros links do menu superior */
+/* Criando uma animação pros links do menu superior, com o nome de alinks */
 @keyframes alinks{
     from {background-color: #5faa8b;}
     to {background-color: darkgreen;}
@@ -18,8 +17,8 @@ body {
     background: -moz-linear-gradient(right, #76b852, #9db895);                                              /**/
     background: -o-linear-gradient(right, #76b852, #9db895);                                               /**/
     background: linear-gradient(to left, #76b852, #9db895);                                                /**/ 
-    -webkit-font-smoothing: antialiased;                                                                       /**/
-    -moz-osx-font-smoothing: grayscale;                                                                        /**/
+                                                                                                                /**/
+                                                                                                                    /**/
 /*------------------------------------------------------------------------------------------------------------------*/
 
     width:100%;
@@ -37,19 +36,41 @@ body {
     background-color: #5faa8b;
     text-align: center;
     font-size: 75%;
-    height: 50px;
+    height: 80px;
     width: 100%;
     border-bottom: 2px solid darkgreen;
     margin-bottom: 10px;
-
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
     /* Colocando um background gradiente e uma sombra preta por tras da caixa de texto */
     background: -webkit-linear-gradient(right, #768f74, #5faa8b);
     background: -moz-linear-gradient(right, #768f74, #5faa8b);
     background: -o-linear-gradient(right, #768f74, #5faa8b);
     background: linear-gradient(to left, #768f74, #5faa8b);
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 1.5px 1.5px 0 rgba(0, 0, 0, 0.24);
+    top: 0;
 }
 
+footer {
+    background-color: gray;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+
+.menutopo .container {
+    margin-left: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: auto;
+}
 
 /* Aqui a caixa de texto de conteúdo das páginas */
 .caixatexto3{
@@ -103,6 +124,8 @@ a.acor:visited {
     
     color: white;
     height: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .textolink a{
@@ -122,10 +145,9 @@ a.acor:visited {
     float: left;
 
     font-size: 18px;
-    width: 15%;
+    width: 150px;
     height: 100%;
-    margin: 0;
-    padding: 0;
+    margin-left: 10px;
 }
 
 
@@ -148,7 +170,7 @@ a.acor:visited {
     background-color: #b1ceae;
     border: 3px solid rgb(173, 230, 173);
     height: 97%;
-
+    margin-top: 100px;
     /* border-radius para arredondar as bordas da caixa */
     border-radius: 10px;
 

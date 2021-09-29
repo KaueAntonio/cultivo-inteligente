@@ -1,0 +1,30 @@
+ -- Select dos dados de temperatura
+
+SELECT dados_sensor.temperatura AS 'Temperatura',
+dados_sensor.umidade AS 'Umidade',
+dados_sensor.DataHora AS 'Dia e Horário Da Medição',
+FROM estufa
+JOIN sensor
+ON estufa.idEstufa = sensor.fkEstufa 
+JOIN dados_sensor 
+ON sensor.idSensor = dados_sensor.fkSensor;
+
+ -- Select dos dados de gasto de água
+
+SELECT dados_agua.consumo AS 'Gasto de Água',
+dados_agua.DataHora AS 'Data da Medição'
+FROM estufa
+JOIN agua
+ON estufa.idEstufa = agua.fkEstufa
+JOIN dados_agua
+ON agua.idAgua = dados_agua.fkAgua;
+
+ -- Select de Colheita
+
+SELECT dados_colheita.producao AS ' Total Colhido',
+dados_colheita.DataHora AS 'Data de Colheita'
+FROM estufa
+JOIN colheita
+ON estufa.idEstufa = colheita.fkEstufa
+JOIN dados_colheita
+ON colheita.idColheita = dados_colheita.fkColheita;

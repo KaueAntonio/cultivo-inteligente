@@ -72,33 +72,7 @@ footer {
     width: auto;
 }
 
-/* Aqui a caixa de texto de conteúdo das páginas */
-.caixatexto3{
-    background-color: #b1ceae;
-    border: 3px solid rgb(173, 230, 173);
-    height: 97%;
-    text-align: left;
-    margin-left: 8px;  
-    margin-right: 8px;
 
-    /* border-radius para arredondar a borda de acordo com o valor que eu escolho */
-    border-radius: 10px;
-
-    /* box shadow para colocar uma sombra atras da caixa de texto*/
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-
-.caixatexto3 h1{
-    text-align: center;
-}
-
-.caixatexto3 h2{
-    text-align: center;
-}
-
-.caixatexto3 h3{
-    text-align: center;
-}
 
 /* Classe onde cria uma imagem de fundo,  centralizada e sem repetir se for muito pequena */
 /* Páginas secundarias + caixa de texto*/ 
@@ -165,7 +139,6 @@ a.acor:visited {
 
 .caixatextobaixo {  
     margin:  10px;
-    text-align: center;
     max-height: 97%;
     background-color: #b1ceae;
     border: 3px solid rgb(173, 230, 173);
@@ -178,6 +151,17 @@ a.acor:visited {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+.caixatextobaixo h1{
+    text-align: center;
+}
+
+.caixatextobaixo h2{
+    text-align: center;
+}
+
+.caixatextobaixo h3{
+    text-align: center;
+}
 
 /* Estilos da calculadora */
 .caixatexto3{
@@ -335,6 +319,27 @@ a.acor:visited {
     /* Padding se refere a distancia do conteudo pra borda */
     padding: 15px;
 }
+
+.graf1{
+    width: 80%;
+    background-color: #80bc0015;
+    margin-left: 10px;
+}
+
+.graf2{
+    width: 80%;
+    background-color: #80bc0015;
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
 
 
 

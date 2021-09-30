@@ -11,12 +11,12 @@
 /* Definindo o estilo do body */
 body {
     font-family: 'Roboto', Arial, Verdana ;
-
-/* Os comandos nesse bloco servem pra definir o background como gradiente e deixando a fonte um pouco mais suave */
-    background: -webkit-linear-gradient(right, #76b852, #9db895);                                           /**/
-    background: -moz-linear-gradient(right, #76b852, #9db895);                                              /**/
-    background: -o-linear-gradient(right, #76b852, #9db895);                                               /**/
-    background: linear-gradient(to left, #76b852, #9db895);                                                /**/ 
+    background-image: url(bgimg.jpg);
+    /* Os comandos nesse bloco servem pra definir o background como gradiente e deixando a fonte um pouco mais suave */
+  /*  background: -webkit-linear-gradient(right, #76b852, #9db895);                                           /**/
+  /*  background: -moz-linear-gradient(right, #76b852, #9db895);                                              /**/
+  /*  background: -o-linear-gradient(right, #76b852, #9db895);                                               /**/
+  /*  background: linear-gradient(to left, #76b852, #9db895);                                                /**/ 
                                                                                                                 /**/
                                                                                                                     /**/
 /*------------------------------------------------------------------------------------------------------------------*/
@@ -38,29 +38,33 @@ body {
     font-size: 75%;
     height: 80px;
     width: 100%;
-    border-bottom: 2px solid darkgreen;
+    border-bottom: 2px solid rgba(0, 100, 0, 0.508);
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     position: fixed;
     /* Colocando um background gradiente e uma sombra preta por tras da caixa de texto */
-    background: -webkit-linear-gradient(right, #768f74, #5faa8b);
-    background: -moz-linear-gradient(right, #768f74, #5faa8b);
-    background: -o-linear-gradient(right, #768f74, #5faa8b);
-    background: linear-gradient(to left, #768f74, #5faa8b);
+    background: -webkit-linear-gradient(right, #768f7440, #5faa8b40);
+    background: -moz-linear-gradient(right, #768f7440, #5faa8b40);
+    background: -o-linear-gradient(right, #768f7440, #5faa8b40);
+    background: linear-gradient(to left, #768f7440, #5faa8b40);
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 1.5px 1.5px 0 rgba(0, 0, 0, 0.24);
     top: 0;
 }
 
 footer {
-    background-color: gray;
+    background-color: rgba(16, 36, 14, 0.35);
     height: 30px;
     display: flex;
     align-items: center;
+    color: #5c8059;
     justify-content: center;
     width: 100%;
     bottom: 0;
-    position: absolute;
+    position: fixed;
+    margin-top: 100%;
+    border-top: 2px solid rgba(12, 41, 12, 0.357);
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.4), 5px 1.5px 1.5px 5px rgba(0, 0, 0, 0.24);
 }
 
 .menutopo .container {
@@ -140,7 +144,7 @@ a.acor:visited {
 .caixatextobaixo {  
     margin:  10px;
     max-height: 97%;
-    background-color: #b1ceae;
+    background-color: #b1ceae90;
     border: 3px solid rgb(173, 230, 173);
     height: 97%;
     margin-top: 100px;
@@ -228,10 +232,10 @@ a.acor:visited {
 
 .form {
     position: relative;
-    background: #FFFFFF;
+    background: #00000010;
     padding: 45px;
     text-align: center;
-    border: 5px solid rgb(173, 230, 173);
+    border: 1px solid rgb(173, 230, 173);
     margin: 0 auto 100px;
 
     /* Colocando uma sombra atras do formulario */
@@ -240,7 +244,12 @@ a.acor:visited {
     /* Border radius faz as bordas ficarem arredondadas */
     border-radius: 20px;
 }
-
+.inputt::placeholder{
+    color: black;
+}
+.inputfc::placeholder{
+    color:black;
+}
 .login-page {
     width: 360px;
     padding: 8% 0 0;
@@ -248,13 +257,12 @@ a.acor:visited {
 }
 .inputt {
     font-family: "Roboto", sans-serif;
-    background: #f2f2f2;
+    background: #f2f2f280;
     width: 100%;
     border: 1px solid darkgreen;
     border-radius: 20px;
     margin-bottom:15px;
     font-size: 14px;
-    
     /* box-sizing: border -box;As propriedades de largura (width) e de altura (height) incluem o tamanho padding size e a propriedade border, mas não incluem a propriedade margin */
     box-sizing: border-box;
     
@@ -307,7 +315,7 @@ a.acor:visited {
 
 .inputfc {
     font-family: "Roboto", sans-serif;
-    background: #f2f2f2;
+    background: #f2f2f280;
     width: 350px;
     border: 1px solid darkgreen;
     
@@ -322,19 +330,28 @@ a.acor:visited {
 
 .graf1{
     width: 80%;
-    background-color: #80bc0015;
+    background-color: #35461240;
     margin-left: 10px;
 }
 
 .graf2{
     width: 80%;
-    background-color: #80bc0015;
+    background-color: #35461240;
     margin-left: 10px;
 }
 
 
+.direitagraf1 {
+    width: 20%;
+    background-color: aliceblue;
+    float: right;
+}
 
-
+.direitagraf2 {
+    width: 20%;
+    background-color: aliceblue;
+    float: right;
+}
 
 
 

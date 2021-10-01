@@ -39,18 +39,18 @@
     <div class="caixatextobaixo">
 
         <div>
-            <h1>Sensor DHT 11 - Temperatura</h1>
+            <h1>Sensor DHT 11 - Umidade</h1>
             <section>
-                <h2>Média Temperatura: <label id='average'>0.00</label></h2>
+                <h2>Média Umidade: <label id='average'>0.00</label></h2>
 
             </section>
             <div>
                 <section class="graf1">
                     <canvas id="chart"></canvas>
                 </section>
-                <h1>Sensor DHT 11 - Umidade</h1>
+                <h1>Sensor DHT 11 - Temperatura</h1>
                 <section>
-                    <h2>Média Umidade: <label id='average2'>0.00</label></h2>
+                    <h2>Média Temperatura: <label id='average2'>0.00</label></h2>
                 </section>
                 <section class="graf2">
                     <canvas id="chart2"></canvas>
@@ -76,7 +76,7 @@
         type: 'line',
         data: {
             datasets: [{
-                label: "Temperatura",
+                label: "Umidade",
                 type: 'line',
                 borderColor: ['#eb3a34'],
                 backgroundColor: ['#eb3a3400']
@@ -139,9 +139,9 @@
         document.getElementById('average').textContent = obj.average;
     }
 
-    //  setInterval(() => {
-    //		get_data();
-    // }, 1000);
+      setInterval(() => {
+    		get_data();
+     }, 1000);
 
 
 
@@ -156,7 +156,7 @@
         type: 'line',
         data: {
             datasets: [{
-                label: "Umidade",
+                label: "Temperatura",
                 type: 'line',
                 borderColor: ['#34baeb'],
                 backgroundColor: ['#34baeb00']
@@ -173,7 +173,7 @@
                 yAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: 'Umidade'
+                        labelString: 'Temperatura'
                     },
                     ticks: {
                         beginAtZero: true
@@ -187,7 +187,7 @@
     };
 
     var chart2 = new Chart(context2, configuration2);
-
+    
     function get_data2() {
 
         var http = new XMLHttpRequest();
@@ -217,8 +217,8 @@
         document.getElementById('average2').textContent = obj.average2;
     }
 
-       // setInterval(() => {
-		//	get_data2();
-       // }, 1000);
+        setInterval(() => {
+			get_data2();
+        }, 1000);
 
 </script>

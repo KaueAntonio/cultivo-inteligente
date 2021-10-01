@@ -334,13 +334,15 @@ canvas {
 
 .graf1{
     width: 80%;
-    background-color: #35461240;
+    /*background-color: #35461240;*/
+    background-color: white;
     margin-left: 10px;
 }
 
 .graf2{
     width: 80%;
-    background-color: #35461240;
+    /* background-color: #35461240; */
+    background-color: white;
     margin-left: 10px;
 }
 

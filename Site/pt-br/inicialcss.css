@@ -11,14 +11,10 @@
 /* Definindo o estilo do body */
 body {
     font-family: 'Roboto', Arial, Verdana ;
-    background-image: url(bgimg.jpg);
-    /* Os comandos nesse bloco servem pra definir o background como gradiente e deixando a fonte um pouco mais suave */
-  /*  background: -webkit-linear-gradient(right, #76b852, #9db895);                                           /**/
-  /*  background: -moz-linear-gradient(right, #76b852, #9db895);                                              /**/
-  /*  background: -o-linear-gradient(right, #76b852, #9db895);                                               /**/
-  /*  background: linear-gradient(to left, #76b852, #9db895);                                                /**/ 
-                                                                                                                /**/
-                                                                                                                    /**/
+  
+    font-family: 'Roboto', Arial, Verdana ;
+    background-image: url(bgmage2.jpeg);
+    background-size: cover;                           
 /*------------------------------------------------------------------------------------------------------------------*/
 
     width:100%;
@@ -28,7 +24,11 @@ body {
     word-wrap:break-word;
   }
 
-
+.body2{
+    font-family: 'Roboto', Arial, Verdana ;
+    background-image: url(bgmage2.jpeg);
+    background-size: cover;
+}
 
 
 /* Aqui eu especifico como que será o menu superior */
@@ -36,18 +36,18 @@ body {
     background-color: #5faa8b;
     text-align: center;
     font-size: 75%;
-    height: 80px;
+    height: 70px;
     width: 100%;
-    border-bottom: 2px solid rgba(0, 100, 0, 0.508);
+    border-bottom: 3px solid rgba(100, 60, 0, 0.508);
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     position: fixed;
     /* Colocando um background gradiente e uma sombra preta por tras da caixa de texto */
-    background: -webkit-linear-gradient(right, #768f7440, #5faa8b40);
-    background: -moz-linear-gradient(right, #768f7440, #5faa8b40);
-    background: -o-linear-gradient(right, #768f7440, #5faa8b40);
-    background: linear-gradient(to left, #768f7440, #5faa8b40);
+    background: -webkit-linear-gradient(right, #704f40, #6a8760);                                         
+  background: -moz-linear-gradient(right, #704f40, #6a8760);                                              
+   background: -o-linear-gradient(right, #704f40, #6a8760);                                             
+   background: linear-gradient(to left, #76513f, #6a8760);
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 1.5px 1.5px 0 rgba(0, 0, 0, 0.24);
     top: 0;
 }
@@ -136,6 +136,14 @@ a.acor:visited {
 }
 
 
+
+
+.headerlogo{
+    height: 70px;
+}
+
+
+
 /* Definindo aqui o que acontece quando eu coloco o mouse por cima do texto do menu */
 .textolink a:hover{
     font-weight: bold;
@@ -174,24 +182,63 @@ a.acor:visited {
     text-align: center;
 }
 
-/* Estilos da calculadora */
-.caixatexto3{
-    background-color: #b1ceae;
-    border: 3px solid rgb(173, 230, 173);
-    height: 97%;
-    text-align: left;
-    flex-direction: row;  
-    margin: 8px;  
+.banner{
+    margin-top: 72px;
+    height: 897px;
+    background-image: url(fotohomem.png );
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
 }
 
+.message {
+    color: black;
+    width: 40%;
+    margin-left: 55%;
+    font-size: 30px;
+    font-weight: 900;
+    margin-top: 9%;
+}
+.message span {
+    color: black;
+    width: 40%;
+    font-size: 19px;
+    font-weight: lighter;
+}
+
+.message button {
+    cursor: pointer;
+    color: rgb(65, 26, 26);
+    font-size: 19px;
+    font-weight: lighter;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: solid 2px brown;
+    background: none;
+}
+.message button:hover {
+    border: solid 2px brown;
+}
+.caixafoto{
+    margin-top: 72px;
+    background-image: url(fotohomem.png);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilos da calculadora */
+
+
 .caixatexto4{
-    background-color: #91ad8e;
-    border: 3px solid rgb(173, 230, 173);
+    background-color: #768874a4;
+    border: 3px solid rgba(23, 102, 39, 0.344);
     height: 97%;
     text-align: left;
     flex-direction: row;  
     margin: 8px;  
     text-align: center;
+    border-radius: 10px;
 }
 
 
@@ -233,11 +280,6 @@ a.acor:visited {
 }
 
 
-canvas {
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-}
 
 /* Formulario de login */
 

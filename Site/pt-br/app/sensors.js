@@ -1,34 +1,3 @@
-function lm35(min, max) {
-  min = typeof min == "undefined" ? 18 : min;
-  max = typeof max == "undefined" ? 25 : max;
-
-  let random = Math.random() * (max - min) + min;
-
-  return random;
-}
-
-function trc5000() {
-  min = 0;
-  max = 1;
-
-  let random = Math.random() * (max - min) + min;
-
-  if (random >= 0.7) {
-    return 1;
-  } else if (random <= 0.7) {
-    return 0;
-  }
-}
-
-function ldr() {
-  min = 0;
-  max = 1023;
-
-  let random = Math.floor(Math.random() * (max - min + 1) + min);
-
-  return random;
-}
-
 function dht11(options) {
   minHumidity = options.minHum;
   maxHumidity = options.maxHum;
@@ -48,8 +17,8 @@ function dht11(options) {
     );
   }
 
-  minTemperature = typeof minTemperature == "undefined" ? 18 : minTemperature;
-  maxTemperature = typeof maxTemperature == "undefined" ? 25 : maxTemperature;
+  minTemperature = typeof minTemperature == "undefined" ? 0 : minTemperature;
+  maxTemperature = typeof maxTemperature == "undefined" ? 50 : maxTemperature;
 
   minHumidity = typeof minHumidity == "undefined" ? 20 : minHumidity;
   maxHumidity = typeof maxHumidity == "undefined" ? 80 : maxHumidity;
@@ -63,10 +32,4 @@ function dht11(options) {
 
   return [randomHumidity, randomTemperature];
 }
-
-
-
-
-module.exports = { lm35, trc5000, ldr, dht11, entrarlogin, cadastrar, mudarcadastro, mudarlogin };
-
-
+module.exports = {dht11};

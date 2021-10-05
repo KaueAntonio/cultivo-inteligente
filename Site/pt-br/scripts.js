@@ -1,7 +1,88 @@
+    var usu = '&';
+    var sen = '&';
+    var ema = '&';
+    var usu_geral = 'weegrowffee';
+    var sen_geral = 'cafe123';
 
-    function deslogar() {
+
+
+    function cadastrar() {
+        usu = cadastro_usuario.value;
+        sen = cadastro_senha.value;
+        ema = cadastro_email.value;
+        tela_login.style.display = 'block';
+        tela_cadastro.style.display = 'none';
+        alert('Cadastrado! Faça o login para continuar');
+    }
+    
+    function mudarcadastro() {
+        tela_login.style.display = 'none';
+        tela_cadastro.style.display = 'block';
+    }
+    
+    function mudarlogin() {
+        tela_login.style.display = 'block';
+        tela_cadastro.style.display = 'none';
+    }
+    
+    
+    function entrarlogin() {
+        var x = login_usuario.value;
+        var z = login_senha.value;
+        if (usu == x && sen == z){
+            alert("Logado com sucesso!");
+            window.location.href = 'bancodedados.html';
+        }else{
+            if (usu_geral == x && sen_geral == z){
+                alert("Logado com sucesso!");
+                window.location.href = 'bancodedados.html';
+            }else{
+                alert('Usuário ou Senha Incorretos!');
+            }
+        }
+
+    }
+
+    
+    function inicial(){
+        window.location.href = 'quemsomos.html';
+    }
+    
+    function inicial1(){
+        window.location.href = 'quemsomos1.html';
+    }
+
+    function enviaremail() {
+        alert("Sua mensagem foi enviada com sucesso!");
+    }
+    function deslogar(){
         alert('Desconectado com sucesso!');
     }
+
+
+
+    function lucro() {
+        var ax_qtd_plantas = hectares.value * 7000; // média de 7000 plantas por hectare
+
+        var ax_vlr_agua1 = ax_qtd_plantas * 232.5; //quantidade de plantas vezes o consumo mensal SEM gotejamento (7,5L * 31 dias)
+        var ax_agua1m3 = ax_vlr_agua1 / 1000; // litros transformados em volume (cúbico)
+        var ax_vlr_total1 = ax_agua1m3 * valor_cubico.value; // volume vezes a taxa por m³
+
+        var ax_vlr_agua2 = ax_qtd_plantas * 155; //quantidade de plantas vezes o consumo mensal COM gotejamento (5L * 31 dias)
+        var ax_agua2m3 = ax_vlr_agua2 / 1000; // litros transformados em volume (cúbico)
+        var ax_vlr_total2 = ax_agua2m3 * valor_cubico.value; //volume vezes a taxa por m³
+
+        var ax_lucro_mes = ax_vlr_total1 - ax_vlr_total2; //diferença do valor gasto por mês sem/com gotejamento
+        var ax_lucro_ano = ax_lucro_mes * 12; //diferença mensal transformada em diferença anual
+
+        div_msg.style.display = 'block';
+
+        div_msg.innerHTML = (
+            `<br>Por <u>mês</u>, sua plantação consome ${ax_agua1m3.toFixed(2)}m³ o equivalente a <b>R$ ${ax_vlr_total1.toFixed(2)}</b><br><br>
+        Usando <u>nosso sistema</u> você consome ${ax_agua2m3.toFixed(2)}m³ o equivalente a <b>R$ ${ax_vlr_total2.toFixed(2)}</b>
+        <h3>Garantindo um lucro de <u>R$ ${ax_lucro_mes.toFixed(2)} por mês</u> em economia de água, sendo assim, você economiza <u>R$ ${ax_lucro_ano.toFixed(2) } por ano</u>.</h3>`);
+    };
+
 
     var context = document.getElementById("chart").getContext("2d");
     context.canvas.width = 1000;
@@ -88,9 +169,9 @@
         document.getElementById('average2').textContent = obj.average2;
     }
 
-    //setInterval(() => {
-   //     get_data();
-    //}, 1000);
+    setInterval(() => {
+        get_data();
+    }, 1000);
 
 
     var context2 = document.getElementById("chart2").getContext("2d");

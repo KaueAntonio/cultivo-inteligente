@@ -16,23 +16,18 @@ class ArduinoRead {
 
     fake_data() {
         setInterval(() => {
-            let dht11 = sensors.dht11();
+            let dht11 = sensors.dht11({ minHum: 20, maxHum: 80, minTemp: 0, maxTemp: 50 });
 
             if (this.listData.length === 59) {
                 let sum = this.listData.reduce((a, b) => a + b, 0);
-                let sum2 = this.listData.reduce((c, d) => c + d, 0);
-                this.listDataHour.push((sum / this.listData.length).toFixed(0));
-                this.listDataHour.push((sum2 / this.listData.length).toFixed(2));
+                this.listDataHour.push((sum / this.listData.length).toFixed(2));
                 while (this.listData.length > 0) {
                     this.listData.pop();
-                } 
+                }
             }
-            console.log('DHT11 - Umidade: ' + dht11[0].toFixed(0));
-            console.log('DHT11 - Temperatura: ' + dht11[1].toFixed(2));
             this.listData.push(dht11);
-        }, 2000);       
+        }, 2000);
     }
-
 
 
     SetConnection() {
@@ -56,13 +51,15 @@ class ArduinoRead {
 
                 const parser = new Readline();
                 arduino.pipe(parser);
-                arduino.on('close',() => {
+                arduino.on('close', () => {
                     console.log('Lost Connection');
                     this.fake_data();
                 });
                 parser.on('data', (data) => {
-                    console.log('data', data);
-                    this.listData.push(parseFloat(data));
+                    data = data.split(" ");
+                    console.log('DHT11 - Temperatura: ' + data[1]);
+                    console.log('DHT11 - Umidade: ' + data[0]);
+                    this.listData.push(data);
                 });
             } catch (e) {
                 this.fake_data();
@@ -75,4 +72,4 @@ class ArduinoRead {
 const serial = new ArduinoRead();
 serial.SetConnection();
 
-module.exports.ArduinoDataTemp = { List: serial.List}
+module.exports.ArduinoDataTemp = { List: serial.List }

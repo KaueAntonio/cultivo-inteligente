@@ -64,4 +64,9 @@ function dht11(options) {
   return [randomHumidity, randomTemperature];
 }
 
-module.exports = { lm35, trc5000, ldr, dht11 };
+
+
+
+module.exports = { lm35, trc5000, ldr, dht11, entrarlogin, cadastrar, mudarcadastro, mudarlogin };
+
+

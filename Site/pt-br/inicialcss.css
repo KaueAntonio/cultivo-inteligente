@@ -76,7 +76,14 @@ footer {
     width: auto;
 }
 
-
+.menutopo .container h1{
+    font-family: 'Lucida Sans';
+    font-weight: bolder;
+    color: black;
+    -webkit-text-stroke-width: 0.8px;
+    -webkit-text-stroke-color: rgb(0, 184, 0);
+    font-size: 30px;
+}
 
 /* Classe onde cria uma imagem de fundo,  centralizada e sem repetir se for muito pequena */
 /* Páginas secundarias + caixa de texto*/ 

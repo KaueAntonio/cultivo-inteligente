@@ -10,31 +10,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    
 </head>
 
 <body class="body">
 
-    <!--
-        Menu Superior
-    -->
 
     <div class="menutopo">
         <div class="container">
 
-            <h1>Cultivo Inteligente</h1>
+            <h1>WeeGrowffe</h1>
         </div>
 
         <span class="textolink"><a class="acor" href="inicial.html">Home</a>
-            <a class="acor" href="comofunciona.html">Como Funciona</a>
+            <a href="quemsomos.html">Quem Somos</a>
             <a class="acor" href="calculadora.html">Simule</a>
             <a class="acor" href="contatos.html">Fale Conosco </a>
             <a href="inicial1.html" onclick="deslogar()" style="float: right;">Sair</a>
         </span>
     </div>
 
-    <!--
-        Conteúdo da página
-    -->
 
     <div class="caixatextobaixo">
 
@@ -46,7 +41,7 @@
             </section>
             <div>
                 <section class="graf1">
-                    <canvas id="chart"></canvas>
+                    <canvas id="chart" style="height:40vh; width:80vw"></canvas>
                 </section>
                 <h1>Sensor DHT 11 - Temperatura</h1>
                 <section>
@@ -62,163 +57,4 @@
 </body>
 
 </html>
-
-<script>
-    function deslogar() {
-        alert('Desconectado com sucesso!');
-    }
-
-    var context = document.getElementById("chart").getContext("2d");
-    context.canvas.width = 1000;
-    context.canvas.height = 300;
-
-    var configuration = {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: "Umidade",
-                type: 'line',
-                borderColor: ['#eb3a34'],
-                backgroundColor: ['#eb3a3400']
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    distribution: 'series',
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }],
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Temperatura'
-                    },
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            },
-            animation: {
-                duration: 0
-            }
-        }
-    };
-
-    var chart = new Chart(context, configuration);
-    this.lastIndexTemp = 0;
-    this.time = 0;
-
-    function get_data() {
-
-        var http = new XMLHttpRequest();
-        http.open('GET', 'http://localhost:3000/api', false);
-        http.send(null);
-
-        var obj = JSON.parse(http.responseText);
-        if (obj.data.length == 0) {
-            return;
-        }
-
-        var _lastIndexTemp = this.lastIndexTemp;
-        this.lastIndexTemp = obj.data.length;
-        listTemp = obj.data.slice(_lastIndexTemp);
-
-        listTemp.forEach(data => {
-            if (chart.data.labels.length == 10 && chart.data.datasets[0].data.length == 10) {
-                chart.data.labels.shift();
-                chart.data.datasets[0].data.shift();
-            }
-
-            chart.data.labels.push(this.time++);
-            chart.data.datasets[0].data.push(parseFloat(data));
-            chart.update();
-        });
-
-        document.getElementById('average').textContent = obj.average;
-    }
-
-      setInterval(() => {
-    		get_data();
-     }, 1000);
-
-
-
-
-
-
-    var context2 = document.getElementById("chart2").getContext("2d");
-    context2.canvas.width = 1000;
-    context2.canvas.height = 300;
-
-    var configuration2 = {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: "Temperatura",
-                type: 'line',
-                borderColor: ['#34baeb'],
-                backgroundColor: ['#34baeb00']
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    distribution: 'series',
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }],
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Temperatura'
-                    },
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            },
-            animation: {
-                duration: 0
-            }
-        }
-    };
-
-    var chart2 = new Chart(context2, configuration2);
-    
-    function get_data2() {
-
-        var http = new XMLHttpRequest();
-        http.open('GET', 'http://localhost:3000/api', false);
-        http.send(null);
-
-        var obj = JSON.parse(http.responseText);
-        if (obj.data.length == 0) {
-            return;
-        }
-
-        var _lastIndexTemp = this.lastIndexTemp;
-        this.lastIndexTemp = obj.data.length;
-        listTemp = obj.data.slice(_lastIndexTemp);
-
-        listTemp.forEach(data => {
-            if (chart2.data.labels.length == 10 && chart2.data.datasets[0].data.length == 10) {
-                chart2.data.labels.shift();
-                chart2.data.datasets[0].data.shift();
-            }
-
-            chart2.data.labels.push(this.time++);
-            chart2.data.datasets[0].data.push(parseFloat(data));
-            chart2.update();
-        });
-
-        document.getElementById('average2').textContent = obj.average2;
-    }
-
-        setInterval(() => {
-			get_data2();
-        }, 1000);
-
-</script>
+<script src="pggraf.js"></script>

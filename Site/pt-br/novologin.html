@@ -8,41 +8,51 @@
     <link rel="shortcut icon" href="icone.ico">
     <link rel="stylesheet" href="inicialcss.css">
     <title>Login</title>
+
 </head>
 
 <body>
     <div class="menutopo">
         <div class="container">
 
-            <h1>Cultivo Inteligente</h1>
+            <h1>WeeGrowffee</h1>
         </div>
         <span class="textolink">
             <a class="acor" href="inicial.html">Home</a>
         </span>
     </div>
-    <div class="login-page">
+
+
+    <div class="login-page" id="tela_cadastro" style="display: none;">
+        <div class="form">
+            <div class="register-form" method="POST" action="">
+                <input id="cadastro_usuario" class="inputt" type="text" placeholder="Usuário">
+                <input id="cadastro_senha" class="inputt" type="password" placeholder="Senha" />
+                <input id="cadastro_email" class="inputt" type="text" placeholder="Email" />
+                <input class="btnin" type="submit" value="Cadastrar" onclick="cadastrar()">
+                <p class="textobaixol">Ja é registrado? <a href="#" onclick="mudarlogin()">Faça login!</a></p>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="login-page" id="tela_login">
         <div class="form">
 
-            <form class="login-form" action="inicial.html" method="POST">
-                <input class="inputt" type="text" placeholder="Usuário" id="usuario">
-                <input class="inputt" type="password" placeholder="Senha" id="senha">
+            <div class="login-form" action="" method="POST">
+                <input id="login_usuario" class="inputt" type="text" placeholder="Usuário" id="usuario">
+                <input id="login_senha" class="inputt" type="password" placeholder="Senha" id="senha">
                 <input class="btnin" type="submit" value="Entrar" onclick="entrarlogin()">
-                <p class="textobaixol">Não é registrado? <a href="novocadastro.html">Cadastre-se!</a></p>
-            </form>
+                <p class="textobaixol">Não é registrado? <a href="#" onclick="mudarcadastro()">Cadastre-se!</a></p>
+            </div>
         </div>
     </div>
+
+
     <footer>
         Cultivo Inteligente 2021 - Todos os Direitos Reservados
     </footer>
 </body>
 
 </html>
-<script>
-    function entrarlogin() {
-
-        alert("Logado com sucesso!");
-
-    }
-
-
-</script>
+<script src="login.js"></script>

@@ -18,12 +18,9 @@ Serial.println("erro ao ler o DHT");
 }
 else
 {
-Serial.print("Umidade: "); 
 Serial.print(umidade);
-Serial.println("%");
-Serial.print("temperatura: ");
-Serial.print(temperatura);
-Serial.println("°c");
+Serial.print(" "); 
+Serial.println(temperatura);
 
 }
 delay(2000);

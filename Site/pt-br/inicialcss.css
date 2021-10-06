@@ -33,7 +33,7 @@ body {
 
 /* Aqui eu especifico como que será o menu superior */
 .menutopo {
-    background-color: #5faa8b;
+    background-color: #805437d5;
     text-align: center;
     font-size: 75%;
     height: 70px;
@@ -44,12 +44,13 @@ body {
     justify-content: space-between;
     position: fixed;
     /* Colocando um background gradiente e uma sombra preta por tras da caixa de texto */
-    background: -webkit-linear-gradient(right, #704f40, #6a8760);                                         
+    /* background: -webkit-linear-gradient(right, #704f40, #6a8760);                                         
   background: -moz-linear-gradient(right, #704f40, #6a8760);                                              
    background: -o-linear-gradient(right, #704f40, #6a8760);                                             
-   background: linear-gradient(to left, #76513f, #6a8760);
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 1.5px 1.5px 0 rgba(0, 0, 0, 0.24);
+   background: linear-gradient(to left, #76513f, #6a8760); */
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 1.5px 1.5px 0 rgba(0, 0, 0, 0.24); 
     top: 0;
+    border-radius: 0 0 4.5em 4.5em;
 }
 
 footer {
@@ -285,10 +286,10 @@ a.acor:visited {
 
 .form {
     position: relative;
-    background: #00000010;
+    background: #000000a1;
     padding: 45px;
     text-align: center;
-    border: 1px solid rgb(173, 230, 173);
+    border: 2px solid rgb(173, 230, 173);
     margin: 0 auto 100px;
 
     /* Colocando uma sombra atras do formulario */
@@ -353,11 +354,11 @@ a.acor:visited {
 /* Aqui é o estilo da frase no final do form de "Não tem login? Cadastre-se!" */
 .form .textobaixol {
     margin: 15px 0 0;
-    color: #b3b3b3;
+    color: #ffffff;
     font-size: 12px;
 }
 .form .textobaixol a {
-    color: #4CAF50;
+    color: #00ff08;
     text-decoration: none;
 }
 

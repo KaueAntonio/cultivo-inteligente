@@ -16,11 +16,10 @@ class ArduinoRead {
 
     fake_data() {
         setInterval(() => {
-            let dht11 = sensors.dht11({ minHum: 20, maxHum: 80, minTemp: 0, maxTemp: 50 });
+            let dht11 = sensors.dht11();
 
             if (this.listData.length === 59) {
-                let sum = this.listData.reduce((a, ) => a + b, 0);
-                let sum2 = this.listData.reduce((a, b) => a + b, 0);
+                let sum = this.listData.reduce((a, b) => a + b);
                 this.listDataHour.push((sum / this.listData.length).toFixed(2));
                 while (this.listData.length > 0) {
                     this.listData.pop();

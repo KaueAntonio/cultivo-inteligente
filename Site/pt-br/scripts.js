@@ -92,7 +92,7 @@
         type: 'line',
         data: {
             datasets: [{
-                label: "Umidade",
+                label: "Umidade (%)",
                 type: 'line',
                 borderColor: ['#eb3a34'],
                 backgroundColor: ['#eb3a3400']
@@ -109,7 +109,7 @@
                 yAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: 'Umidade'
+                        labelString: 'Umidade (%)'
                     },
                     ticks: {
                         beginAtZero: true
@@ -136,6 +136,8 @@
         if (obj.data.length == 0) {
             return;
         }
+
+        
 
         var _lastIndexTemp = this.lastIndexTemp;
         this.lastIndexTemp = obj.data.length;
@@ -164,6 +166,7 @@
             chart2.data.labels.push(this.time++);
             chart2.data.datasets[0].data.push(parseFloat(data[1]));
             chart2.update();
+            
         });
 
         document.getElementById('average2').textContent = obj.average2;
@@ -182,7 +185,7 @@
         type: 'line',
         data: {
             datasets: [{
-                label: "Temperatura",
+                label: "Temperatura (°C)",
                 type: 'line',
                 borderColor: ['#34baeb'],
                 backgroundColor: ['#34baeb00']
@@ -199,7 +202,7 @@
                 yAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: 'Temperatura'
+                        labelString: 'Temperatura (°C)'
                     },
                     ticks: {
                         beginAtZero: true

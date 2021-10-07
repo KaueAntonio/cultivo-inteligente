@@ -1,3 +1,4 @@
+function criador() {
 const mysql = require('mysql');
 
 var config =
@@ -30,7 +31,7 @@ function queryDatabase(){
         if (err) throw err; 
         console.log('Dropped Cadastro table if existed.');
     })
-        conn.query('CREATE TABLE Cadastro (idCadastro PRIMARY KEY, usuario VARCHAR(50), senha VARCHAR(50), email VARCHAR(50));', 
+        conn.query('CREATE TABLE Cadastro (idCadastro INT PRIMARY KEY AUTO_INCREMENT, usuario VARCHAR(50), senha VARCHAR(50), email VARCHAR(50));', 
             function (err, results, fields) {
                 if (err) throw err;
         console.log('Created Cadastro table.');
@@ -55,3 +56,4 @@ function queryDatabase(){
     else  console.log('Done.') 
     });
 };
+}

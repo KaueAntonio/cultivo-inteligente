@@ -35,21 +35,40 @@
 
         <div>
             <h1>Sensor DHT 11 - Umidade</h1>
+            <br>
             <section>
-                <h2>Média de Umidade: <span id='average'>0.00</span>%</h2>
+                <h2>
+                    <div class="div_valores">
+
+                        <div class="nome">Status: </div><div class="status" id="status_umid" style="background-color: green; text-align: left;"><span id="realtime_umid"></span>%</div>
+                        <div class="nome">Média: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='average'>0.00</span>%</div>
+                        <div class="nome">Mediana: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='mediana_umid'>0.00</span></div>
+                        <div class="nome">1° Quartil: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='1quartil_umid'>0.00</span></h2>
+                    </div>
 
             </section>
             <div>
                 <section class="graf1">
                     <canvas id="chart" style="height:40vh; width:80vw"></canvas>
                 </section>
+                <br><br>
                 <h1>Sensor DHT 11 - Temperatura</h1>
+                <br>
                 <section>
-                    <h2>Média de Temperatura: <span id='average2'>0.00</span>°C</h2>
+                    <h2>
+                        <div class="div_valores">
+
+                            <div class="nome">Status: </div><div class="status" id="status_temp" style="background-color: green; text-align: left;"><span id="realtime_temp"></span>°C</div>
+                            <div class="nome">Média: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='average2'>0.00</span>°C</div>
+                            <div class="nome">Mediana: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='mediana_temp'>0.00</span></div>
+                            <div class="nome">1° Quartil: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='1quartil_temp'>0.00</span></div>
+                        </h2>
+                        </div>
                 </section>
                 <section class="graf2">
                     <canvas id="chart2"></canvas>
                 </section>
+                <br><br>
             </div>
             <br><br><br>
         </div>
@@ -152,36 +171,48 @@ var mediaumi = [];
 
         listTemp.forEach(data => {
             cont+=2;
-        
+            
+            document.getElementById('realtime_temp').textContent = data[1];
+            document.getElementById('realtime_umid').textContent = data[0];
         for (let i = 0; i <= 1; i++){
-
+            
             temp.push(parseFloat(data[1]));
             umi.push(parseFloat(data[0]));
+            testes();
         }
         console.log(temp[0]);
         console.log(umi[0]);
         let sum = umi.reduce((a, b) => a + b);
         let sum2 = temp.reduce((a, b) => a + b);
-
-
+        
+        
         mediaumi = sum / cont;
         mediatemp = sum2 / cont;
         document.getElementById('average').textContent = mediaumi.toFixed(1);
         document.getElementById('average2').textContent = mediatemp.toFixed(1);
-        });
-
-
-
+        
 
         
+        
+    
+        
+        
+    });
+    
+    
+    
+    
+    
         
         
     }
     
 
 
+
     setInterval(() => {
         get_data();
+        testes();
     }, 1000);
 
 
@@ -224,5 +255,62 @@ var mediaumi = [];
     };
 
     var chart2 = new Chart(context2, configuration2);
-
+function testes(){
+    if (temp[0] >= 24.5){
+        document.getElementById('status_temp').style.backgroundColor = 'red';
+    }else{
+        if(temp[0] >= 23.5){
+            document.getElementById('status_temp').style.backgroundColor = 'orange';
+        }else{
+            if (temp[0] < 23.5 && temp[0] > 21){
+                document.getElementById('status_temp').style.backgroundColor = 'yellow';
+            }else{
+                if (temp[0] < 19 && temp[0] > 16.5){
+                    document.getElementById('status_temp').style.backgroundColor = 'yellow';
+                }else{
+                    if (temp[0] <= 16.5 && temp[0] > 15.5){
+                        document.getElementById('status_temp').style.backgroundColor = 'orange';
+                    }else{
+                        if (temp[0] <= 15.5){
+                            document.getElementById('status_temp').style.backgroundColor = 'red';
+                         }else{
+                             if (temp[0] >= 19 && temp[0] <= 21){
+                                document.getElementById('status_temp').style.backgroundColor = 'green';
+                             }
+                         }
+                    }
+                }
+            }
+        }
+    }
+    
+    if (umi[0] >= 16.2){
+        document.getElementById('status_umid').style.backgroundColor = 'red';
+    }else{
+        if(umi[0] >= 14.2){
+            document.getElementById('status_umid').style.backgroundColor = 'orange';
+        }else{
+            if (umi[0] < 14.2 && umi[0] > 11.2){
+                document.getElementById('status_umid').style.backgroundColor = 'yellow';
+            }else{
+                if (umi[0] < 10.8 && umi[0] > 7.8){
+                    document.getElementById('status_umid').style.backgroundColor = 'yellow';
+                }else{
+                    if (umi[0] <= 7.8 && umi[0] > 5.8){
+                        document.getElementById('status_umid').style.backgroundColor = 'orange';
+                    }else{
+                        if (umi[0] <= 5.8){
+                            document.getElementById('status_umid').style.backgroundColor = 'red';
+                         }else{
+                             if (umi[0] >= 10.8 && umi[0] <= 11.2){
+                                 document.getElementById('status_umid').style.backgroundColor = 'green';
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+    }
+}
+    
 </script>

@@ -166,12 +166,12 @@ a.acor:visited {
 .caixatextobaixo {  
     margin:  10px;
     max-height: 97%;
-    background-color: #b1ceae90;
-    border: 3px solid rgb(173, 230, 173);
+    background-color: #645543b8;
+    border: 3px solid rgba(136, 63, 15, 0.671);
     height: 97%;
-    margin-top: 100px;
+    margin-top: 10px;
     /* border-radius para arredondar as bordas da caixa */
-    border-radius: 10px;
+    border-radius: 30px;
 
     /* Aqui eu coloco uma sombra atras da caixa de texto */
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -398,6 +398,7 @@ a.acor:visited {
     /*background-color: #35461240;*/
     background-color: white;
     margin-left: 10px;
+    border-radius: 10px;
 }
 
 .graf2{
@@ -405,6 +406,7 @@ a.acor:visited {
     /* background-color: #35461240; */
     background-color: white;
     margin-left: 10px;
+    border-radius: 10px;
 }
 
 
@@ -421,8 +423,23 @@ a.acor:visited {
 }
 
 
+.status{
+    width: 10%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.nome {
+    width: 8%;
+    margin-left: 10px;
+}
 
+.div_valores{
+    display: flex;
+    flex-direction: row;
+}
 
 
 

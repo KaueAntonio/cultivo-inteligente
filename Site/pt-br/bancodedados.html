@@ -83,6 +83,12 @@ var temp = [];
 var umi = [];
 var mediatemp = [];
 var mediaumi = [];
+var esq_umi = 0;
+var dir_umi = 0;
+var meio_umi = 0;
+var esq_temp = 0;
+var dir_temp = 0;
+var meio_temp = 0;
 
     var context = document.getElementById("chart").getContext("2d");
     context.canvas.width = 1000;
@@ -191,12 +197,16 @@ var mediaumi = [];
         document.getElementById('average').textContent = mediaumi.toFixed(1);
         document.getElementById('average2').textContent = mediatemp.toFixed(1);
         
-
-        
-        
+        dir_temp = temp.length-1;
+        esq_temp = temp[0];
+        meio_temp = (dir_temp + esq_temp)/2;    
     
+        dir_umi = temp.length-1;
+        esq_umi = temp[0];
+        meio_umi = (dir_umi + esq_umi)/2;    
         
-        
+        document.getElementById('mediana_umid').textContent = umi[meio_umi];
+        document.getElementById('mediana_temp').textContent = temp[meio_temp];
     });
     
     

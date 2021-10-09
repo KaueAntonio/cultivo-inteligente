@@ -148,7 +148,9 @@ a.acor:visited {
     height: 70px;
 }
 
-
+.headerlogo:hover{
+    cursor: pointer;
+}
 
 /* Definindo aqui o que acontece quando eu coloco o mouse por cima do texto do menu */
 .textolink a:hover{

@@ -1,7 +1,7 @@
 var usu = '&';
 var sen = '&';
 var ema = '&';
-var usu_geral = 'weegrowffee';
+var usu_geral = 'wegrowffee';
 var sen_geral = 'cafe123';
 var csen = '&';
 
@@ -81,6 +81,14 @@ function inicial1() {
     window.location.href = 'quemsomos1.html';
 }
 
+
+function deslogar() {
+    alert('Desconectado com sucesso!');
+}
+
+
+
+
 function enviaremail() {
     var vemail = email.value;
     var vas = assunto.value;
@@ -106,19 +114,52 @@ function enviaremail() {
     if (nome.value.length > 0){
         if (assunto.value.length >= 10) {
             if (mensagem.value.length >= 15) {
-                if (ema.indexOf('@') != -1 && ema.length >= 8 && ema.indexOf('.') != 1) {
-                    alert("Sua mensagem foi enviada com sucesso!");
+                if (vemail.indexOf('@') != -1 && vemail.length >= 8 && vemail.indexOf('.') != -1) {
+                    alert("Sua mensagem foi enviada com sucesso! A Wegrowffee agradece o contato!");
+                    window.location.href = 'inicial.html';
                 }
             }
         }
     }
    
 }
-function deslogar() {
-    alert('Desconectado com sucesso!');
+
+
+
+function enviaremail1() {
+    var vema = email.value;
+    var vas = assunto.value;
+    var vnome = nome.value;
+    var vmsg = mensagem.value;
+    
+    if (vnome.length == 0) {
+        alert('Nome incorreto');
+    }
+
+    if (vas.length < 10) {
+        alert('Defina um assunto maior');
+    }
+
+    if (vmsg.length < 15) {
+        alert('Mensagem muito pequena!');
+    }
+
+    if (vema.indexOf('@') == -1 || vema.length < 8 || vema.indexOf('.') == -1) {
+        alert('Email Inválido!');
+    }
+
+    if (nome.value.length > 0){
+        if (assunto.value.length >= 10) {
+            if (mensagem.value.length >= 15) {
+                if (vema.indexOf('@') != -1 && vema.length >= 8 && vema.indexOf('.') !=  -1) {
+                    alert("Sua mensagem foi enviada com sucesso! A Wegrowffee agradece o contato!");
+                    window.location.href = 'inicial1.html';
+                }
+            }
+        }
+    }
+   
 }
-
-
 
 function lucro() {
     var ax_qtd_plantas = hectares.value * 7000; // média de 7000 plantas por hectare
@@ -142,3 +183,10 @@ function lucro() {
         <h3>Garantindo um lucro de <u>R$ ${ax_lucro_mes.toFixed(2)} por mês</u> em economia de água, sendo assim, você economiza <u>R$ ${ax_lucro_ano.toFixed(2)} por ano</u>.</h3>`);
 };
 
+function inicio(){
+    window.location.href = 'inicial.html';
+}
+
+function inicio1(){
+    window.location.href = 'inicial1.html';
+}

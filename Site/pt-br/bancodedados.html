@@ -74,7 +74,6 @@
             </div>
             <br><br><br>
         </div>
-
 </body>
 
 </html>
@@ -112,9 +111,8 @@ var terc_f_umi = 0;
         data: {
             datasets: [{
                 label: "Umidade (%)",
-                type: 'line',
-                borderColor: ['#eb3a34'],
-                backgroundColor: ['#eb3a3400']
+                borderColor: '#34baeb',
+                backgroundColor: '#34baeb50',
             }]
         },
         options: {
@@ -140,7 +138,44 @@ var terc_f_umi = 0;
             }
         }
     };
+    var context2 = document.getElementById("chart2").getContext("2d");
+    context2.canvas.width = 1000;
+    context2.canvas.height = 300;
 
+    var configuration2 = {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: "Temperatura (°C)",
+                borderColor: '#eb4444',
+                backgroundColor: '#eb444450',
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    distribution: 'series',
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Temperatura (°C)'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            animation: {
+                duration: 0
+            }
+        }
+    };
+
+    var chart2 = new Chart(context2, configuration2);
     var chart = new Chart(context, configuration);
     this.lastIndexTemp = 0;
     this.time = 0;
@@ -251,45 +286,7 @@ var terc_f_umi = 0;
     }, 1000);
     
 
-    var context2 = document.getElementById("chart2").getContext("2d");
-    context2.canvas.width = 1000;
-    context2.canvas.height = 300;
-
-    var configuration2 = {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: "Temperatura (°C)",
-                type: 'line',
-                borderColor: ['#34baeb'],
-                backgroundColor: ['#34baeb00']
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    distribution: 'series',
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }],
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Temperatura (°C)'
-                    },
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            },
-            animation: {
-                duration: 0
-            }
-        }
-    };
-
-    var chart2 = new Chart(context2, configuration2);
+   
 
 
 function testes(){
@@ -365,3 +362,4 @@ setInterval(() => {
         testes();
     }, 10);
 </script>
+<script src="scripts.js"></script>

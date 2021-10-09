@@ -42,8 +42,9 @@
 
                         <div class="nome">Status: </div><div class="status" id="status_umid" style="background-color: green; text-align: left;"><span id="realtime_umid"></span>%</div>
                         <div class="nome">Média: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='average'>0.00</span>%</div>
-                        <div class="nome">Mediana: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='mediana_umid'>0.00</span></div>
-                        <div class="nome">1° Quartil: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='1quartil_umid'>0.00</span></h2>
+                        <div class="nome">Mediana: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='mediana_umid'>0.00</span>%</div>
+                        <div class="nome">1° Quartil: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='1quartil_umid'>0.00</span>%</div>
+                        <div class="nome">3° Quartil: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='3quartil_umid'>0.00</span>%</div></h2>
                     </div>
 
             </section>
@@ -60,8 +61,9 @@
 
                             <div class="nome">Status: </div><div class="status" id="status_temp" style="background-color: green; text-align: left;"><span id="realtime_temp"></span>°C</div>
                             <div class="nome">Média: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='average2'>0.00</span>°C</div>
-                            <div class="nome">Mediana: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='mediana_temp'>0.00</span></div>
-                            <div class="nome">1° Quartil: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='1quartil_temp'>0.00</span></div>
+                            <div class="nome">Mediana: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='mediana_temp'>0.00</span>°C</div>
+                            <div class="nome">1° Quartil: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='1quartil_temp'>0.00</span>°C</div>
+                            <div class="nome">3° Quartil: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='3quartil_temp'>0.00</span>°C</div>
                         </h2>
                         </div>
                 </section>
@@ -89,7 +91,18 @@ var meio_umi = 0;
 var esq_temp = 0;
 var dir_temp = 0;
 var meio_temp = 0;
-
+var prim_quartil_temp = 0;
+var terc_quartil_temp = 0;
+var terc_quartil_umid = 0;
+var prim_quartil_umid = 0;
+var resto_umi = 0;
+var resto_temp = 0;
+var f_temp = 0;
+var f_umi = 0;
+var terc_resto_umi = 0;
+var terc_resto_temp = 0;
+var terc_f_temp = 0;
+var terc_f_umi = 0;
     var context = document.getElementById("chart").getContext("2d");
     context.canvas.width = 1000;
     context.canvas.height = 300;
@@ -206,19 +219,33 @@ var meio_temp = 0;
         
         document.getElementById('mediana_umid').textContent = umi[meio_umi];
         document.getElementById('mediana_temp').textContent = temp[meio_temp];
+
+        resto_temp = (dir_temp / 4) % 1;
+        f_temp = 1 - resto_temp;
+        prim_quartil_temp = temp[parseInt(dir_temp / 4)] + (resto_temp * (temp[resto_temp + f_temp] - temp[parseInt(dir_temp / 4)]));
+
+        resto_umi = (dir_umi / 4) % 1;
+        f_umi = 1 - resto_umi;
+        prim_quartil_umid = umi[parseInt(dir_umi / 4)] + (resto_umi * (umi[resto_umi + f_umi] - umi[parseInt(dir_umi / 4)]));
+
+        document.getElementById('1quatil_temp').textContent = prim_quartil_temp;
+        document.getElementById('1quartil_umid').textContent = prim_quartil_umid;
+
+        terc_resto_temp = (3 * (dir_temp / 4)) % 1;
+        terc_f_temp = 1 - terc_resto_temp;
+        terc_quartil_temp = temp[parseInt(dir_temp / 4)] + (terc_resto_temp * (temp[terc_resto_temp + f_temp] - temp[parseInt(dir_temp / 4)]));
+
+        terc_resto_umi = (3 * (dir_umi / 4)) % 1;
+        terc_f_temp = 1 - terc_resto_temp;
+        terc_quartil_umid = umi[parseInt(dir_umi / 4)] + (terc_resto_umi * (umi[terc_resto_umi + f_umi] - umi[parseInt(dir_umi / 4)]));
+
+        document.getElementById('3quatil_temp').textContent = terc_quartil_temp;
+        document.getElementById('3quartil_umid').textContent = terc_quartil_umid;
     });
     
     
-    
-    
-    
-        
-        
     }
     
-
-
-
     setInterval(() => {
         get_data();
     }, 1000);
@@ -263,24 +290,32 @@ var meio_temp = 0;
     };
 
     var chart2 = new Chart(context2, configuration2);
+
+
 function testes(){
     if (temp[0] >= 24.5){
         document.getElementById('status_temp').style.backgroundColor = 'red';
+        alert('ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!');
     }else{
         if(temp[0] >= 23.5){
             document.getElementById('status_temp').style.backgroundColor = 'orange';
+            alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!');
         }else{
             if (temp[0] < 23.5 && temp[0] > 21){
                 document.getElementById('status_temp').style.backgroundColor = 'yellow';
+                alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta!');
             }else{
                 if (temp[0] < 19 && temp[0] > 16.5){
                     document.getElementById('status_temp').style.backgroundColor = 'yellow';
+                    alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta!');
                 }else{
                     if (temp[0] <= 16.5 && temp[0] > 15.5){
                         document.getElementById('status_temp').style.backgroundColor = 'orange';
+                        alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!');
                     }else{
                         if (temp[0] <= 15.5){
                             document.getElementById('status_temp').style.backgroundColor = 'red';
+                            alert('ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!');
                          }else{
                              if (temp[0] >= 19 && temp[0] <= 21){
                                 document.getElementById('status_temp').style.backgroundColor = 'green';
@@ -294,21 +329,27 @@ function testes(){
     
     if (umi[0] >= 16.2){
         document.getElementById('status_umid').style.backgroundColor = 'red';
+        alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
     }else{
         if(umi[0] >= 14.2){
             document.getElementById('status_umid').style.backgroundColor = 'orange';
+            alert('ATENÇÃO!! A Umidade da sua estufa está em estado de emergência!');
         }else{
             if (umi[0] < 14.2 && umi[0] > 11.2){
                 document.getElementById('status_umid').style.backgroundColor = 'yellow';
+                alert('ATENÇÃO!! A Umidade da sua estufa está em estado de alerta!');
             }else{
                 if (umi[0] < 10.8 && umi[0] > 7.8){
                     document.getElementById('status_umid').style.backgroundColor = 'yellow';
+                    alert('ATENÇÃO!! A Umidade da sua estufa está em estado de alerta!');
                 }else{
                     if (umi[0] <= 7.8 && umi[0] > 5.8){
                         document.getElementById('status_umid').style.backgroundColor = 'orange';
+                        alert('ATENÇÃO!! A Umidade da sua estufa está em estado de emergência!');
                     }else{
                         if (umi[0] <= 5.8){
                             document.getElementById('status_umid').style.backgroundColor = 'red';
+                            alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
                          }else{
                              if (umi[0] >= 10.8 && umi[0] <= 11.2){
                                  document.getElementById('status_umid').style.backgroundColor = 'green';

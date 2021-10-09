@@ -184,7 +184,6 @@ var meio_temp = 0;
             
             temp.push(parseFloat(data[1]));
             umi.push(parseFloat(data[0]));
-            testes();
         }
         console.log(temp[0]);
         console.log(umi[0]);
@@ -222,9 +221,8 @@ var meio_temp = 0;
 
     setInterval(() => {
         get_data();
-        testes();
     }, 1000);
-
+    
 
     var context2 = document.getElementById("chart2").getContext("2d");
     context2.canvas.width = 1000;
@@ -322,5 +320,7 @@ function testes(){
         }
     }
 }
-    
+setInterval(() => {
+        testes();
+    }, 10);
 </script>

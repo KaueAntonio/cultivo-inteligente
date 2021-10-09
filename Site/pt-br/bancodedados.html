@@ -74,7 +74,6 @@
             </div>
             <br><br><br>
         </div>
-
 </body>
 
 </html>
@@ -103,6 +102,7 @@ var terc_resto_umi = 0;
 var terc_resto_temp = 0;
 var terc_f_temp = 0;
 var terc_f_umi = 0;
+
     var context = document.getElementById("chart").getContext("2d");
     context.canvas.width = 1000;
     context.canvas.height = 300;
@@ -112,9 +112,8 @@ var terc_f_umi = 0;
         data: {
             datasets: [{
                 label: "Umidade (%)",
-                type: 'line',
-                borderColor: ['#eb3a34'],
-                backgroundColor: ['#eb3a3400']
+                borderColor: '#34baeb',
+                backgroundColor: '#34baeb50',
             }]
         },
         options: {
@@ -140,7 +139,44 @@ var terc_f_umi = 0;
             }
         }
     };
+    var context2 = document.getElementById("chart2").getContext("2d");
+    context2.canvas.width = 1000;
+    context2.canvas.height = 300;
 
+    var configuration2 = {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: "Temperatura (°C)",
+                borderColor: '#eb4444',
+                backgroundColor: '#eb444450',
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    distribution: 'series',
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Temperatura (°C)'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            animation: {
+                duration: 0
+            }
+        }
+    };
+
+    var chart2 = new Chart(context2, configuration2);
     var chart = new Chart(context, configuration);
     this.lastIndexTemp = 0;
     this.time = 0;
@@ -198,6 +234,12 @@ var terc_f_umi = 0;
             temp.push(parseFloat(data[1]));
             umi.push(parseFloat(data[0]));
         }
+
+        for (let j = 0; j <= 1; j++){
+            
+           testes();
+        }
+
         console.log(temp[0]);
         console.log(umi[0]);
         let sum = umi.reduce((a, b) => a + b);
@@ -251,45 +293,7 @@ var terc_f_umi = 0;
     }, 1000);
     
 
-    var context2 = document.getElementById("chart2").getContext("2d");
-    context2.canvas.width = 1000;
-    context2.canvas.height = 300;
-
-    var configuration2 = {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: "Temperatura (°C)",
-                type: 'line',
-                borderColor: ['#34baeb'],
-                backgroundColor: ['#34baeb00']
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    distribution: 'series',
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }],
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Temperatura (°C)'
-                    },
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            },
-            animation: {
-                duration: 0
-            }
-        }
-    };
-
-    var chart2 = new Chart(context2, configuration2);
+   
 
 
 function testes(){
@@ -353,6 +357,7 @@ function testes(){
                          }else{
                              if (umi[0] >= 10.8 && umi[0] <= 11.2){
                                  document.getElementById('status_umid').style.backgroundColor = 'green';
+                                }else{
                                 }
                             }
                         }
@@ -361,7 +366,5 @@ function testes(){
         }
     }
 }
-setInterval(() => {
-        testes();
-    }, 10);
 </script>
+<script src="scripts.js"></script>

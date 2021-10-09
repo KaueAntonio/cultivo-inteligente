@@ -102,6 +102,13 @@ var terc_resto_umi = 0;
 var terc_resto_temp = 0;
 var terc_f_temp = 0;
 var terc_f_umi = 0;
+const client = require('twilio')();
+client.messages.create({
+        from: 'whatsapp:+14155238886',
+        body: 'Ahoy world!',
+        to: 'whatsapp:+155555555555'
+}).then(message => console.log(message.sid))
+
     var context = document.getElementById("chart").getContext("2d");
     context.canvas.width = 1000;
     context.canvas.height = 300;
@@ -233,6 +240,12 @@ var terc_f_umi = 0;
             temp.push(parseFloat(data[1]));
             umi.push(parseFloat(data[0]));
         }
+
+        for (let j = 0; j <= 1; j++){
+            
+           testes();
+        }
+
         console.log(temp[0]);
         console.log(umi[0]);
         let sum = umi.reduce((a, b) => a + b);
@@ -350,6 +363,7 @@ function testes(){
                          }else{
                              if (umi[0] >= 10.8 && umi[0] <= 11.2){
                                  document.getElementById('status_umid').style.backgroundColor = 'green';
+                                }else{
                                 }
                             }
                         }
@@ -358,8 +372,5 @@ function testes(){
         }
     }
 }
-setInterval(() => {
-        testes();
-    }, 10);
 </script>
 <script src="scripts.js"></script>

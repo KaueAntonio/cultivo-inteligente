@@ -102,12 +102,6 @@ var terc_resto_umi = 0;
 var terc_resto_temp = 0;
 var terc_f_temp = 0;
 var terc_f_umi = 0;
-const client = require('twilio')();
-client.messages.create({
-        from: 'whatsapp:+14155238886',
-        body: 'Ahoy world!',
-        to: 'whatsapp:+155555555555'
-}).then(message => console.log(message.sid))
 
     var context = document.getElementById("chart").getContext("2d");
     context.canvas.width = 1000;

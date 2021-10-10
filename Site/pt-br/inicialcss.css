@@ -374,7 +374,7 @@ a.acor:visited {
 
 /* Aqui defino o background do botao quando eu passo o mouse por cima, quando ele esta ativo, e quando ele esta focado */
 .form .btnin:hover,.form .btnin:active,.form .btnin:focus {
-    background: #43A047;
+    background: #4b2b13;
 }
 
 /* Aqui é o estilo da frase no final do form de "Não tem login? Cadastre-se!" */

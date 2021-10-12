@@ -21,10 +21,9 @@
     <div class="menutopo">
         <div class="container">
             <div>
-                <img src="Cultivo Inteligente atualizado 3.png" alt="">
+                <img src="Cultivo Inteligente atualizado 3.png" alt="" onclick="inicio();">
             </div>
             <ul class="navbar">
-                <a href="home.html" class="btn"><span>Home</span></a>
                 <a href="quemsomos.html" class="btn1"><span>Quem Somos</span></a>
                 <a href="Simule.html" class="btn2"><span>Simule</span></a>
                 <a href="home1.html" onclick="deslogar()" class="btn3"><span>Sair</span></a>
@@ -73,26 +72,32 @@
                 <h1>Como podemos ajudar?</h1>
                 <p>
                     Nome:<br />
-                    <input name="nome" type="text" size="30" name="nome" class="inputfc" placeholder="Nome">
+                    <input id="nome" type="text" size="30" class="inputfc" placeholder="Nome">
+    
                 </p>
     
                 <p>
                     E-mail:<br />
-                    <input name="email" type="text" size="30" name="replyto" class="inputfc" placeholder="Email">
+                    <input id="email" type="text" size="30" class="inputfc"
+                        placeholder="Email">
                 </p>
     
                 <p>
-                    Assunto: <br/>
-                    <input name="assunto" type="text" size="30" name="replyto" class="inputfc" placeholder="Assunto">
+                    Assunto:<br />
+                    <input id="assunto" type="text" size="30" class="inputfc"
+                        placeholder="Assunto">
                 </p>
     
                 <p>
-                    Mensagem: <br/>
-                    <input name="comentario" type="text" size="30" name="Comentarios" class="inputfc" placeholder="Escreva sua mensagem aqui">
+                    Mensagem:<br />
+                    <input id="mensagem" type="text" size="30"class="inputfc"
+                        placeholder="Escreva sua mensagem aqui">
                 </p>
-
+    
+    
+    
                 <p>
-                    <input type="submit" name="submit" value="Enviar" class="botao" onclick=enviaremail();>
+                    <button class="botao" onclick=enviaremail();>Enviar</button>
                 </p>
             </div>
         </div>

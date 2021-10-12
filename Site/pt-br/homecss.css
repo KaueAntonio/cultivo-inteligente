@@ -29,6 +29,10 @@ body {
     margin: auto;
 }
 
+.container img:hover{
+    cursor: pointer;
+}
+
 .menutopo .container{
     display: flex;
     justify-content: space-between;
@@ -292,10 +296,10 @@ body {
 }
 
 .botao2 {
-    background-color: #4CAF50;
+    background-color: #4b200cde;
     border: none;
     color: white;
-    padding: 15px;
+    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -303,6 +307,11 @@ body {
     margin-right: 6px;
     width: 160px;
     border-radius: 10px;
+}
+
+.botao2:hover{
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .caixatexto4{
@@ -353,10 +362,9 @@ body {
 }
 
 .botao {
-    background-color: #4CAF50;
+    background-color: #4b200cde;
     border: none;
-    color: white;
-    padding: 15px;
+    color: white;padding: 15px;
     text-align: center;
     font-size: 16px;
     margin-right: 6px;
@@ -400,7 +408,7 @@ body {
     font-family: "Roboto", sans-serif;
     background: #f2f2f280;
     width: 100%;
-    border: 1px solid darkgreen;
+    border: 1px solid rgba(136, 63, 15, 0.671);
     border-radius: 20px;
     margin-bottom:15px;
     font-size: 14px;
@@ -414,7 +422,8 @@ body {
 .btnin {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
-    background: #4CAF50;
+    background-color: #4b200cde;
+    border: 1px solid rgba(128, 74, 38, 0.671);
     width: 100%;
     border: 0;
     padding: 15px;
@@ -425,7 +434,7 @@ body {
 }
 
 .form .btnin:hover,.form .btnin:active,.form .btnin:focus {
-    background: #43A047;
+    background: #4b2b13;
 }
 
 .form .textobaixol {
@@ -434,22 +443,22 @@ body {
     font-size: 12px;
 }
 .form .textobaixol a {
-    color: #00ff08;
+    color: #c79451;
     text-decoration: none;
 }
 
 footer {
-    background-color: rgba(16, 36, 14, 0.35);
+    background-color: rgba(36, 27, 14, 0.35);
     height: 30px;
     display: flex;
     align-items: center;
-    color: #5c8059;
+    color: #807759;
     justify-content: center;
     width: 100%;
     bottom: 0;
     position: fixed;
     margin-top: 100%;
-    border-top: 2px solid rgba(12, 41, 12, 0.357);
+    border-top: 2px solid rgba(41, 24, 12, 0.357);
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.4), 5px 1.5px 1.5px 5px rgba(0, 0, 0, 0.24);
 }
 
@@ -472,8 +481,6 @@ footer {
     border-radius: 15px;
     background: rgb(255, 255, 255, 0.1);
     overflow: hidden;
-    display: flex;
-    justify-content: center;
     border-top: 1px solid rgb(255, 255, 255, 0.5);
     border-left: 1px solid rgb(255, 255, 255, 0.5);
     backdrop-filter: blur(5px);
@@ -494,15 +501,6 @@ footer {
     font-size: 20px;
 }
 
-.graf1{
-    background-color: rgba(255, 255, 255, 0.041);
-    border-radius: 20px;
-}
-
-.graf2{
-    background-color: rgba(255, 255, 255, 0.041);
-    border-radius: 20px;
-}
 
 /* Parte Quem somos */
 
@@ -546,4 +544,57 @@ footer {
     font-weight: 300;
     margin-top: 20px;
     text-align: center;
+}
+
+.graf1{
+    width: 80%;
+    /*background-color: #35461240;*/
+    background-color: white;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+.graf2{
+    width: 80%;
+    /* background-color: #35461240; */
+    background-color: white;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+
+
+
+.status{
+    width: 10%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nome {
+    width: 8%;
+    margin-left: 10px;
+}
+
+.div_valores{
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+
+.inputfc{
+    font-family: "Roboto", sans-serif;
+    background: #f2f2f280;
+    width: 350px;
+    border: 1px solid rgba(136, 63, 15, 0.671);
+    border-radius: 20px;
+    margin: 0 0 15px;
+    font-size: 14px;
+    padding: 15px;
+}
+
+.botao:hover{
+    cursor: pointer;
 }

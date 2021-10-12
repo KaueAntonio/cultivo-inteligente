@@ -54,21 +54,21 @@ body {
    background: linear-gradient(to left, #76513f, #6a8760); */
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 1.5px 1.5px 0 rgba(0, 0, 0, 0.24); 
     top: 0;
-    border-radius: 0 0 4.5em 4.5em;
+    border-radius: 0 0 4em 4em;
 }
 
 footer {
-    background-color: rgba(36, 27, 14, 0.35);
+    background-color: rgba(16, 36, 14, 0.35);
     height: 30px;
     display: flex;
     align-items: center;
-    color: #807759;
+    color: #5c8059;
     justify-content: center;
     width: 100%;
     bottom: 0;
     position: fixed;
     margin-top: 100%;
-    border-top: 2px solid rgba(41, 24, 12, 0.357);
+    border-top: 2px solid rgba(12, 41, 12, 0.357);
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.4), 5px 1.5px 1.5px 5px rgba(0, 0, 0, 0.24);
 }
 
@@ -95,7 +95,7 @@ footer {
 .imagemctt {
     background-repeat: no-repeat;
     background-attachment:fixed;
-    background-image: url('contato.png');
+    /* background-image: url('contato.png'); */
     background-position: center;
     
 }
@@ -116,6 +116,23 @@ a.acor:visited {
     height: 100%;
     display: flex;
     justify-content: space-between;
+    /* position: relative;
+    display: inline-flex;
+    padding: 10px 30px;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 4px; */
+}
+
+.textolink::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
 }
 
 .textolink a{
@@ -139,7 +156,30 @@ a.acor:visited {
     height: 100%;
     margin-left: 10px;
     border-radius: 0 0 2.9em 2.9em;
+
+    /* Efeito glow 
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 17px;
+    overflow: hidden;
+    transition: 0.2s;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    border-radius: 2em 2em 6em 6em; */
+    
 }
+
+/* a:hover{ */
+    /* color: black;
+    background: white;
+    box-shadow: 0 0 10px rgb(218, 218, 218), 0 0 20px lightgrey, 0 0 10px grey; */
+/* } */
 
 
 
@@ -148,36 +188,37 @@ a.acor:visited {
     height: 70px;
 }
 
-.headerlogo:hover{
-    cursor: pointer;
-}
+
 
 /* Definindo aqui o que acontece quando eu coloco o mouse por cima do texto do menu */
 .textolink a:hover{
-    font-weight: bold;
+    /* font-weight: bold;
     background-color: rgb(255, 255, 255);
-    color: black;
+    color: black;  */
 
     /* Aqui eu chamo a animação de quando eu passar o mouse por cima do link o background fica verde escuro */
-    animation-name: alinks;
-    animation-duration: 1.5s;
+    /* animation-name: alinks;
+    animation-duration: 1.5s; */
 }
 
 /* Caixa de Texto de Conteúdos*/
 
 .caixatextobaixo {  
-    margin:  10px;
-    max-height: 97%;
-    background-color: #2c271fc9;
-    border: 3px solid rgba(136, 63, 15, 0.671);
-    height: 97%;
-    margin-top: 10px;
-    /* border-radius para arredondar as bordas da caixa */
-    border-radius: 30px;
+        margin:  10px;
+        max-height: 97%;
+        background-color: #ffffff90;
+        border: 3px solid rgb(255, 255, 255);
+        height: 100%;
+        margin-top: 25px;
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        flex-direction: column;
+        /* border-radius para arredondar as bordas da caixa */
+        border-radius: 10px;
 
-    /* Aqui eu coloco uma sombra atras da caixa de texto */
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    color: white;
+        /* Aqui eu coloco uma sombra atras da caixa de texto */
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .caixatextobaixo h1{
@@ -189,13 +230,6 @@ a.acor:visited {
 }
 
 .caixatextobaixo h3{
-    text-align: center;
-}
-
-.quemsomos{
-    color: rgb(226, 226, 226);
-    font-size: 19px;
-    font-weight: bolder;
     text-align: center;
 }
 
@@ -253,9 +287,11 @@ a.acor:visited {
 
 
 .caixatexto4{
-    background-color: #645543b8;
-    border: 3px solid rgba(136, 63, 15, 0.671);
-    height: 97%;
+    background-color: #00000080;
+    color: white;
+    border: 3px solid rgb(0, 0, 0);
+    height: 21%;
+    width: 90vw;
     text-align: left;
     flex-direction: row;  
     margin: 8px;  
@@ -265,7 +301,7 @@ a.acor:visited {
 
 
 .botao2 {
-    background-color: #4b200cde;
+    background-color: #4CAF50;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -278,15 +314,10 @@ a.acor:visited {
     border-radius: 10px;
 }
 
-.botao2:hover{
-    font-weight: bold;
-    cursor: pointer;
-}
-
 /* Botão do formulário de fale conosco */
 
 .botao {
-    background-color: #4b200cde;
+    background-color: #4CAF50;
     border: none;
     color: white;
 
@@ -304,7 +335,6 @@ a.acor:visited {
 /* Aqui eu especifico que quando eu passar o mosue em cima do botao eu quero que o texto fique em negrito*/
 .botao:hover {
     font-weight: bold;
-    cursor: pointer;
 }
 
 
@@ -316,7 +346,7 @@ a.acor:visited {
     background: #000000a1;
     padding: 45px;
     text-align: center;
-    border: 2px solid rgba(157, 86, 20, 0.686);
+    border: 2px solid rgb(173, 230, 173);
     margin: 0 auto 100px;
 
     /* Colocando uma sombra atras do formulario */
@@ -340,7 +370,7 @@ a.acor:visited {
     font-family: "Roboto", sans-serif;
     background: #f2f2f280;
     width: 100%;
-    border: 1px solid rgba(136, 63, 15, 0.671);
+    border: 1px solid darkgreen;
     border-radius: 20px;
     margin-bottom:15px;
     font-size: 14px;
@@ -358,10 +388,11 @@ a.acor:visited {
     font-family: "Roboto", sans-serif;
     /* text-tranform serve apra eu mudar a caixa do conteudo, para tudo minuscolo ou maiusculo (no caso uppercase é maiusculo) */
     text-transform: uppercase;
-    background-color: #4b200cde;
+    background: #4CAF50;
     width: 100%;
-    border: 1px solid rgba(128, 74, 38, 0.671);
     
+    /* Definindo como 0 o tamanho da borda do formulario pois ele quando criado ja vem com uma borda pre-setada */
+    border: 0;
     
     padding: 15px;
     color: #FFFFFF;
@@ -374,7 +405,7 @@ a.acor:visited {
 
 /* Aqui defino o background do botao quando eu passo o mouse por cima, quando ele esta ativo, e quando ele esta focado */
 .form .btnin:hover,.form .btnin:active,.form .btnin:focus {
-    background: #4b2b13;
+    background: #43A047;
 }
 
 /* Aqui é o estilo da frase no final do form de "Não tem login? Cadastre-se!" */
@@ -384,7 +415,7 @@ a.acor:visited {
     font-size: 12px;
 }
 .form .textobaixol a {
-    color: #c79451;
+    color: #00ff08;
     text-decoration: none;
 }
 
@@ -397,7 +428,7 @@ a.acor:visited {
     font-family: "Roboto", sans-serif;
     background: #f2f2f280;
     width: 350px;
-    border: 1px solid rgba(136, 63, 15, 0.671);
+    border: 1px solid darkgreen;
     
     /* Border radius faz as bordas ficarem arredondadas */
     border-radius: 20px;
@@ -413,7 +444,6 @@ a.acor:visited {
     /*background-color: #35461240;*/
     background-color: white;
     margin-left: 10px;
-    border-radius: 10px;
 }
 
 .graf2{
@@ -421,29 +451,24 @@ a.acor:visited {
     /* background-color: #35461240; */
     background-color: white;
     margin-left: 10px;
-    border-radius: 10px;
+}
+
+
+.direitagraf1 {
+    width: 20%;
+    background-color: aliceblue;
+    float: right;
+}
+
+.direitagraf2 {
+    width: 20%;
+    background-color: aliceblue;
+    float: right;
 }
 
 
 
 
-.status{
-    width: 10%;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nome {
-    width: 8%;
-    margin-left: 10px;
-}
-
-.div_valores{
-    display: flex;
-    flex-direction: row;
-}
 
 
 

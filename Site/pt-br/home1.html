@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="shortcut icon" href="icone.ico">
+    <link rel="stylesheet" type="text/css" href="homecss.css">
+</head>
+
+<style>
+
+
+</style>
+
+
+<body class="body">
+
+    <div class="menutopo">
+
+        <div class="container">
+            <div>
+                <img src="Cultivo Inteligente atualizado 3.png" alt="">
+            </div>
+            <ul class="navbar">
+                <a href="Quem somos1.html" class="btn"><span>Quem Somos</span></a>
+                <a href="Fale conosco1.html" class="btn1"><span>Fale Conosco</span></a>
+                <a href="Simule1.html" class="btn2"><span>Simule</span></a>
+                <a href="Login.html" class="btn3"><span>Login</span></a>
+            </ul>
+        </div>
+
+        <script>
+            const btn = document.querySelector('.btn');
+            btn.onmousemove = function(e){
+                const x = e.pageX - btn.offsetLeft;
+                const y = e.pageY - btn.offsetTop;
+    
+                btn.style.setProperty('--x', x + 'px');
+                btn.style.setProperty('--y', y + 'px');
+            }
+            const btn1 = document.querySelector('.btn1');
+            btn1.onmousemove = function(e){
+                const x = e.pageX - btn1.offsetLeft;
+                const y = e.pageY - btn1.offsetTop;
+    
+                btn1.style.setProperty('--x', x + 'px');
+                btn1.style.setProperty('--y', y + 'px');
+            }
+            const btn2 = document.querySelector('.btn2');
+            btn2.onmousemove = function(e){
+                const x = e.pageX - btn2.offsetLeft;
+                const y = e.pageY - btn2.offsetTop;
+    
+                btn2.style.setProperty('--x', x + 'px');
+                btn2.style.setProperty('--y', y + 'px');
+            }
+            const btn3 = document.querySelector('.btn3');
+            btn3.onmousemove = function(e){
+                const x = e.pageX - btn3.offsetLeft;
+                const y = e.pageY - btn3.offsetTop;
+    
+                btn3.style.setProperty('--x', x + 'px');
+                btn3.style.setProperty('--y', y + 'px');
+            }
+        </script>
+    </div>
+    <div class="banner">
+        <p class="message">Dando Mais Valor Para o Cultivo Garatindo Qualidade e Segurança Para Seu Plantio<br><br>
+            <span>
+             Fundado em 2021 com o intuito de ajudar o pequeno e grande empresário que trablha com o cultivo de café aqui no Brasil,
+             garantindo maior consistência no seu plantio<br> gerando lucros que você nunca viu!
+            </span>
+            <br><br>
+            <button onclick="inicial1()">Veja Como Funciona!</button>
+        </p><br>
+    
+   
+</body>
+
+</html>
+<script src="scripts.js"></script>

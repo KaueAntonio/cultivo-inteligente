@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simule</title>
+    <link rel="shortcut icon" href="icone.ico">
+    <link rel="stylesheet" type="text/css" href="homecss.css">
+</head>
+
+<style>
+
+
+</style>
+
+
+<body class="body">
+
+    <div class="menutopo">
+        <div class="container">
+            <div>
+                <img src="Cultivo Inteligente atualizado 3.png" alt="">
+            </div>
+            <ul class="navbar">
+                <a href="home.html" class="btn"><span>Home</span></a>
+                <a href="Banco de dados.html" class="btn1"><span>Acompanhe</span></a>
+                <a href="Quem somos.html" class="btn2"><span>Quem Somos</span></a>
+                <a href="home1.html" class="btn3"><span>Sair</span></a>
+            </ul>
+        </div>
+
+        <script>
+            const btn = document.querySelector('.btn');
+            btn.onmousemove = function(e){
+                const x = e.pageX - btn.offsetLeft;
+                const y = e.pageY - btn.offsetTop;
+    
+                btn.style.setProperty('--x', x + 'px');
+                btn.style.setProperty('--y', y + 'px');
+            }
+            const btn1 = document.querySelector('.btn1');
+            btn1.onmousemove = function(e){
+                const x = e.pageX - btn1.offsetLeft;
+                const y = e.pageY - btn1.offsetTop;
+    
+                btn1.style.setProperty('--x', x + 'px');
+                btn1.style.setProperty('--y', y + 'px');
+            }
+            const btn2 = document.querySelector('.btn2');
+            btn2.onmousemove = function(e){
+                const x = e.pageX - btn2.offsetLeft;
+                const y = e.pageY - btn2.offsetTop;
+    
+                btn2.style.setProperty('--x', x + 'px');
+                btn2.style.setProperty('--y', y + 'px');
+            }
+            const btn3 = document.querySelector('.btn3');
+            btn3.onmousemove = function(e){
+                const x = e.pageX - btn3.offsetLeft;
+                const y = e.pageY - btn3.offsetTop;
+    
+                btn3.style.setProperty('--x', x + 'px');
+                btn3.style.setProperty('--y', y + 'px');
+            }
+        </script>
+    </div>
+    
+    <div class="container1">
+        <div class="card">
+            <div class="content">
+                <h1>Simule seus lucros e gastos com a WeGrowffee</h1>
+                <p>
+                    Qual o tamanho da sua plantação? <br>
+                    <input id="hectares" class="inputfc" type="text" placeholder="Em Hectares">
+                </p>
+                <p>
+                    Qual o preço cobrado por m³ de água na sua região? <br/>
+                    <input id="valor_cubico" class="inputfc" type="text" placeholder="Metros cúbicos (x/m³)">
+                </p>
+                <p>
+                    <button class="botao2" onclick="lucro()">Calcular Lucros</button>
+                </p>
+                <div id="div_msg" class="caixatexto4" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+
+</html>
+<script src="scripts.js"></script>

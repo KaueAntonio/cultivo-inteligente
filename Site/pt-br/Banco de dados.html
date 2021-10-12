@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos</title>
+    <link rel="shortcut icon" href="icone.ico">
+    <link rel="stylesheet" type="text/css" href="homecss.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+</head>
+
+<style>
+
+
+</style>
+
+
+<body class="body">
+
+    <div class="menutopo">
+        <div class="container">
+            <div>
+                <img src="Cultivo Inteligente atualizado 3.png" alt="">
+            </div>
+            <ul class="navbar">
+                <a href="home.html" class="btn"><span>Home</span></a>
+                <a href="Quem somos1.html" class="btn1"><span>Quem Somos</span></a>
+                <a href="Simule1.html" class="btn2"><span>Simule</span></a>
+                <a href="home1.html" onclick="deslogar()" class="btn3"><span>Sair</span></a>
+            </ul>
+        </div>
+
+        <script>
+            const btn = document.querySelector('.btn');
+            btn.onmousemove = function(e){
+                const x = e.pageX - btn.offsetLeft;
+                const y = e.pageY - btn.offsetTop;
+    
+                btn.style.setProperty('--x', x + 'px');
+                btn.style.setProperty('--y', y + 'px');
+            }
+            const btn1 = document.querySelector('.btn1');
+            btn1.onmousemove = function(e){
+                const x = e.pageX - btn1.offsetLeft;
+                const y = e.pageY - btn1.offsetTop;
+    
+                btn1.style.setProperty('--x', x + 'px');
+                btn1.style.setProperty('--y', y + 'px');
+            }
+            const btn2 = document.querySelector('.btn2');
+            btn2.onmousemove = function(e){
+                const x = e.pageX - btn2.offsetLeft;
+                const y = e.pageY - btn2.offsetTop;
+    
+                btn2.style.setProperty('--x', x + 'px');
+                btn2.style.setProperty('--y', y + 'px');
+            }
+            const btn3 = document.querySelector('.btn3');
+            btn3.onmousemove = function(e){
+                const x = e.pageX - btn3.offsetLeft;
+                const y = e.pageY - btn3.offsetTop;
+    
+                btn3.style.setProperty('--x', x + 'px');
+                btn3.style.setProperty('--y', y + 'px');
+            }
+        </script>
+    </div>
+
+    <di class="container3">
+        <div class="card">
+            <div class="content">
+                <h1>Sensor DHT 11 - Umidade</h1>
+            <section>
+                <h2>Média de Umidade: <span id='average'>0.00</span></h2>
+
+            </section>
+            <div>
+                <section class="graf1">
+                    <canvas id="chart" style="height:40vh; width:80vw"></canvas>
+                </section> <br><br>
+                <h1>Sensor DHT 11 - Temperatura</h1>
+                <section>
+                    <h2>Média de Temperatura: <span id='average2'>0.00</span></h2>
+                </section>
+                <section class="graf2">
+                    <canvas id="chart2"></canvas>
+                </section>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+    var cont = 0;
+    var temp = [];
+    var umi = [];
+    var mediatemp = [];
+    var mediaumi = [];
+    
+        var context = document.getElementById("chart").getContext("2d");
+        context.canvas.width = 1000;
+        context.canvas.height = 300;
+    
+        var configuration = {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: "Umidade (%)",
+                    type: 'line',
+                    borderColor: ['#eb3a34'],
+                    backgroundColor: ['#eb3a3400']
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Umidade (%)'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 0
+                }
+            }
+        };
+    
+        var chart = new Chart(context, configuration);
+        this.lastIndexTemp = 0;
+        this.time = 0;
+    
+        function get_data() {
+    
+            var http = new XMLHttpRequest();
+            http.open('GET', 'http://localhost:3000/api', false);
+            http.send(null);
+    
+            var obj = JSON.parse(http.responseText);
+            if (obj.data.length == 0) {
+                return;
+            }
+    
+            
+    
+            var _lastIndexTemp = this.lastIndexTemp;
+            this.lastIndexTemp = obj.data.length;
+            listTemp = obj.data.slice(_lastIndexTemp);
+    
+            listTemp.forEach(data => {
+                if (chart.data.labels.length == 10 && chart.data.datasets[0].data.length == 10) {
+                    chart.data.labels.shift();
+                    chart.data.datasets[0].data.shift();
+                }
+    
+                chart.data.labels.push(this.time++);
+                chart.data.datasets[0].data.push(parseFloat(data[0]));
+                chart.update();
+            });
+    
+    
+            
+            listTemp.forEach(data => {
+                if (chart2.data.labels.length == 10 && chart2.data.datasets[0].data.length == 10) {
+                    chart2.data.labels.shift();
+                    chart2.data.datasets[0].data.shift();
+                }
+    
+                chart2.data.labels.push(this.time++);
+                chart2.data.datasets[0].data.push(parseFloat(data[1]));
+                chart2.update();
+                
+            });
+    
+    
+            listTemp.forEach(data => {
+                cont+=2;
+            
+            for (let i = 0; i <= 1; i++){
+    
+                temp.push(parseFloat(data[1]));
+                umi.push(parseFloat(data[0]));
+            }
+            console.log(temp[0]);
+            console.log(umi[0]);
+            let sum = umi.reduce((a, b) => a + b);
+            let sum2 = temp.reduce((a, b) => a + b);
+    
+    
+            mediaumi = sum / cont;
+            mediatemp = sum2 / cont;
+            document.getElementById('average').textContent = mediaumi.toFixed(1);
+            document.getElementById('average2').textContent = mediatemp.toFixed(1);
+            });
+    
+    
+    
+    
+            
+            
+            
+        }
+        
+    
+    
+        setInterval(() => {
+            get_data();
+        }, 1000);
+    
+    
+        var context2 = document.getElementById("chart2").getContext("2d");
+        context2.canvas.width = 1000;
+        context2.canvas.height = 300;
+    
+        var configuration2 = {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: "Temperatura (°C)",
+                    type: 'line',
+                    borderColor: ['#34baeb'],
+                    backgroundColor: ['#34baeb00']
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Temperatura (°C)'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 0
+                }
+            }
+        };
+    
+        var chart2 = new Chart(context2, configuration2);
+    
+    </script>

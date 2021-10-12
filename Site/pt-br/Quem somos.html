@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quem Somos?</title>
+    <link rel="shortcut icon" href="icone.ico">
+    <link rel="stylesheet" type="text/css" href="homecss.css">
+</head>
+
+<style>
+
+
+</style>
+
+
+<body class="body">
+
+    <div class="menutopo">
+        <div class="container">
+            <div>
+                <img src="Cultivo Inteligente atualizado 3.png" alt="">
+            </div>
+            <ul class="navbar">
+                <a href="home.html" class="btn"><span>Home</span></a>
+                <a href="bancodedados.html" class="btn1"><span>Acompanhe</span></a>
+                <a href="Fale conosco.html" class="btn2"><span>Fale Conosco</span></a>
+                <a href="home1.html" onclick="deslogar()" class="btn3"><span>Sair</span></a>
+            </ul>
+        </div>
+
+        <script>
+            const btn = document.querySelector('.btn');
+            btn.onmousemove = function(e){
+                const x = e.pageX - btn.offsetLeft;
+                const y = e.pageY - btn.offsetTop;
+    
+                btn.style.setProperty('--x', x + 'px');
+                btn.style.setProperty('--y', y + 'px');
+            }
+            const btn1 = document.querySelector('.btn1');
+            btn1.onmousemove = function(e){
+                const x = e.pageX - btn1.offsetLeft;
+                const y = e.pageY - btn1.offsetTop;
+    
+                btn1.style.setProperty('--x', x + 'px');
+                btn1.style.setProperty('--y', y + 'px');
+            }
+            const btn2 = document.querySelector('.btn2');
+            btn2.onmousemove = function(e){
+                const x = e.pageX - btn2.offsetLeft;
+                const y = e.pageY - btn2.offsetTop;
+    
+                btn2.style.setProperty('--x', x + 'px');
+                btn2.style.setProperty('--y', y + 'px');
+            }
+            const btn3 = document.querySelector('.btn3');
+            btn3.onmousemove = function(e){
+                const x = e.pageX - btn3.offsetLeft;
+                const y = e.pageY - btn3.offsetTop;
+    
+                btn3.style.setProperty('--x', x + 'px');
+                btn3.style.setProperty('--y', y + 'px');
+            }
+        </script>
+    </div>
+
+    <div class="container4">
+        <div class="card">
+            <div class="content">
+                <h1>Quem somos e por que nos escolher?</h1>
+                <p>O café é uma bebida que movemos os brasileiros, dando aquela energia extra para manter-se sempre ativo. Somos o
+                    segundo país onde uma população mais consome café, atrás apenas dos Estados Unidos. Não é a toa que a produção
+                    nacional de café tem crescido nas últimas décadas, com aumento expressivo no número de plantas a cada ano. O
+                    que faz com que a atividade da cafeicultura seja expressiva no país, tanto social quanto economicamente, gerando
+                    mais 8 milhões de empregos de forma direta e indireta e colocando o país no topo do ranking como o maior
+                    produtor e exportador de café do mundo.
+                </p>
+                <p>
+                    A WeGrowffee monitora a temperatura e umidade em estufas de café, além de também controlar a
+                    irrigação de água dela, fazendo com que seu plantio tenha uma safra muito melhor do que tinha, assim também protegendo
+                    sua planta para que ela tenha sua eficiência ao máximo.
+                </p>
+                <p>
+                    Para que tenhamos um controle dentro da estufa, será utilizado o sensor de temperatura e umidade DHT 11 e
+                    um sistema de irrigação chamado de gotejamento.
+                </p>
+                <p>
+                    Nossa especialidade é o cultivo de café arábica, que para ter um ótimo desempenho, deve estar numa
+                    temperatura ambiente de 21ºC, tendo como margem de erro 1ºC. Em relação a umidade, o café arábica tem como um ideal de
+                    10,8% a 11,2% para também ter um desempenho além do esperado.
+                </p>
+                <p>
+                    Chegando acima de uma margem de 1,5 ° C, emite um alerta de instabilidade de temperatura, se a margem aumentar
+                    para 2,5 ° C o sistema já indica que sua planta está em estado de emergência, e assim também aumentou para
+                    3,5 ° C o estado crítico. No caso da umidade temos uma margem de 1% o alerta de instabilidade é emitido, também como o estado de
+                    emergência é emergida após uma margem de 3% e para o estado de emergência a margem é de 5%.
+                    Em temperatura e umidade, temos como o alerta em amarelo, emergência em laranja e crítico em vermelho, para
+                    uma boa distinção e fácil interpretação.
+                </p>
+                <p>
+                    Abaixo temos 2 tabelas de temperatura e umidade para mostrar melhor como funciona nosso sistema:
+                </p>
+                <p>
+                    <img src="tab.png">
+                </p>
+                <p>
+                    Como dissemos acima, trabalhamos com o sensor DHT11, que tem categoria de temperatura de 0 a 50 ° C e umidade
+                    de 20% a 80% como vemos abaixo nas especificações do sensor:
+                </p>
+                <p>
+                    <img src="tab2.png">
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function deslogar(){
+       alert('Deslogado com sucesso!');
+   }
+   src = " scripts.js "
+</script>

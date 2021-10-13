@@ -2,7 +2,6 @@ const express = require('express');
 const { ArduinoDataTemp } = require('./newserial')
 const router = express.Router();
 
-
 router.get('/', (request, response, next) => {
 
     let sum = ArduinoDataTemp.List.reduce((a, b) => a + b, 0);

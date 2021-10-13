@@ -36,34 +36,34 @@
 
         <script>
             const btn = document.querySelector('.btn');
-            btn.onmousemove = function(e){
+            btn.onmousemove = function (e) {
                 const x = e.pageX - btn.offsetLeft;
                 const y = e.pageY - btn.offsetTop;
-    
+
                 btn.style.setProperty('--x', x + 'px');
                 btn.style.setProperty('--y', y + 'px');
             }
             const btn1 = document.querySelector('.btn1');
-            btn1.onmousemove = function(e){
+            btn1.onmousemove = function (e) {
                 const x = e.pageX - btn1.offsetLeft;
                 const y = e.pageY - btn1.offsetTop;
-    
+
                 btn1.style.setProperty('--x', x + 'px');
                 btn1.style.setProperty('--y', y + 'px');
             }
             const btn2 = document.querySelector('.btn2');
-            btn2.onmousemove = function(e){
+            btn2.onmousemove = function (e) {
                 const x = e.pageX - btn2.offsetLeft;
                 const y = e.pageY - btn2.offsetTop;
-    
+
                 btn2.style.setProperty('--x', x + 'px');
                 btn2.style.setProperty('--y', y + 'px');
             }
             const btn3 = document.querySelector('.btn3');
-            btn3.onmousemove = function(e){
+            btn3.onmousemove = function (e) {
                 const x = e.pageX - btn3.offsetLeft;
                 const y = e.pageY - btn3.offsetTop;
-    
+
                 btn3.style.setProperty('--x', x + 'px');
                 btn3.style.setProperty('--y', y + 'px');
             }
@@ -80,334 +80,424 @@
                     <section>
                         <h2>
                             <div class="div_valores"><br>
-        
-                                <div class="nome">Status: </div><div class="status" id="status_umid" style="background-color: green; text-align: left;"><span id="realtime_umid"></span>%</div>
-                                <div class="nome">Média: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='average'>0.00</span>%</div>
-                                <div class="nome">Mediana: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='mediana_umid'>0.00</span>%</div>
-                                <div class="nome">1° Quartil: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='1quartil_umid'>0.00</span>%</div>
-                                <div class="nome">3° Quartil: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='3quartil_umid'>0.00</span>%</div></h2>
-                            </div>
-        
-                    </section>
-                    <div><br><br>
-                        <section class="graf1">
-                            <canvas id="chart" style="height:40vh; width:80vw"></canvas>
-                        </section>
-                        <br><br>
-                        <h1>Sensor DHT 11 - Temperatura</h1>
-                        <br>
-                        <br>
-                        <section>
-                            <h2>
-                                <div class="div_valores"><br>
-        
-                                    <div class="nome">Status: </div><div class="status" id="status_temp" style="background-color: green; text-align: left;"><span id="realtime_temp"></span>°C</div>
-                                    <div class="nome">Média: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='average2'>0.00</span>°C</div>
-                                    <div class="nome">Mediana: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='mediana_temp'>0.00</span>°C</div>
-                                    <div class="nome">1° Quartil: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='1quartil_temp'>0.00</span>°C</div>
-                                    <div class="nome">3° Quartil: </div><div class="status" id="" style="background-color: gray; text-align: left;"><span id='3quartil_temp'>0.00</span>°C</div>
-                                </h2>
+
+                                <div class="nome">Status: </div>
+                                <div class="status" id="status_umid" style="background-color: green; text-align: left;">
+                                    <span id="realtime_umid"></span>%
                                 </div>
-                        </section><br><br>
-                        <section class="graf2">
-                            <canvas id="chart2"></canvas>
-                        </section>
-                        <br><br>
-                    </div>
-                    <br><br><br>
+                                <div class="nome">Média: </div>
+                                <div class="status" id="" style="background-color: gray; text-align: left;"><span
+                                        id='average'>0.00</span>%</div>
+                                <div class="nome">Mediana: </div>
+                                <div class="status" id="" style="background-color: gray; text-align: left;"><span
+                                        id='mediana_umid'>0.00</span>%</div>
+                                <div class="nome">1° Quartil: </div>
+                                <div class="status" id="" style="background-color: gray; text-align: left;"><span
+                                        id='1quartil_umid'>0.00</span>%</div>
+                                <div class="nome">3° Quartil: </div>
+                                <div class="status" id="" style="background-color: gray; text-align: left;"><span
+                                        id='3quartil_umid'>0.00</span>%</div>
+                        </h2>
                 </div>
-        </body>
-        
-        </html>
-        <script>
-        
-        var cont = 0;
-        var temp = [];
-        var umi = [];
-        var mediatemp = [];
-        var mediaumi = [];
-        var esq_umi = 0;
-        var dir_umi = 0;
-        var meio_umi = 0;
-        var esq_temp = 0;
-        var dir_temp = 0;
-        var meio_temp = 0;
-        var prim_quartil_temp = 0;
-        var terc_quartil_temp = 0;
-        var terc_quartil_umid = 0;
-        var prim_quartil_umid = 0;
-        var resto_umi = 0;
-        var resto_temp = 0;
-        var f_temp = 0;
-        var f_umi = 0;
-        var terc_resto_umi = 0;
-        var terc_resto_temp = 0;
-        var terc_f_temp = 0;
-        var terc_f_umi = 0;
-        
-            var context = document.getElementById("chart").getContext("2d");
-            context.canvas.width = 1000;
-            context.canvas.height = 300;
-        
-            var configuration = {
-                type: 'line',
-                data: {
-                    datasets: [{
-                        label: "Umidade (%)",
-                        borderColor: '#34baeb',
-                        backgroundColor: '#34baeb50',
-                    }]
-                },
-                options: {
-                    scales: {
-                        xAxes: [{
-                            distribution: 'series',
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Umidade (%)'
-                            },
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
+
+                </section>
+                <div><br><br>
+                    <section class="graf1">
+                        <canvas id="chart" style="height:40vh; width:80vw"></canvas>
+                    </section>
+                    <br><br>
+                    <h1>Sensor DHT 11 - Temperatura</h1>
+                    <br>
+                    <br>
+                    <section>
+                        <h2>
+                            <div class="div_valores"><br>
+
+                                <div class="nome">Status: </div>
+                                <div class="status" id="status_temp" style="background-color: green; text-align: left;">
+                                    <span id="realtime_temp"></span>°C
+                                </div>
+                                <div class="nome">Média: </div>
+                                <div class="status" id="" style="background-color: gray; text-align: left;"><span
+                                        id='average2'>0.00</span>°C</div>
+                                <div class="nome">Mediana: </div>
+                                <div class="status" id="" style="background-color: gray; text-align: left;"><span
+                                        id='mediana_temp'>0.00</span>°C</div>
+                                <div class="nome">1° Quartil: </div>
+                                <div class="status" id="" style="background-color: gray; text-align: left;"><span
+                                        id='1quartil_temp'>0.00</span>°C</div>
+                                <div class="nome">3° Quartil: </div>
+                                <div class="status" id="" style="background-color: gray; text-align: left;"><span
+                                        id='3quartil_temp'>0.00</span>°C</div>
+                        </h2>
+                </div>
+                </section><br><br>
+                <section class="graf2">
+                    <canvas id="chart2"></canvas>
+                </section>
+                <br><br>
+            </div>
+            <br><br><br>
+        </div>
+</body>
+
+</html>
+<script>
+
+    var cont = 0;
+    var temp = [];
+    var umi = [];
+    var mediatemp = [];
+    var mediaumi = [];
+    var esq_umi = 0;
+    var dir_umi = 0;
+    var meio_umi = 0;
+    var esq_temp = 0;
+    var dir_temp = 0;
+    var meio_temp = 0;
+    var prim_quartil_temp = 0;
+    var terc_quartil_temp = 0;
+    var terc_quartil_umid = 0;
+    var prim_quartil_umid = 0;
+    var resto_umi = 0;
+    var resto_temp = 0;
+    var f_temp = 0;
+    var f_umi = 0;
+    var terc_resto_umi = 0;
+    var terc_resto_temp = 0;
+    var terc_f_temp = 0;
+    var terc_f_umi = 0;
+
+    var context = document.getElementById("chart").getContext("2d");
+    context.canvas.width = 1000;
+    context.canvas.height = 300;
+
+    var configuration = {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: "Umidade (%)",
+                borderColor: '#34baeb',
+                backgroundColor: '#34baeb50',
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    distribution: 'series',
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Umidade (%)'
                     },
-                    animation: {
-                        duration: 0
+                    ticks: {
+                        beginAtZero: true
                     }
-                }
-            };
-            var context2 = document.getElementById("chart2").getContext("2d");
-            context2.canvas.width = 1000;
-            context2.canvas.height = 300;
-        
-            var configuration2 = {
-                type: 'line',
-                data: {
-                    datasets: [{
-                        label: "Temperatura (°C)",
-                        borderColor: '#eb4444',
-                        backgroundColor: '#eb444450',
-                    }]
-                },
-                options: {
-                    scales: {
-                        xAxes: [{
-                            distribution: 'series',
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Temperatura (°C)'
-                            },
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    },
-                    animation: {
-                        duration: 0
-                    }
-                }
-            };
-        
-            var chart2 = new Chart(context2, configuration2);
-            var chart = new Chart(context, configuration);
-            this.lastIndexTemp = 0;
-            this.time = 0;
-        
-            function get_data() {
-        
-                var http = new XMLHttpRequest();
-                http.open('GET', 'http://localhost:3000/api', false);
-                http.send(null);
-        
-                var obj = JSON.parse(http.responseText);
-                if (obj.data.length == 0) {
-                    return;
-                }
-        
-                
-        
-                var _lastIndexTemp = this.lastIndexTemp;
-                this.lastIndexTemp = obj.data.length;
-                listTemp = obj.data.slice(_lastIndexTemp);
-        
-                listTemp.forEach(data => {
-                    if (chart.data.labels.length == 10 && chart.data.datasets[0].data.length == 10) {
-                        chart.data.labels.shift();
-                        chart.data.datasets[0].data.shift();
-                    }
-        
-                    chart.data.labels.push(this.time++);
-                    chart.data.datasets[0].data.push(parseFloat(data[0]));
-                    chart.update();
-                });
-        
-        
-                
-                listTemp.forEach(data => {
-                    if (chart2.data.labels.length == 10 && chart2.data.datasets[0].data.length == 10) {
-                        chart2.data.labels.shift();
-                        chart2.data.datasets[0].data.shift();
-                    }
-        
-                    chart2.data.labels.push(this.time++);
-                    chart2.data.datasets[0].data.push(parseFloat(data[1]));
-                    chart2.update();
-                    
-                });
-        
-        
-                listTemp.forEach(data => {
-                    cont+=2;
-                    
-                    document.getElementById('realtime_temp').textContent = data[1];
-                    document.getElementById('realtime_umid').textContent = data[0];
-                    
-                for (let i = 0; i <= 1; i++){
-                    
-                    temp.push(parseFloat(data[1]));
-                    umi.push(parseFloat(data[0]));
-                }
-        
-                for (let j = 0; j <= 1; j++){
-                    
-                   testes();
-                }
-        
-                console.log(temp[0]);
-                console.log(umi[0]);
-                let sum = umi.reduce((a, b) => a + b);
-                let sum2 = temp.reduce((a, b) => a + b);
-                
-                
-                mediaumi = sum / cont;
-                mediatemp = sum2 / cont;
-                document.getElementById('average').textContent = mediaumi.toFixed(1);
-                document.getElementById('average2').textContent = mediatemp.toFixed(1);
-                
-                dir_temp = temp.length-1;
-                esq_temp = temp[0];
-                meio_temp = (dir_temp + esq_temp)/2;    
-            
-                dir_umi = temp.length-1;
-                esq_umi = temp[0];
-                meio_umi = (dir_umi + esq_umi)/2;    
-                
-                document.getElementById('mediana_umid').textContent = umi[meio_umi];
-                document.getElementById('mediana_temp').textContent = temp[meio_temp];
-        
-                resto_temp = (dir_temp / 4) % 1;
-                f_temp = 1 - resto_temp;
-                prim_quartil_temp = temp[parseInt(dir_temp / 4)] + (resto_temp * (temp[resto_temp + f_temp] - temp[parseInt(dir_temp / 4)]));
-        
-                resto_umi = (dir_umi / 4) % 1;
-                f_umi = 1 - resto_umi;
-                prim_quartil_umid = umi[parseInt(dir_umi / 4)] + (resto_umi * (umi[resto_umi + f_umi] - umi[parseInt(dir_umi / 4)]));
-        
-                document.getElementById('1quatil_temp').textContent = prim_quartil_temp;
-                document.getElementById('1quartil_umid').textContent = prim_quartil_umid;
-        
-                terc_resto_temp = (3 * (dir_temp / 4)) % 1;
-                terc_f_temp = 1 - terc_resto_temp;
-                terc_quartil_temp = temp[parseInt(dir_temp / 4)] + (terc_resto_temp * (temp[terc_resto_temp + f_temp] - temp[parseInt(dir_temp / 4)]));
-        
-                terc_resto_umi = (3 * (dir_umi / 4)) % 1;
-                terc_f_temp = 1 - terc_resto_temp;
-                terc_quartil_umid = umi[parseInt(dir_umi / 4)] + (terc_resto_umi * (umi[terc_resto_umi + f_umi] - umi[parseInt(dir_umi / 4)]));
-        
-                document.getElementById('3quatil_temp').textContent = terc_quartil_temp;
-                document.getElementById('3quartil_umid').textContent = terc_quartil_umid;
-            });
-            
-            
-            }
-            
-            setInterval(() => {
-                get_data();
-            }, 1000);
-            
-        
-           
-        
-        
-        function testes(){
-            if (temp[0] >= 24.5){
-                document.getElementById('status_temp').style.backgroundColor = 'red';
-                alert('ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!');
-            }else{
-                if(temp[0] >= 23.5){
-                    document.getElementById('status_temp').style.backgroundColor = 'orange';
-                    alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!');
-                }else{
-                    if (temp[0] < 23.5 && temp[0] > 21){
-                        document.getElementById('status_temp').style.backgroundColor = 'yellow';
-                        alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta!');
-                    }else{
-                        if (temp[0] < 19 && temp[0] > 16.5){
-                            document.getElementById('status_temp').style.backgroundColor = 'yellow';
-                            alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta!');
-                        }else{
-                            if (temp[0] <= 16.5 && temp[0] > 15.5){
-                                document.getElementById('status_temp').style.backgroundColor = 'orange';
-                                alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!');
-                            }else{
-                                if (temp[0] <= 15.5){
-                                    document.getElementById('status_temp').style.backgroundColor = 'red';
-                                    alert('ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!');
-                                 }else{
-                                     if (temp[0] >= 19 && temp[0] <= 21){
-                                        document.getElementById('status_temp').style.backgroundColor = 'green';
-                                     }
-                                 }
-                            }
-                        }
-                    }
-                }
-            }
-            
-            if (umi[0] >= 16.2){
-                document.getElementById('status_umid').style.backgroundColor = 'red';
-                alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
-            }else{
-                if(umi[0] >= 14.2){
-                    document.getElementById('status_umid').style.backgroundColor = 'orange';
-                    alert('ATENÇÃO!! A Umidade da sua estufa está em estado de emergência!');
-                }else{
-                    if (umi[0] < 14.2 && umi[0] > 11.2){
-                        document.getElementById('status_umid').style.backgroundColor = 'yellow';
-                        alert('ATENÇÃO!! A Umidade da sua estufa está em estado de alerta!');
-                    }else{
-                        if (umi[0] < 10.8 && umi[0] > 7.8){
-                            document.getElementById('status_umid').style.backgroundColor = 'yellow';
-                            alert('ATENÇÃO!! A Umidade da sua estufa está em estado de alerta!');
-                        }else{
-                            if (umi[0] <= 7.8 && umi[0] > 5.8){
-                                document.getElementById('status_umid').style.backgroundColor = 'orange';
-                                alert('ATENÇÃO!! A Umidade da sua estufa está em estado de emergência!');
-                            }else{
-                                if (umi[0] <= 5.8){
-                                    document.getElementById('status_umid').style.backgroundColor = 'red';
-                                    alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
-                                 }else{
-                                     if (umi[0] >= 10.8 && umi[0] <= 11.2){
-                                         document.getElementById('status_umid').style.backgroundColor = 'green';
-                                        }else{
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                }
+                }]
+            },
+            animation: {
+                duration: 0
             }
         }
-        </script>
-        <script src="scripts.js"></script>
+    };
+    var context2 = document.getElementById("chart2").getContext("2d");
+    context2.canvas.width = 1000;
+    context2.canvas.height = 300;
+
+    var configuration2 = {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: "Temperatura (°C)",
+                borderColor: '#eb4444',
+                backgroundColor: '#eb444450',
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    distribution: 'series',
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Temperatura (°C)'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            animation: {
+                duration: 0
+            }
+        }
+    };
+
+    var chart2 = new Chart(context2, configuration2);
+    var chart = new Chart(context, configuration);
+    this.lastIndexTemp = 0;
+    this.time = 0;
+
+    function get_data() {
+
+        var http = new XMLHttpRequest();
+        http.open('GET', 'http://localhost:3000/api', false);
+        http.send(null);
+
+        var obj = JSON.parse(http.responseText);
+        if (obj.data.length == 0) {
+            return;
+        }
+
+
+
+        var _lastIndexTemp = this.lastIndexTemp;
+        this.lastIndexTemp = obj.data.length;
+        listTemp = obj.data.slice(_lastIndexTemp);
+
+        listTemp.forEach(data => {
+            if (chart.data.labels.length == 10 && chart.data.datasets[0].data.length == 10) {
+                chart.data.labels.shift();
+                chart.data.datasets[0].data.shift();
+            }
+
+            chart.data.labels.push(this.time++);
+            chart.data.datasets[0].data.push(parseFloat(data[0]));
+            chart.update();
+        });
+
+
+
+        listTemp.forEach(data => {
+            if (chart2.data.labels.length == 10 && chart2.data.datasets[0].data.length == 10) {
+                chart2.data.labels.shift();
+                chart2.data.datasets[0].data.shift();
+            }
+
+            chart2.data.labels.push(this.time++);
+            chart2.data.datasets[0].data.push(parseFloat(data[1]));
+            chart2.update();
+
+        });
+
+
+        listTemp.forEach(data => {
+            cont += 2;
+
+            
+           
+            for (let i = 0; i <= 1; i++) {
+
+                temp.push(parseFloat(data[1]));
+                umi.push(parseFloat(data[0]));
+                
+                if (data[1] >= 24.5) {
+                    document.getElementById('status_temp').style.backgroundColor = 'red';
+                    //    alert('ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!');
+                }
+                if (data[1] >= 23.5 && data[1] < 24.5) {
+                    document.getElementById('status_temp').style.backgroundColor = 'orange';
+                    //  alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!');
+                }
+                if (data[1] < 23.5 && data[1] > 21) {
+                    document.getElementById('status_temp').style.backgroundColor = 'yellow';
+                    //alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta!');
+                }
+                if (data[1] < 19 && data[1] > 16.5) {
+                    document.getElementById('status_temp').style.backgroundColor = 'yellow';
+                    // alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta!');
+                }
+                if (data[1] <= 16.5 && esq_temp > 15.5) {
+                    document.getElementById('status_temp').style.backgroundColor = 'orange';
+                    // alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!');
+                }
+                if (data[1] <= 15.5) {
+                    document.getElementById('status_temp').style.backgroundColor = 'red';
+                    //  alert('ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!');
+                }
+                if (data[1] >= 19 && data[1] <= 21) {
+                    document.getElementById('status_temp').style.backgroundColor = 'green';
+                }
+
+
+
+
+
+
+
+                if (data[0] >= 16.2) {
+                    document.getElementById('status_umid').style.backgroundColor = 'red';
+                    // alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
+                }
+                if (data[0] >= 14.2 && data[0] < 16.2) {
+                    document.getElementById('status_umid').style.backgroundColor = 'orange';
+                    //  alert('ATENÇÃO!! A Umidade da sua estufa está em estado de emergência!');
+                }
+                if (data[0] < 14.2 && data[0] > 11.2) {
+                    document.getElementById('status_umid').style.backgroundColor = 'yellow';
+                    //  alert('ATENÇÃO!! A Umidade da sua estufa está em estado de alerta!');
+                }
+                if (data[0] < 10.8 && data[0] > 7.8) {
+                    document.getElementById('status_umid').style.backgroundColor = 'yellow';
+                    //  alert('ATENÇÃO!! A Umidade da sua estufa está em estado de alerta!');
+                }
+                if (data[0] <= 7.8 && data[0] > 5.8) {
+                    document.getElementById('status_umid').style.backgroundColor = 'orange';
+                    // alert('ATENÇÃO!! A Umidade da sua estufa está em estado de emergência!');
+                }
+                if (data[0] <= 5.8) {
+                    document.getElementById('status_umid').style.backgroundColor = 'red';
+                    //   alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
+                }
+                if (data[0] >= 10.8 && data[0] <= 11.2) {
+                    document.getElementById('status_umid').style.backgroundColor = 'green';
+                }
+
+            }
+
+            document.getElementById('realtime_temp').textContent = data[1];
+            document.getElementById('realtime_umid').textContent = data[0];
+           
+
+
+
+            console.log(temp[0]);
+            console.log(umi[0]);
+            let sum = umi.reduce((a, b) => a + b);
+            let sum2 = temp.reduce((a, b) => a + b);
+
+
+            mediaumi = sum / cont;
+            mediatemp = sum2 / cont;
+            document.getElementById('average').textContent = mediaumi.toFixed(1);
+            document.getElementById('average2').textContent = mediatemp.toFixed(1);
+
+            dir_temp = temp.length - 1;
+            esq_temp = temp[0];
+            meio_temp = (dir_temp + esq_temp) / 2;
+
+            dir_umi = temp.length - 1;
+            esq_umi = temp[0];
+            meio_umi = (dir_umi + esq_umi) / 2;
+
+            document.getElementById('mediana_umid').textContent = umi[parseInt(meio_umi)].toFixed(1);
+            document.getElementById('mediana_temp').textContent = temp[parseInt(meio_temp)].toFixed(1);
+
+            resto_temp = (dir_temp / 4) % 1;
+            f_temp = 1 - resto_temp;
+            prim_quartil_temp = temp[parseInt(dir_temp / 4)] + (resto_temp * (temp[parseInt(resto_temp + f_temp)] - temp[parseInt(dir_temp / 4)]));
+
+            resto_umi = (dir_umi / 4) % 1;
+            f_umi = 1 - resto_umi;
+            prim_quartil_umid = umi[parseInt(dir_umi / 4)] + (resto_umi * (umi[parseInt(resto_umi + f_umi)] - umi[parseInt(dir_umi / 4)]));
+
+            document.getElementById('1quartil_temp').textContent = parseFloat(prim_quartil_temp.toFixed(1));
+            document.getElementById('1quartil_umid').textContent = parseFloat(prim_quartil_umid.toFixed(1));
+
+            terc_resto_temp = (3 * (dir_temp / 4)) % 1;
+            terc_f_temp = 1 - terc_resto_temp;
+            terc_quartil_temp = temp[parseInt(dir_temp / 4)] + (terc_resto_temp * (temp[parseInt(terc_resto_temp + terc_f_temp)] - temp[parseInt(dir_temp / 4)]));
+
+            terc_resto_umi = (3 * (dir_umi / 4)) % 1;
+            terc_f_temp = 1 - terc_resto_temp;
+            terc_quartil_umid = umi[parseInt(dir_umi / 4)] + (terc_resto_umi * (umi[parseInt(terc_resto_umi + terc_f_umi)] - umi[parseInt(dir_umi / 4)]));
+
+            document.getElementById('3quartil_temp').textContent = terc_quartil_temp.toFixed(1);
+            document.getElementById('3quartil_umid').textContent = terc_quartil_umid.toFixed(1);
+
+            
+        })
+
+
+            ;
+
+
+    }
+
+    setInterval(() => {
+        get_data();
+    }, 1000);
+
+
+
+
+
+
+    if (temp[0] >= 24.5) {
+        document.getElementById('status_temp').style.backgroundColor = 'red';
+        //    alert('ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!');
+    }
+    if (temp[0] >= 23.5) {
+        document.getElementById('status_temp').style.backgroundColor = 'orange';
+        //  alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!');
+    }
+    if (temp[0] < 23.5 && temp[0] > 21) {
+        document.getElementById('status_temp').style.backgroundColor = 'yellow';
+        //alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta!');
+    }
+    if (temp[0] < 19 && temp[0] > 16.5) {
+        document.getElementById('status_temp').style.backgroundColor = 'yellow';
+        // alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta!');
+    }
+    if (temp[0] <= 16.5 && temp[0] > 15.5) {
+        document.getElementById('status_temp').style.backgroundColor = 'orange';
+        // alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!');
+    }
+    if (temp[0] <= 15.5) {
+        document.getElementById('status_temp').style.backgroundColor = 'red';
+        //  alert('ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!');
+    }
+    if (temp[0] >= 19 && temp[0] <= 21) {
+        document.getElementById('status_temp').style.backgroundColor = 'green';
+    }
+
+
+
+
+
+
+
+    if (umi[0] >= 16.2) {
+        document.getElementById('status_umid').style.backgroundColor = 'red';
+        // alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
+    }
+    if (umi[0] >= 14.2) {
+        document.getElementById('status_umid').style.backgroundColor = 'orange';
+        //  alert('ATENÇÃO!! A Umidade da sua estufa está em estado de emergência!');
+    }
+    if (umi[0] < 14.2 && umi[0] > 11.2) {
+        document.getElementById('status_umid').style.backgroundColor = 'yellow';
+        //  alert('ATENÇÃO!! A Umidade da sua estufa está em estado de alerta!');
+    }
+    if (umi[0] < 10.8 && umi[0] > 7.8) {
+        document.getElementById('status_umid').style.backgroundColor = 'yellow';
+        //  alert('ATENÇÃO!! A Umidade da sua estufa está em estado de alerta!');
+    }
+    if (umi[0] <= 7.8 && umi[0] > 5.8) {
+        document.getElementById('status_umid').style.backgroundColor = 'orange';
+        // alert('ATENÇÃO!! A Umidade da sua estufa está em estado de emergência!');
+    }
+    if (umi[0] <= 5.8) {
+        document.getElementById('status_umid').style.backgroundColor = 'red';
+        //   alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
+    }
+    if (umi[0] >= 10.8 && umi[0] <= 11.2) {
+        document.getElementById('status_umid').style.backgroundColor = 'green';
+    }
+
+
+
+
+
+
+
+</script>
+<script src="scripts.js"></script>

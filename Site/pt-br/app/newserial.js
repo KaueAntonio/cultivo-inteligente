@@ -4,12 +4,6 @@ const Readline = SerialPort.parsers.Readline;
 
 
 
-// var cont = 0;
-// var temp = [];
-// var umi = [];
-// var mediatemp = 0;
-// var mediaumi = 0;
-
 class ArduinoRead {
 
     constructor() {
@@ -70,23 +64,6 @@ class ArduinoRead {
                     console.log(data[0]);
                     console.log(data[1]);
                     this.listData.push(data);
-                    // cont++;
-                    // data = data.split(' ');
-                    // console.log('DHT11 - Umidade: ' + data[0]);
-                    // console.log('DHT11 - Temperatura: ' + data[1]);
-
-
-                    // temp.push(Number(data[1]));
-                    // umi.push(Number(data[0]));
-
-                    // let sum = umi.reduce((a, b) => a + b);
-                    // let sum2 = temp.reduce((a, b) => a + b);
-                    // mediaumi = sum / cont;
-                    // mediatemp = sum2 / cont;
-                    // console.log('Media Humidade: ' + mediaumi.toFixed(1));
-                    // console.log('Media Temperatura: ' + mediatemp.toFixed(1));
-                    // console.log('Linhas: ' + cont);
-
                 });
             } catch (e) {
                 this.fake_data();

@@ -167,6 +167,12 @@
     var terc_resto_temp = 0;
     var terc_f_temp = 0;
     var terc_f_umi = 0;
+    
+
+
+    var chart = new Chart(context, configuration);
+
+    var chart2 = new Chart(context2, configuration2);
 
     var context = document.getElementById("chart").getContext("2d");
     context.canvas.width = 1000;
@@ -213,7 +219,7 @@
         data: {
             datasets: [{
                 label: "Temperatura (°C)",
-                borderColor: '#eb4444',
+                borderColor: '#eb44 44',
                 backgroundColor: '#eb444450',
             }]
         },
@@ -241,8 +247,7 @@
         }
     };
 
-    var chart2 = new Chart(context2, configuration2);
-    var chart = new Chart(context, configuration);
+    
     this.lastIndexTemp = 0;
     this.time = 0;
 
@@ -327,12 +332,6 @@
                     document.getElementById('status_temp').style.backgroundColor = 'green';
                 }
 
-
-
-
-
-
-
                 if (data[0] >= 16.2) {
                     document.getElementById('status_umid').style.backgroundColor = 'red';
                     // alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
@@ -368,9 +367,6 @@
            
 
 
-
-            console.log(temp[0]);
-            console.log(umi[0]);
             let sum = umi.reduce((a, b) => a + b);
             let sum2 = temp.reduce((a, b) => a + b);
 
@@ -379,6 +375,8 @@
             mediatemp = sum2 / cont;
             document.getElementById('average').textContent = mediaumi.toFixed(1);
             document.getElementById('average2').textContent = mediatemp.toFixed(1);
+
+
 
             dir_temp = temp.length - 1;
             esq_temp = temp[0];
@@ -390,6 +388,8 @@
 
             document.getElementById('mediana_umid').textContent = umi[parseInt(meio_umi)].toFixed(1);
             document.getElementById('mediana_temp').textContent = temp[parseInt(meio_temp)].toFixed(1);
+
+
 
             resto_temp = (dir_temp / 4) % 1;
             f_temp = 1 - resto_temp;
@@ -426,72 +426,6 @@
         get_data();
     }, 1000);
 
-
-
-
-
-
-    if (temp[0] >= 24.5) {
-        document.getElementById('status_temp').style.backgroundColor = 'red';
-        //    alert('ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!');
-    }
-    if (temp[0] >= 23.5) {
-        document.getElementById('status_temp').style.backgroundColor = 'orange';
-        //  alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!');
-    }
-    if (temp[0] < 23.5 && temp[0] > 21) {
-        document.getElementById('status_temp').style.backgroundColor = 'yellow';
-        //alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta!');
-    }
-    if (temp[0] < 19 && temp[0] > 16.5) {
-        document.getElementById('status_temp').style.backgroundColor = 'yellow';
-        // alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta!');
-    }
-    if (temp[0] <= 16.5 && temp[0] > 15.5) {
-        document.getElementById('status_temp').style.backgroundColor = 'orange';
-        // alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!');
-    }
-    if (temp[0] <= 15.5) {
-        document.getElementById('status_temp').style.backgroundColor = 'red';
-        //  alert('ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!');
-    }
-    if (temp[0] >= 19 && temp[0] <= 21) {
-        document.getElementById('status_temp').style.backgroundColor = 'green';
-    }
-
-
-
-
-
-
-
-    if (umi[0] >= 16.2) {
-        document.getElementById('status_umid').style.backgroundColor = 'red';
-        // alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
-    }
-    if (umi[0] >= 14.2) {
-        document.getElementById('status_umid').style.backgroundColor = 'orange';
-        //  alert('ATENÇÃO!! A Umidade da sua estufa está em estado de emergência!');
-    }
-    if (umi[0] < 14.2 && umi[0] > 11.2) {
-        document.getElementById('status_umid').style.backgroundColor = 'yellow';
-        //  alert('ATENÇÃO!! A Umidade da sua estufa está em estado de alerta!');
-    }
-    if (umi[0] < 10.8 && umi[0] > 7.8) {
-        document.getElementById('status_umid').style.backgroundColor = 'yellow';
-        //  alert('ATENÇÃO!! A Umidade da sua estufa está em estado de alerta!');
-    }
-    if (umi[0] <= 7.8 && umi[0] > 5.8) {
-        document.getElementById('status_umid').style.backgroundColor = 'orange';
-        // alert('ATENÇÃO!! A Umidade da sua estufa está em estado de emergência!');
-    }
-    if (umi[0] <= 5.8) {
-        document.getElementById('status_umid').style.backgroundColor = 'red';
-        //   alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
-    }
-    if (umi[0] >= 10.8 && umi[0] <= 11.2) {
-        document.getElementById('status_umid').style.backgroundColor = 'green';
-    }
 
 
 

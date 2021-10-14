@@ -350,6 +350,7 @@
             }
         }
     };
+    
     var context2 = document.getElementById("chart2").getContext("2d");
     context2.canvas.width = 1000;
     context2.canvas.height = 300;
@@ -386,6 +387,7 @@
             }
         }
     };
+
     var context3 = document.getElementById("chart3").getContext("2d");
     context3.canvas.width = 1000;
     context3.canvas.height = 300;
@@ -441,6 +443,7 @@
             }
         }
     };
+
     var context4 = document.getElementById("chart4").getContext("2d");
     context4.canvas.width = 1000;
     context4.canvas.height = 300;
@@ -497,9 +500,15 @@
             }
         }
     };
+
+
+
     var chart4 = new Chart(context4, configuration4);
+
     var chart3 = new Chart(context3, configuration3);
+
     var chart2 = new Chart(context2, configuration2);
+
     var chart = new Chart(context, configuration);
 
     this.lastIndexTemp = 0;
@@ -527,6 +536,7 @@
         listTemp = obj.data.slice(_lastIndexTemp);
 
         listTemp.forEach(data => {
+
             if (chart.data.labels.length == 10 && chart.data.datasets[0].data.length == 10) {
                 chart.data.labels.shift();
                 chart.data.datasets[0].data.shift();
@@ -540,6 +550,7 @@
 
 
         listTemp.forEach(data => {
+
             if (chart2.data.labels.length == 10 && chart2.data.datasets[0].data.length == 10) {
                 chart2.data.labels.shift();
                 chart2.data.datasets[0].data.shift();
@@ -578,6 +589,7 @@
                     logs2.innerHTML += (`<p style="color: red">ATENÇÃO!! A Temperatura da sua estufa está em estado crítico! (x${temp_contr}) - ${data_realtime}</p><br>`);
                     document.getElementById('temp_cont_red').textContent = temp_contr;
                 }
+ 
 
 
                 if (data[1] >= 23.5 && data[1] < 24.5) {
@@ -589,6 +601,8 @@
                 }
 
 
+
+
                 if (data[1] < 23.5 && data[1] > 21) {
                     temp_conty++;
                     let data_realtime = new Date();
@@ -596,6 +610,7 @@
                     logs2.innerHTML += (`<p style="color: yellow">ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta! (x${temp_conty}) - ${data_realtime}</p><br>`);
                     document.getElementById('temp_cont_yellow').textContent = temp_conty;
                 }
+
 
 
                 if (data[1] < 19 && data[1] > 16.5) {
@@ -607,6 +622,7 @@
                 }
 
 
+
                 if (data[1] <= 16.5 && esq_temp > 15.5) {
                     temp_conto++;
                     let data_realtime = new Date();
@@ -616,6 +632,7 @@
                 }
 
 
+
                 if (data[1] <= 15.5) {
                     temp_contr++;
                     let data_realtime = new Date();
@@ -623,6 +640,7 @@
                     logs2.innerHTML += (`<p style="color: red">ATENÇÃO!! A Temperatura da sua estufa está em estado crítico! (x${temp_contr}) - ${data_realtime}</p><br>`);
                     document.getElementById('temp_cont_red').textContent = temp_contr;
                 }
+
 
 
                 if (data[1] >= 19 && data[1] <= 21) {
@@ -638,6 +656,7 @@
                 }
 
 
+
                 if (data[0] >= 14.2 && data[0] < 16.2) {
                     umi_conto++;
                     let data_realtime = new Date();
@@ -645,6 +664,7 @@
                     logs1.innerHTML += (`<p style="color: orange">ATENÇÃO!! A Umidade da sua estufa está em estado de emergência! (x${umi_conto}) - ${data_realtime}</p><br>`);
                     document.getElementById('umi_cont_orange').textContent = umi_conto;
                 }
+
 
 
                 if (data[0] < 14.2 && data[0] > 11.2) {
@@ -656,6 +676,7 @@
                 }
 
 
+
                 if (data[0] < 10.8 && data[0] > 7.8) {
                     umi_conty++;
                     let data_realtime = new Date();
@@ -665,6 +686,7 @@
                 }
 
 
+
                 if (data[0] <= 7.8 && data[0] > 5.8) {
                     umi_conto++;
                     let data_realtime = new Date();
@@ -672,6 +694,7 @@
                     logs1.innerHTML += (`<p style="color: orange">ATENÇÃO!! A Umidade da sua estufa está em estado de emergência! (x${umi_conto}) - ${data_realtime}</p><br>`);
                     document.getElementById('umi_cont_orange').textContent = umi_conto;
                 }
+
 
 
                 if (data[0] <= 5.8) {
@@ -820,9 +843,9 @@
 
     }
 
-    // setInterval(() => {
-    //     get_data();
-    // }, 1000);
+    setInterval(() => {
+        get_data();
+    }, 1000);
     a_resu.style.textDecoration = 'Underline';
 
 function validacoes(){

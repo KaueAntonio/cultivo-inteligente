@@ -161,7 +161,31 @@ function enviaremail1() {
    
 }
 
-function lucro() {
+
+
+
+function lucro(){
+    if (hectares.value <= 0){
+        alert ('Digite um valor de hecare válido');
+    }
+
+    if (valor_cubico.value <= 0){
+        alert ('Digite um valor de metro cúbico válido');
+    }
+
+    if (hectares.value > 0){
+        if (valor_cubico.value > 0){
+            lucro2();
+        }else{
+            alert('Ocorreu um erro, tente novamente!');
+        }
+    }
+}
+
+
+
+
+function lucro2() {
     var ax_qtd_plantas = hectares.value * 7000; // média de 7000 plantas por hectare
 
     var ax_vlr_agua1 = ax_qtd_plantas * 232.5; //quantidade de plantas vezes o consumo mensal SEM gotejamento (7,5L * 31 dias)
@@ -189,4 +213,19 @@ function inicio(){
 
 function inicio1(){
     window.location.href = 'home1.html';
+}
+
+function resu() {
+    pag1.style.display = 'none';
+    pag2.style.display = 'block';
+    a_resu.style.textDecoration = 'Underline';
+    a_avan.style.textDecoration = 'none';
+}
+
+
+function avan() {
+    pag2.style.display = 'none';
+    pag1.style.display = 'block';
+    a_avan.style.textDecoration = 'Underline';
+    a_resu.style.textDecoration = 'none';
 }

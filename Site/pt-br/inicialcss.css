@@ -466,9 +466,20 @@ a.acor:visited {
     float: right;
 }
 
+.container_monitoramento{
+    display: flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+}
 
-
-
+.header_monitoramento{
+    background-color: white;
+    height: 30px;
+    border: solid 2px brown;
+    border-radius: 10px;
+    width: 60%;
+}
 
 
 

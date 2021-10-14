@@ -123,6 +123,10 @@ body {
     transition: width 0.5s, height 0.5s;
 }
 
+.btn1:hover{
+    cursor: pointer;
+}
+
 .btn1:hover::before{
     width: 300px;
     height: 300px;
@@ -547,22 +551,37 @@ footer {
 }
 
 .graf1{
-    width: 80%;
-    /*background-color: #35461240;*/
+    width: 60%;
+    height: 100%;
     background-color: rgb(255, 255, 255);
     margin-left: 10px;
     border-radius: 15px;
 }
 
 .graf2{
-    width: 80%;
-    /* background-color: #35461240; */
+    width: 60%;
+    height: 100%;
     background-color: rgb(255, 255, 255);
     margin-left: 10px;
     border-radius: 15px;
 }
 
 
+.bloco{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 230px;
+}
+
+.logs {
+    width: 35%;
+    height: 230px;
+    background-color: rgba(255, 255, 255, 0.583);
+    border: 2px solid brown;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
 
 
 .status{
@@ -576,6 +595,7 @@ footer {
 .nome {
     width: 8%;
     margin-left: 10px;
+    text-align: center;
 }
 
 .div_valores{
@@ -600,4 +620,59 @@ footer {
 }
 
 
+.container_monitoramento{
+    margin-top: 10px;
+    display: flex;
+    height: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
 
+.header_monitoramento{
+    background-color: rgba(255, 255, 255, 0.337);
+    height: 45px;
+    border: solid 3px rgb(255, 255, 255);
+    border-radius: 4em 4em 4em 4em;
+    width: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_monitoramento a{
+    margin: 0;
+    padding: 10px;
+    color: rgb(0, 174, 255);
+}
+
+.conteudo{
+    border-radius: 10px;
+    border: 3px solid #a52a2a;
+    background-color: rgba(255, 255, 255, 0.159);
+    padding: 10px;
+}
+
+
+.graf3{
+    width: 49%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.542);
+    margin-left: 10px;
+    border-radius: 15px;
+    float: left;
+    border: 3px solid #a52a2a;
+}
+.graf4{
+    width: 49%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.542);
+    margin-left: 10px;
+    border-radius: 15px;
+    float: right;
+    border: 3px solid #a52a2a;
+}
+.graficos{
+    display: flex;
+    justify-content: space-between;
+   
+}

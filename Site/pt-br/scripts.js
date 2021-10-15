@@ -215,17 +215,3 @@ function inicio1(){
     window.location.href = 'home1.html';
 }
 
-function resu() {
-    pag1.style.display = 'none';
-    pag2.style.display = 'block';
-    a_resu.style.textDecoration = 'Underline';
-    a_avan.style.textDecoration = 'none';
-}
-
-
-function avan() {
-    pag2.style.display = 'none';
-    pag1.style.display = 'block';
-    a_avan.style.textDecoration = 'Underline';
-    a_resu.style.textDecoration = 'none';
-}

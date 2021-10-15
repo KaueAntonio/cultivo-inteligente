@@ -556,6 +556,7 @@ footer {
     background-color: rgb(255, 255, 255);
     margin-left: 10px;
     border-radius: 15px;
+    float: left;
 }
 
 .graf2{
@@ -564,6 +565,7 @@ footer {
     background-color: rgb(255, 255, 255);
     margin-left: 10px;
     border-radius: 15px;
+    float: left;
 }
 
 
@@ -581,6 +583,7 @@ footer {
     border: 2px solid brown;
     border-radius: 10px;
     overflow-y: scroll;
+    float: right;
 }
 
 

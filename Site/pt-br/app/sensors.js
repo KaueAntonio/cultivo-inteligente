@@ -1,9 +1,9 @@
-function dht11(options) {
-  minHumidity = options.minHum;
-  maxHumidity = options.maxHum;
+function dht11() {
+ let minHumidity = 20;
+ let maxHumidity = 80;
 
-  minTemperature = options.minTemp;
-  maxTemperature = options.maxTemp;
+let  minTemperature = 0;
+let  maxTemperature = 50;
 
   if (minHumidity < 20 || maxHumidity > 80) {
     throw new Error(

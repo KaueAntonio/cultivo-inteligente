@@ -70,7 +70,7 @@
         </script>
     </div>
 
-    <di class="container3">
+    <div class="container3">
         <div class="card">
             <div class="content">
                 <div>
@@ -135,7 +135,21 @@
                         </div>
                         <br><br>
                     </div>
-                    <br><br><br>
+                    <br><br><br><h1 style="text-align: center;">Taxa de Alertas:</h1><br>
+                    <div class="graficos">
+
+                        <div class="graf3">
+                            <canvas id="chart3"></canvas>
+                        </div>
+
+                        <div class="graf4">
+                            <canvas id="chart4"></canvas>
+                        </div>
+                        <br><br><br><br>.
+                    </div>
+                </div>
+                </div>
+                </div>
                 </div>
         </body>
         
@@ -174,7 +188,10 @@
         var terc_resto_temp = 0;
         var terc_f_temp = 0;
         var terc_f_umi = 0;
-        
+        var scrollPosition = 0;
+        const velocity = 1000;
+
+
             var context = document.getElementById("chart").getContext("2d");
             context.canvas.width = 1000;
             context.canvas.height = 300;
@@ -220,11 +237,12 @@
                 data: {
                     datasets: [{
                         label: "Temperatura (°C)",
-                        borderColor: '#eb4444',
-                        backgroundColor: '#eb444450',
+                        borderColor: '#34ebab',
+                        backgroundColor: '#34ebab50',
                     }]
                 },
                 options: {
+                    
                     scales: {
                         xAxes: [{
                             distribution: 'series',
@@ -247,7 +265,108 @@
                     }
                 }
             };
+
+            var context3 = document.getElementById("chart3").getContext("2d");
+            context3.canvas.width = 1000;
+            context3.canvas.height = 400;
         
+            var configuration3 = {
+                type: 'bar',
+                data: {
+                    datasets: [{
+                        label: "Estado Crítico",
+                        borderColor: '#eb4444',
+                        backgroundColor: '#eb444450',
+                    },{
+                        label: "Estado de Emergência",
+                        borderColor: '#f5a742',
+                        backgroundColor: '#f5a74250',
+                    },{
+                        label: "Estado de Alerta",
+                        borderColor: '#f5ef42',
+                        backgroundColor: '#f5ef4250',
+                    }]
+                },
+                options: {
+                    title: {
+        display: true,
+        text: 'Alertas Temperatura'
+      },
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Número de Alertas'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            };
+
+            var context4 = document.getElementById("chart4").getContext("2d");
+            context4.canvas.width = 1000;
+            context4.canvas.height = 400;
+        
+            var configuration4 = {
+                type: 'bar',
+                data: {
+                    datasets: [{
+                        label: "Estado Crítico",
+                        borderColor: '#eb4444',
+                        backgroundColor: '#eb444450',
+                    },{
+                        label: "Estado de Emergência",
+                        borderColor: '#f5a742',
+                        backgroundColor: '#f5a74250',
+                    },{
+                        label: "Estado de Alerta",
+                        borderColor: '#f5ef42',
+                        backgroundColor: '#f5ef4250',
+                    }]
+                },
+                options: {
+                    title: {
+        display: true,
+        text: 'Alertas Umidade'
+      },
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Número de Alertas'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            };
+
+
+            var chart4= new Chart(context4, configuration4);
+            var chart3= new Chart(context3, configuration3);
             var chart2 = new Chart(context2, configuration2);
             var chart = new Chart(context, configuration);
             this.lastIndexTemp = 0;
@@ -281,7 +400,39 @@
                     chart.update();
                 });
         
+                listTemp.forEach(data => {
+                    if (chart3.data.labels.length == 10 && chart3.data.datasets[0].data.length == 10) {
+                        chart3.data.labels.shift();
+                        chart3.data.datasets[0].data.shift();
+                        chart3.data.datasets[1].data.shift();
+                        chart3.data.datasets[2].data.shift();
+                    }
         
+                    chart3.data.labels.push(this.time++);
+                    chart3.data.datasets[0].data.push(parseFloat(temp_contr));
+                    chart3.update();
+                    chart3.data.datasets[1].data.push(parseFloat(temp_conto));
+                    chart3.update();
+                    chart3.data.datasets[2].data.push(parseFloat(temp_conty));
+                    chart3.update();
+                });
+
+                listTemp.forEach(data => {
+                    if (chart4.data.labels.length == 10 && chart4.data.datasets[0].data.length == 10) {
+                        chart4.data.labels.shift();
+                        chart4.data.datasets[0].data.shift();
+                        chart4.data.datasets[1].data.shift();
+                        chart4.data.datasets[2].data.shift();
+                    }
+        
+                    chart4.data.labels.push(this.time++);
+                    chart4.data.datasets[0].data.push(parseFloat(umi_contr));
+                    chart4.update();
+                    chart4.data.datasets[1].data.push(parseFloat(umi_conto));
+                    chart4.update();
+                    chart4.data.datasets[2].data.push(parseFloat(umi_conty));
+                    chart4.update();
+                });
                 
                 listTemp.forEach(data => {
                     if (chart2.data.labels.length == 10 && chart2.data.datasets[0].data.length == 10) {
@@ -326,8 +477,7 @@
                 esq_umi = temp[0];
                 meio_umi = (dir_umi + esq_umi)/2;    
                 
-                document.getElementById('mediana_umid').textContent = umi[parseInt(meio_umi)].toFixed(1);
-                document.getElementById('mediana_temp').textContent = temp[parseInt(meio_temp)].toFixed(1);
+                
         
                 resto_temp = (dir_temp / 4) % 1;
                 f_temp = 1 - resto_temp;
@@ -350,6 +500,8 @@
         
                 document.getElementById('3quartil_temp').textContent = terc_quartil_temp.toFixed(1);
                 document.getElementById('3quartil_umid').textContent = terc_quartil_umid.toFixed(1);
+
+               
 
                 max_dados_temp = temp.reduce(function(a, b){
                     return Math.max(a, b);
@@ -379,6 +531,7 @@
                     let data_realtime = new Date();
                     document.getElementById('status_temp').style.backgroundColor = 'red';
                     logs2.innerHTML += (`<p style="color: red">ATENÇÃO!! A Temperatura da sua estufa está em estado crítico! (x${temp_contr}) - ${data_realtime}</p><br>`);
+                    logs2.scroll(0, scrollPosition += velocity);
                 }
  
 
@@ -388,6 +541,7 @@
                     let data_realtime = new Date();
                     document.getElementById('status_temp').style.backgroundColor = 'orange';
                     logs2.innerHTML += (`<p style="color: orange">ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência! (x${temp_conto}) - ${data_realtime}</p><br>`);
+                    logs2.scroll(0, scrollPosition += velocity);
                 }
 
 
@@ -398,6 +552,7 @@
                     let data_realtime = new Date();
                     document.getElementById('status_temp').style.backgroundColor = '#9da832';
                     logs2.innerHTML += (`<p style="color: yellow">ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta! (x${temp_conty}) - ${data_realtime}</p><br>`);
+                    logs2.scroll(0, scrollPosition += velocity);
                 }
 
 
@@ -407,6 +562,7 @@
                     let data_realtime = new Date();
                     document.getElementById('status_temp').style.backgroundColor = '#9da832';
                     logs2.innerHTML += (`<p style="color: yellow">ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta! (x${temp_conty}) - ${data_realtime}</p><br>`);
+                    logs2.scroll(0, scrollPosition += velocity);
                 }
 
 
@@ -416,6 +572,7 @@
                     let data_realtime = new Date();
                     document.getElementById('status_temp').style.backgroundColor = 'orange';
                     logs2.innerHTML += (`<p style="color: orange">ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência! (x${temp_conto}) - ${data_realtime}</p><br>`);
+                    logs2.scroll(0, scrollPosition += velocity);
                 }
 
 
@@ -425,6 +582,7 @@
                     let data_realtime = new Date();
                     document.getElementById('status_temp').style.backgroundColor = 'red';
                     logs2.innerHTML += (`<p style="color: red">ATENÇÃO!! A Temperatura da sua estufa está em estado crítico! (x${temp_contr}) - ${data_realtime}</p><br>`);
+                    logs2.scroll(0, scrollPosition += velocity);
                 }
 
 
@@ -438,6 +596,7 @@
                     let data_realtime = new Date();
                     document.getElementById('status_umid').style.backgroundColor = 'red';
                     logs1.innerHTML += (`<p style="color: red">ATENÇÃO!! A Umidade da sua estufa está em estado crítico! (x${umi_contr}) - ${data_realtime}</p><br>`);
+                    logs1.scroll(0, scrollPosition += velocity);
                 }
 
 
@@ -447,6 +606,7 @@
                     let data_realtime = new Date();
                     document.getElementById('status_umid').style.backgroundColor = 'orange';
                     logs1.innerHTML += (`<p style="color: orange">ATENÇÃO!! A Umidade da sua estufa está em estado de emergência! (x${umi_conto}) - ${data_realtime}</p><br>`);
+                    logs1.scroll(0, scrollPosition += velocity);
                 }
 
 
@@ -456,6 +616,7 @@
                     let data_realtime = new Date();
                     document.getElementById('status_umid').style.backgroundColor = '#9da832';
                     logs1.innerHTML += (`<p style="color: yellow">ATENÇÃO!! A Umidade da sua estufa está em estado de alerta! (x${umi_conty}) - ${data_realtime}</p><br>`);
+                    logs1.scroll(0, scrollPosition += velocity);
                 }
 
 
@@ -465,6 +626,7 @@
                     let data_realtime = new Date();
                     document.getElementById('status_umid').style.backgroundColor = '#9da832';
                     logs1.innerHTML += (`<p style="color: yellow">ATENÇÃO!! A Umidade da sua estufa está em estado de alerta! (x${umi_conty}) - ${data_realtime}</p><br>`);
+                    logs1.scroll(0, scrollPosition += velocity);
                 }
 
 
@@ -474,6 +636,7 @@
                     let data_realtime = new Date();
                     document.getElementById('status_umid').style.backgroundColor = 'orange';
                     logs1.innerHTML += (`<p style="color: orange">ATENÇÃO!! A Umidade da sua estufa está em estado de emergência! (x${umi_conto}) - ${data_realtime}</p><br>`);
+                    logs1.scroll(0, scrollPosition += velocity);
                 }
 
 
@@ -483,6 +646,7 @@
                     let data_realtime = new Date();
                     document.getElementById('status_umid').style.backgroundColor = 'red';
                     logs1.innerHTML += (`<p style="color: red">ATENÇÃO!! A Umidade da sua estufa está em estado crítico! (x${umi_contr}) - ${data_realtime}</p><br>`);
+                    logs1.scroll(0, scrollPosition += velocity);
                 }
 
 
@@ -492,8 +656,8 @@
 
                 
                 }
-        
-               
+                document.getElementById('mediana_umid').textContent = umi[parseInt(meio_umi)].toFixed(1);
+                document.getElementById('mediana_temp').textContent = temp[parseInt(meio_temp)].toFixed(1);
             });
             
             

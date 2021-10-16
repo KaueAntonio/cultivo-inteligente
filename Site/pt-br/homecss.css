@@ -6,6 +6,24 @@
     box-sizing: border-box;
 }
 
+
+/* Barra de rolagem personalizada */
+*::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: rgb(165, 87, 42);
+    border-radius: 10px;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #381d0ad5;
+    border-radius: 20px;
+  }
+
+/* ----------------------------------------- */
+
 body {
     font-family: 'Roboto', Arial, Verdana ;
     background-image: url(café\ 2.jpg);
@@ -553,7 +571,7 @@ footer {
 .graf1{
     width: 60%;
     height: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffeade;
     margin-left: 10px;
     border-radius: 15px;
     float: left;
@@ -562,7 +580,7 @@ footer {
 .graf2{
     width: 60%;
     height: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffeade;
     margin-left: 10px;
     border-radius: 15px;
     float: left;
@@ -593,6 +611,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 5px;
 }
 
 .nome {

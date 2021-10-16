@@ -571,18 +571,20 @@ footer {
 .graf1{
     width: 60%;
     height: 100%;
-    background-color: #ffeade;
-    margin-left: 10px;
+    background-color: rgba(255, 255, 255, 0.542);
     border-radius: 15px;
+    border: 3px solid #a52a2a;
+    margin-left: 10px;
     float: left;
 }
 
 .graf2{
     width: 60%;
     height: 100%;
-    background-color: #ffeade;
-    margin-left: 10px;
+    background-color: rgba(255, 255, 255, 0.542);
     border-radius: 15px;
+    border: 3px solid #a52a2a;
+    margin-left: 10px;
     float: left;
 }
 
@@ -678,10 +680,10 @@ footer {
 .graf3{
     width: 49%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.542);
-    margin-left: 10px;
-    border-radius: 15px;
     float: left;
+    margin-left: 10px;
+    background-color: rgba(255, 255, 255, 0.542);
+    border-radius: 15px;
     border: 3px solid #a52a2a;
 }
 .graf4{

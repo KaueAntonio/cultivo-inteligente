@@ -13,18 +13,34 @@ function cadastrar() {
 
     if (usu.length < 10) {
         alert('Seu usuário precisa ter no mínimo 10 caracterese!');
+        usu = '/';
+        sen = '/';
+        ema = '/';
+        csen = '/';
     }
 
     if (sen.length < 10) {
         alert('Sua senha precisa ter no mínimo 10 caracterese!');
+        usu = '/';
+        sen = '/';
+        ema = '/';
+        csen = '/';
     }
 
     if (csen != sen) {
         alert('Sua senha e a confimação se diferem!');
+        usu = '/';
+        sen = '/';
+        ema = '/';
+        csen = '/';
     }
 
     if (ema.indexOf('@') == -1 || ema.length < 8 || ema.indexOf('.') == -1) {
         alert('Email Inválido!');
+        usu = '';
+        sen = '';
+        ema = '';
+        csen = '';
     }
 
     if (usu.length >= 10) {

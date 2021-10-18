@@ -3,24 +3,12 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;    
 }
 
 
 /* Barra de rolagem personalizada */
-*::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  *::-webkit-scrollbar-track {
-    background: rgb(165, 87, 42);
-    border-radius: 10px;
-  }
-  
-  *::-webkit-scrollbar-thumb {
-    background-color: #381d0ad5;
-    border-radius: 20px;
-  }
+    
 
 /* ----------------------------------------- */
 
@@ -498,7 +486,7 @@ footer {
 .container3 .card{
     position: relative;
     width: 90%;
-    height: 160vh;
+    height: 260vh;
     box-shadow: 20px 20px 50px rgb(0, 0, 0, 0.5);
     border-radius: 15px;
     background: rgb(255, 255, 255, 0.1);
@@ -593,12 +581,12 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 230px;
+    height: 250px;
 }
 
 .logs {
     width: 35%;
-    height: 230px;
+    height: 250px;
     background-color: rgba(255, 255, 255, 0.583);
     border: 2px solid brown;
     border-radius: 10px;

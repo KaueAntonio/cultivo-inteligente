@@ -27,8 +27,8 @@ let  maxTemperature = 50;
     Math.random() * (maxHumidity - minHumidity + 1) + minHumidity
   );
 
-  let randomTemperature =
-    Math.random() * (maxTemperature - minTemperature) + minTemperature;
+  let randomTemperature = Math.floor(
+    Math.random() * (maxTemperature - minTemperature) + minTemperature);
 
   return [randomHumidity, randomTemperature];
 }

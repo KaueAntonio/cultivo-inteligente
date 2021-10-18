@@ -176,7 +176,6 @@
                         <div class="graf4">
                             <canvas id="chart4"></canvas>
                         </div>
-                        <br><br><br><br>.
                     </div>
                 </div>
             </div>
@@ -481,8 +480,8 @@
         listTemp.forEach(data => {
             cont += 2;
 
-            document.getElementById('realtime_temp').textContent = data[1].toFixed(1);
-            document.getElementById('realtime_umid').textContent = data[0].toFixed(1);
+            document.getElementById('realtime_temp').textContent = data[1];
+            document.getElementById('realtime_umid').textContent = data[0];
             for (let j = 0; j <= 1; j++) {
 
                 temp.push(parseFloat(data[1]));
@@ -513,7 +512,8 @@
             esq_umi = temp[0];
             meio_umi = (dir_umi + esq_umi) / 2;
 
-            
+            document.getElementById('mediana_umid').textContent = umi[parseInt(meio_umi)];
+            document.getElementById('mediana_temp').textContent = temp[parseInt(meio_temp)];
             //-----------------------------------
 
 
@@ -705,9 +705,7 @@
 
             }
 
-            //MOSTRANDO A MEDIANA AQUI POIS LÁ EM CIMA TAVA DANDO CONFLITO
-            document.getElementById('mediana_umid').textContent = umi[parseInt(meio_umi)].toFixed(1);
-            document.getElementById('mediana_temp').textContent = temp[parseInt(meio_temp)].toFixed(1);
+            
         });
 
 
@@ -721,178 +719,6 @@
 
 
 
-    function testes() {
-        if (temp[0] >= 24.5) {
-            document.getElementById('status_temp').style.backgroundColor = 'red';
-            // alert('ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!');
-        } else {
-            if (temp[0] >= 23.5) {
-                document.getElementById('status_temp').style.backgroundColor = 'orange';
-                //   alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!');
-            } else {
-                if (temp[0] < 23.5 && temp[0] > 21) {
-                    document.getElementById('status_temp').style.backgroundColor = 'yellow';
-                    //   alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta!');
-                } else {
-                    if (temp[0] < 19 && temp[0] > 16.5) {
-                        document.getElementById('status_temp').style.backgroundColor = 'yellow';
-                        //   alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta!');
-                    } else {
-                        if (temp[0] <= 16.5 && temp[0] > 15.5) {
-                            document.getElementById('status_temp').style.backgroundColor = 'orange';
-                            //  alert('ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!');
-                        } else {
-                            if (temp[0] <= 15.5) {
-                                document.getElementById('status_temp').style.backgroundColor = 'red';
-                                //      alert('ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!');
-                            } else {
-                                if (temp[0] >= 19 && temp[0] <= 21) {
-                                    document.getElementById('status_temp').style.backgroundColor = 'green';
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        if (umi[0] >= 16.2) {
-            document.getElementById('status_umid').style.backgroundColor = 'red';
-            //       alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
-        } else {
-            if (umi[0] >= 14.2) {
-                document.getElementById('status_umid').style.backgroundColor = 'orange';
-                //    alert('ATENÇÃO!! A Umidade da sua estufa está em estado de emergência!');
-            } else {
-                if (umi[0] < 14.2 && umi[0] > 11.2) {
-                    document.getElementById('status_umid').style.backgroundColor = 'yellow';
-                    //   alert('ATENÇÃO!! A Umidade da sua estufa está em estado de alerta!');
-                } else {
-                    if (umi[0] < 10.8 && umi[0] > 7.8) {
-                        document.getElementById('status_umid').style.backgroundColor = 'yellow';
-                        //    alert('ATENÇÃO!! A Umidade da sua estufa está em estado de alerta!');
-                    } else {
-                        if (umi[0] <= 7.8 && umi[0] > 5.8) {
-                            document.getElementById('status_umid').style.backgroundColor = 'orange';
-                            //  alert('ATENÇÃO!! A Umidade da sua estufa está em estado de emergência!');
-                        } else {
-                            if (umi[0] <= 5.8) {
-                                document.getElementById('status_umid').style.backgroundColor = 'red';
-                                //    alert('ATENÇÃO!! A Umidade da sua estufa está em estado crítico!');
-                            } else {
-                                if (umi[0] >= 10.8 && umi[0] <= 11.2) {
-                                    document.getElementById('status_umid').style.backgroundColor = 'green';
-                                } else {
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        if (temp[0] >= 24.5) {
-            temp_contr++;
-            document.getElementById('status_temp').style.backgroundColor = 'red';
-            logs2.innerHTML += (`<p style="color: red;font-weight: bold;">ATENÇÃO!! A Temperatura da sua estufa está em estado crítico! (x${temp_contr})</p><br>`);
-        }
-
-
-
-        if (temp[0] >= 23.5 && temp[0] < 24.5) {
-            temp_conto++;
-            document.getElementById('status_temp').style.backgroundColor = 'orange';
-            logs2.innerHTML += (`<p style="color: orange;font-weight: bold;">ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência! (x${temp_conto})</p><br>`);
-        }
-
-
-
-
-        if (temp[0] < 23.5 && temp[0] > 21) {
-            temp_conty++;
-            document.getElementById('status_temp').style.backgroundColor = 'yellow';
-            logs2.innerHTML += (`<p style="color: yellow;font-weight: bold;">ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta! (x${temp_conty})</p><br>`);
-        }
-
-
-
-        if (temp[0] < 19 && temp[0] > 16.5) {
-            temp_conty++;
-            document.getElementById('status_temp').style.backgroundColor = 'yellow';
-            logs2.innerHTML += (`<p style="color: yellow;font-weight: bold;">ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta! (x${temp_conty})</p><br>`);
-        }
-
-
-
-        if (temp[0] <= 16.5 && temp[0] > 15.5) {
-            temp_conto++;
-            document.getElementById('status_temp').style.backgroundColor = 'orange';
-            logs2.innerHTML += (`<p style="color: orange;font-weight: bold;">ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência!  (x${temp_conto})</p><br>`);
-        }
-
-
-
-        if (temp[0] <= 15.5) {
-            temp_contr++;
-            document.getElementById('status_temp').style.backgroundColor = 'red';
-            logs2.innerHTML += (`<p style="color: red;font-weight: bold;">ATENÇÃO!! A Temperatura da sua estufa está em estado crítico!</p><br> (x${temp_contr})`);
-        }
-
-
-
-        if (temp[0] >= 19 && temp[0] <= 21) {
-            document.getElementById('status_temp').style.backgroundColor = 'green';
-        }
-
-        if (umi[0] >= 16.2) {
-            umi_contr++;
-            document.getElementById('status_umid').style.backgroundColor = 'red';
-            logs1.innerHTML += (`<p style="color: red;font-weight: bold;">ATENÇÃO!! A Umidade da sua estufa está em estado crítico!</p><br> (x${umi_contr})`);
-        }
-
-
-
-        if (umi[0] >= 14.2 && umi[0] < 16.2) {
-            umi_conto++;
-            document.getElementById('status_umid').style.backgroundColor = 'orange';
-            logs1.innerHTML += (`<p style="color: orange;font-weight: bold;">ATENÇÃO!! A Umidade da sua estufa está em estado de emergência! (x${umi_conto})</p><br>`);
-        }
-
-
-
-        if (umi[0] < 14.2 && umi[0] > 11.2) {
-            umi_conty++;
-            document.getElementById('status_umid').style.backgroundColor = 'yellow';
-            logs1.innerHTML += (`<p style="color: yellow;font-weight: bold;">ATENÇÃO!! A Umidade da sua estufa está em estado de alerta! (x${umi_conto})</p><br>`);
-        }
-
-
-
-        if (umi[0] < 10.8 && umi[0] > 7.8) {
-            umi_conty++;
-            document.getElementById('status_umid').style.backgroundColor = 'yellow';
-            logs1.innerHTML += (`<p style="color: yellow;font-weight: bold;">ATENÇÃO!! A Umidade da sua estufa está em estado de alerta! (x${umi_conty})</p><br>`);
-        }
-
-
-
-        if (umi[0] <= 7.8 && umi[0] > 5.8) {
-            umi_conto++;
-            document.getElementById('status_umid').style.backgroundColor = 'orange';
-            logs1.innerHTML += (`<p style="color: orange;font-weight: bold;">ATENÇÃO!! A Umidade da sua estufa está em estado de emergência! (x${umi_conto})</p><br>`);
-        }
-
-
-
-        if (umi[0] <= 5.8) {
-            umi_contr++;
-            document.getElementById('status_umid').style.backgroundColor = 'red';
-            logs1.innerHTML += (`<p style="color: red;font-weight: bold;">ATENÇÃO!! A Umidade da sua estufa está em estado crítico! (x${umi_contr})</p><br>`);
-        }
-
-
-        if (umi[0] >= 10.8 && umi[0] <= 11.2) {
-            document.getElementById('status_umid').style.backgroundColor = 'green';
-        }
-    }
+    
 </script>
 <script src="scripts.js"></script>

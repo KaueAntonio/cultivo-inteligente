@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" 
+    integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" 
+    crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/ea8cfd2902.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="fotos/logo sem letra.ico">
+    <link rel="stylesheet" href="site.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+</head>
+<body data-spy='scroll' data-target=".navbar" data-offset='50' class="body">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="fotos/logo 2.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                    <a class="nav-link" href="WeGroeffee.html#home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="login-page" id="tela_cadastro" style="display: none;">
+        <div class="form">
+            <div class="register-form" method="POST" action="">
+                <input id="cadastro_usuario" class="inputt" type="text" placeholder="Usuário">
+                <input id="cadastro_senha" class="inputt" type="password" placeholder="Senha" />
+                <input id="cadastro_confirmacao_senha" class="inputt" type="password" placeholder="Confirmação da Senha" />
+                <input id="cadastro_email" class="inputt" type="text" placeholder="Email" />
+                <input class="btnin" type="submit" value="Cadastrar" onclick="cadastrar()">
+                <p class="textobaixol">Ja é registrado? <a href="#" onclick="mudarlogin()">Faça login!</a></p>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="login-page" id="tela_login">
+        <div class="form">
+            <img src="fotos/avatar 2.png" class="avatar" width="120"  alt="">
+            <h1>Login</h1>
+            <div class="login-form" action="" method="POST">
+                <p>Usuário</p>
+                <input id="login_usuario" class="inputt" type="text" placeholder="Insira seu nome de usuário" id="usuario">
+                <p>Senha</p>
+                <input id="login_senha" class="inputt" type="password" placeholder="Insira sua senha" id="senha">
+                <input class="btnin" type="submit" value="Entrar" onclick="entrarlogin()">
+                <p class="textobaixol">Não é registrado? <a href="#" onclick="mudarcadastro()">Cadastre-se!</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+</script>
+<script src="scripts.js"></script>
+<script src="nodejsmysql/createtable.js"></script>
+<script src="nodejsmysql/select.js"></script>
+<script src="nodejsmysql/update.js"></script>
+<script src="nodejsmysql/delete.js"></script>

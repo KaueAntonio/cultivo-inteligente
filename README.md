@@ -1,6 +1,6 @@
 ## Bem Vindo ao Repositório da WeGrowffee!
 
-A WeGrowffee monitora a temperatura e umidade em estufas de café, além de também controlar a
+   A WeGrowffee monitora a temperatura e umidade em estufas de café, além de também controlar a
 irrigação de água dela, fazendo com que seu plantio tenha uma safra muito melhor do que tinha, assim também protegendo
 sua planta para que ela tenha sua eficiência ao máximo.
 

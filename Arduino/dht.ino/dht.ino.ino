@@ -12,7 +12,7 @@ void loop()
 {
 float umidade = dht_1.readHumidity();
 float temperatura = dht_1.readTemperature();
-umidade = umidade - 66;
+umidade = umidade - 70;
 temperatura = temperatura - 2.5 ;
  if (isnan(temperatura) or isnan (umidade))
 {

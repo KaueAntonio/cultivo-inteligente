@@ -13,7 +13,7 @@
     crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/ea8cfd2902.js" crossorigin="anonymous"></script>
     <link rel="icon" href="fotos/logo sem letra.ico">
-    <link rel="stylesheet" href="./css/site.css">
+    <link rel="stylesheet" href="site.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="./assets/js/funcoes.js"></script>
 
@@ -37,28 +37,39 @@
             </div>
         </nav>
     </header>
+
     <div class="login-page" id="tela_cadastro">
         <div class="form">
-            <form class="register-form" id="Cadastro" method="POST" action="">
+            <form class="register-form" method="POST" action="">
                 <input id="cadastro_usuario" name="nome" class="inputt" type="text" placeholder="Usuário">
                 <input id="cadastro_senha" name="senha" class="inputt" type="password" placeholder="Senha" />
                 <input id="cadastro_confirmacao_senha" name="conf_senha" class="inputt" type="password" placeholder="Confirmação da Senha" />
                 <input id="cadastro_email" name="email" class="inputt" type="text" placeholder="Email" />
                 <input class="btnin" type="submit" value="Cadastrar" onclick="cadastrar()">
-                <p class="textobaixol">Ja é registrado? <a href="#" onclick="mudarlogin()">Faça login!</a></p>
+                <p class="textobaixol">Ja é registrado? <a href="Login1.html" >Faça login!</a></p>
             </form>
 
         </div>
 
     </div>
+    <div class="login-page" id="tela_login" style="display: none;">
+        <div class="form">
+            <img src="fotos/avatar 2.png" class="avatar" width="120"  alt="">
+            <h1>Login</h1>
+            <form class="login-form" action="" method="POST">
+                <p>Usuário</p>
+                <input id="login_usuario" name="login_email" class="inputt" type="text" placeholder="Insira seu nome de usuário" id="usuario">
+                <p>Senha</p>
+                <input id="login_senha" name="login_senha" class="inputt" type="password" placeholder="Insira sua senha" id="senha">
+                <input class="btnin" type="submit" value="Entrar" onclick="entrarlogin()">
+                <p class="textobaixol">Não é registrado? <a href="#" onclick="mudarcadastro()">Cadastre-se!</a></p>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
 </script>
 <script src="scripts.js"></script>
-<script src="nodejsmysql/createtable.js"></script>
-<script src="nodejsmysql/select.js"></script>
-<script src="nodejsmysql/update.js"></script>
-<script src="nodejsmysql/delete.js"></script>
 <script>
      function limparFormulario() {
         document.getElementById("Cadastro").reset();
@@ -174,7 +185,7 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "./dashboard.html";
+                        window.location = "./index.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

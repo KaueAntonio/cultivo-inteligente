@@ -1,0 +1,787 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none !important;
+    scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #000000cc;
+    border-radius: 20px;
+  }
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+header{
+    position: relative;
+    z-index: 1000000;
+}
+
+p{
+    font-size: 1.15rem;
+}
+
+.navbar{
+    background: transparent !important;
+    transition: 0.5s;
+}
+
+.navbar-brand img{
+    width: 150px;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: #000;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.navbar-light .navbar-nav .active>.nav-link:hover{
+    color: #000;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(255,255,255,.8);
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus{
+    color: rgba(255,255,255,1);
+
+}
+
+.navbar.scrolled{
+    background: #000 !important;
+    transition: 0.5s;
+}
+
+.banner{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: url(fotos/café\ 5.jpg);
+    background-size: cover;
+    margin-bottom: 0;
+}
+
+.banner::before,
+.sec2::before,
+.contato::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(#000, transparent);
+    pointer-events: none;
+}
+
+.banner::after,
+.sec2::after,
+.contato::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(360deg,#000, transparent);
+    pointer-events: none;
+}
+
+.height100p{
+    height: 100vh;
+}
+
+.h100{
+    height: 100%;
+}
+
+.contentBox{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+}
+
+.contentBox h1{
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    font-size: 5rem;
+}
+
+.contentBox p{
+    color: white;
+    font-size: 1.3rem;
+}
+
+.sec1{
+    padding: 100px 0;
+    background: #000;
+}
+
+.headertexto{
+    color: white;
+}
+
+.headertexto h2{
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.placebox{
+    position: relative;
+    max-width: 300px;
+    height: 400px;
+    margin: 0 auto;
+    background: #000;
+    margin-top: 30px;
+}
+
+.placebox .imgbx{
+    width: 100%;
+    height: 100%;
+}
+
+.placebox .imgbx img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.placebox .content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: baseline;
+    align-items: flex-end;
+}
+
+
+.placebox .content h3{
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.274);
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.sec2{
+    position: relative;
+    background: url(fotos/café\ 2.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+
+.prop .container2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.prop .container2 h2{
+    color: white;
+    font-size: 50px;
+    z-index: 100;
+}
+
+.prop .container2 .mvv div img{
+    height: 250px;
+    width: 250px;
+}
+
+.prop .container2 .mvv{
+    margin-top: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 10;
+}
+
+
+.prop .container2 .mvv div{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.prop .container2 .mvv div h3{
+    color: white;
+    margin-bottom: 12%;
+}
+
+.prop .container2 .mvv div p{
+    color: white;
+}
+
+#flor{
+    width: 170px;
+    height: 150px;
+}
+
+#mao{
+    width: 170px;
+    height: 170px;
+}
+
+#plant{
+    width: 170px;
+    height: 150px;
+}
+
+#mis{
+    margin-top: 10%;
+}
+
+#val{
+    margin-top: 10%;
+}
+
+#vis{
+    margin-top: 7%;
+}
+
+.space{
+    width: 100%;
+    height: 10vh;
+    background: #000;
+}
+
+.contato{
+    position: relative;
+    padding: 100px 0;
+    background: url(fotos/café\ 8.jpg);
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.contato form{
+    position: relative;
+    z-index: 1000;
+}
+
+.contato .form-control{
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.63);
+    height: 50px;
+    border-radius: 30px;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.contato .form-control:focus,
+.contato .form-control:hover{
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255, 1);
+    box-shadow: none;
+}
+
+.contato .textarea{
+    min-height: 100px;
+}
+
+.contato label{
+    color: white;
+    font-size: 1.25rem;
+}
+
+footer{
+    background: #000;
+    padding: 50px 0 0;
+}
+
+.sci{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sci li{
+    list-style: none;
+    margin: 0 20px;
+}
+
+.sci li a{
+    color: #777;
+    font-size: 2em;
+    transition: 0.5s;
+}
+
+.sci li a:hover{
+    color: white;
+}
+
+.crypt{
+    margin-top: 20px;
+    text-align: center;
+    color: #777;
+}
+
+.crypt a,
+.crypt a:hover{
+    color: #777;
+}
+
+/* Parte Login */
+
+.body::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(#000, transparent);
+    pointer-events: none;
+}
+
+.body::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(360deg,#000, transparent);
+    pointer-events: none;
+}
+
+.body{
+    background: url(fotos/café\ 6.jpg);
+    background-size: cover;
+}
+
+.form {
+   width: 320px;
+   height: 320px;
+   border: 2px solid rgba(255, 255, 255, 0.425);
+   border-radius: 80px 0px 80px 0px;
+   color: rgb(255, 255, 255);
+   background-color: rgba(0, 0, 0, 0.493);
+   top: 50%;
+   left: 50%;
+   position: absolute;
+   transform: translate(-50%, -50%);
+   box-sizing: content-box;
+   padding: 68px 28px;
+   backdrop-filter: blur(3px);
+   z-index: 100000;
+}
+
+.avatar{
+    border-radius: 50%;
+    position: absolute;
+    top: -12%;
+    left: 120px;
+}
+
+.form h1{
+    margin: 0;
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 20px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 25px;
+}
+
+.login-form p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.login-page {
+    width: 500px;
+    padding: 4% 0 0;
+    margin: auto;
+}
+.inputt {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255,.2);
+    width: 100%;
+    height: 20px;
+    border-radius: 30px;
+    color: white;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    padding: 12px;
+}
+
+.inputt:focus,
+.inputt:hover{
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255, 1);
+    box-shadow: none;
+}
+
+.inputt[type = 'text'], .inputt[type = 'password'], .inputt[type = 'submit']{
+    border: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+}
+
+.btnin:hover{
+    font-weight: bold;
+}
+
+.btnin {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    background-color: #ffffffa4;
+    width: 100%;
+    border: 0;
+    padding: 7px;
+    color: #000000;
+    font-size: 14px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.form .btnin:hover,.form .btnin:active,.form .btnin:focus {
+    background: #c5c5c5;
+}
+
+.form .textobaixol {
+    margin: 15px 0 0;
+    color: #ffffff;
+    font-size: 12px;
+}
+.form .textobaixol a {
+    color: #777;
+    text-decoration: none;
+}
+
+/* Parte do Gráfico */
+
+.body2{
+    background: url(fotos/café\ 9.jpg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: scroll;
+}
+
+.body2::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(#000, transparent);
+    pointer-events: none;
+}
+
+.container3{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 1;
+    margin-top: 10%;
+}
+
+.container3 .card{
+    position: relative;
+    width: 97%;
+    height: 280vh;
+    border-radius: 0px 90px 0px 90px;
+    background: rgba(0, 0, 0, 0.171);
+    overflow: hidden;
+    backdrop-filter: blur(3px);
+    margin-bottom: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.534);
+}
+
+.container3 .card .content{
+    padding: 20px;
+    transition: 0.5s;
+}
+
+.container3 .card .content h1{
+    color: white;
+}
+
+.container3 .card .content h2{
+    color: rgb(165, 165, 165);
+    font-size: 20px;
+}
+
+.graf1{
+    width: 60%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.542);
+    border-radius: 15px;
+    margin-left: 10px;
+    float: left;
+    box-shadow: 4px 4px 10px black inset, -4px -4px 10px black inset;
+}
+
+.graf2{
+    width: 60%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.542);
+    border-radius: 15px;
+    margin-left: 10px;
+    float: left;
+    box-shadow: 4px 4px 10px black inset, -4px -4px 10px black inset;
+}
+
+
+.bloco{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 250px;
+}
+
+.logs {
+    width: 35%;
+    height: 250px;
+    background-color: rgba(255, 255, 255, 0.583);
+    border-radius: 50px 50px 50px 0px;
+    overflow-y: scroll;
+    float: right;
+    box-shadow: 4px 4px 10px black inset, -4px -4px 10px black inset;
+}
+
+
+.status{
+    width: 10%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.nome {
+    width: 8%;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.div_valores{
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+
+.container_monitoramento{
+    margin-top: 10px;
+    display: flex;
+    height: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_monitoramento{
+    background-color: rgba(255, 255, 255, 0.337);
+    height: 45px;
+    border: solid 3px rgb(255, 255, 255);
+    border-radius: 4em 4em 4em 4em;
+    width: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_monitoramento a{
+    margin: 0;
+    padding: 10px;
+    color: rgb(0, 174, 255);
+}
+
+.conteudo{
+    border-radius: 10px;
+    border: 3px solid #a52a2a;
+    background-color: rgba(255, 255, 255, 0.159);
+    padding: 10px;
+}
+
+
+.graf3{
+    width: 49%;
+    height: 100%;
+    float: left;
+    margin-left: 10px;
+    background-color: rgba(255, 255, 255, 0.542);
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px black inset, -4px -4px 10px black inset;
+}
+.graf4{
+    width: 49%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.542);
+    margin-left: 10px;
+    border-radius: 15px;
+    float: right;
+    box-shadow: 4px 4px 10px black inset, -4px -4px 10px black inset;
+}
+.graficos{
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+/* Parte Calculadora */
+
+.body3::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(#000, transparent); 
+    pointer-events: none;
+}
+
+video{
+    position: fixed;
+    top: 0; 
+    left: 0;
+	width: 100%;
+	z-index: -1000;
+	background-size: cover; 
+}
+
+/* video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+} */
+
+.container1{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 6%;
+}
+
+.container1 .card{
+    position: relative;
+    width: 95%;
+    height: 106vh;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.575);
+    border-radius: 80px 6px 80px 6px;
+    background: rgba(0, 0, 0, 0.555);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgb(255, 255, 255, 0.5);
+    border-left: 1px solid rgb(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+.container1 .card .content{
+    position: relative;
+    padding: 20px;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.container1 .card .content h1{
+    color: white;
+}
+
+.container1 .card .content p{
+    color: white;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.inputfc {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255,.2);
+    width: 60%;
+    height: 20px;
+    border-radius: 30px;
+    color: white;
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    padding: 12px;
+    text-align: center;
+}
+
+.inputfc:focus,
+.inputfc:hover{
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255, 1);
+    box-shadow: none;
+}
+
+.botao2 {
+    background-color: #ffffffbd;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 6px;
+    width: 190px;
+    border-radius: 10px;
+}
+
+.botao2:hover{
+    cursor: pointer;
+    background-color: rgb(187, 187, 187);
+    color: black;
+}
+
+.caixatexto4{
+    color: white;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.h3, h3 {
+    font-size: 1.4rem;
+}

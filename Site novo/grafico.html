@@ -417,7 +417,7 @@
     function get_data() {
 
         var http = new XMLHttpRequest();
-        http.open('GET', 'http://localhost:3000/api', false);
+        http.open('GET', 'http://localhost:3333/api', false);
         http.send(null);
 
         var obj = JSON.parse(http.responseText);

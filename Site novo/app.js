@@ -1,10 +1,10 @@
-process.env.AMBIENTE_PROCESSO = "desenvolvimento";
-// process.env.AMBIENTE_PROCESSO = "producao";
+// process.env.AMBIENTE_PROCESSO = "desenvolvimento";
+ process.env.WeGrowffee = "producao";
 
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
-var PORTA = 3333;
+var PORTA = 3000;
 
 var app = express();
 
@@ -26,7 +26,7 @@ app.use("/medidas", medidasRouter)
 
 app.listen(PORTA, function() {
     console.log(`Servidor do site está rodando rodando: http://localhost:${PORTA} \n
-    Você está rodando sua aplicação em ${process.env.AMBIENTE_PROCESSO} \n
+    Você está rodando sua aplicação em ${process.env.WeGrowffee} \n
     \t\tSe "desenvolvimento", banco local (MySQL Workbench). \n
     \t\tSe "producao", banco remoto (SQL Server em nuvem Azure)`);
 });

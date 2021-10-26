@@ -1,72 +1,66 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcquaTec | Página Inicial</title>
-
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" 
+    integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" 
+    crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/ea8cfd2902.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="fotos/logo sem letra.ico">
+    <link rel="stylesheet" href="site.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="./assets/js/funcoes.js"></script>
 
-    <link rel="icon" href="./assets/icon/favicon.ico">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
 </head>
-
-<body>
-
-    <!--Header-->
-
-    <div class="header">
-        <div class="container">
-            <h1>AcquaTec</h1>
-            <ul class="navbar">
-                <li>
-                    <a href="./index.html">
-                        Inicial
-                    </a>
-                </li>
-                <li>
-                    <a href="./simulador.html">Simulador</a>    
-                </li>
-                <li>|</li>
-                <li class="agora">
-                    <a href="./login.html">Login</a>
-                </li>
-                <li>
-                    <a href="./cadastro.html">Cadastro</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+<body data-spy='scroll' data-target=".navbar" data-offset='50' class="body">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="fotos/logo 2.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                    <a class="nav-link" href="WeGrowffee.html#home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
 
-    <div class="banner-login">
-        <div class="container">
-            <div class="card medio">
-                <h2>Olá de volta!</h2>
+    <div class="login-page" id="tela_login">
+        <div class="form">
+            <img src="fotos/avatar 2.png" class="avatar" width="120"  alt="">
+            <h1>Login</h1>
                 <div class="formulario">
-                    <form id="form_login" method="post" onsubmit="return entrar()">
-                        E-mail:
-                        <input name="email" type="text" placeholder="Login">
+                    <form id="form_login" class="login-form" method="post" onsubmit="return entrar()">
+                        <p>E-mail</p>
+                        <input name="email" class="inputt" type="text" placeholder="Insira seu E-mail">
                         <br>
-                        Senha:
-                        <input name="senha" type="password" placeholder="******">
+                        <p>Senha</p>
+                        <input name="senha" class="inputt" type="password" placeholder="******">
                         <br>
-                        <button class="btn" type="submit">
-                            Entrar
-                        </button>
+                        <input class="btnin" type="submit" value="Entrar" onclick="entrarlogin()">
+                    </input>
+                        <p class="textobaixol">Não é registrado? <a href="cadastro.html" onclick="mudarcadastro()">Cadastre-se!</a></p>
                     </form>
 
 
                 </div>
 
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                    
                 </div>
 
                 <div id="div_erros_login">
@@ -76,12 +70,6 @@
         </div>
     </div>
 
-    <!--footer inicio-->
-    <div class="footer">
-        <div class="container">
-            <h4>Feito com amor por um aluno BandTec &copy; 2021</h4>
-        </div>
-    </div>
 
     <!-- modal?
 

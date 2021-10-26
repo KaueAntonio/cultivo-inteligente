@@ -18,16 +18,17 @@ var sqlServerConfig = {
 }
 
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
-// var mySqlConfig = {
-//     host: "XXXXX",
-//     user: "XXXXX",
-//     database: "XXXXX",
-//     password: "XXXXX",
-// };
+var mySqlConfig = {
+    host: "cultivo.mysql.database.azure.com",
+    user: "cultivo123@cultivo",
+    database: "Cultivo",
+    password: "cultivo@123",
+};
+
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js
-    if (process.env.WeGrowffee == "producao") {
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
         return new Promise(function (resolve, reject) {
             sql.connect(sqlServerConfig).then(function () {
                 return sql.query(instrucao);
@@ -42,7 +43,7 @@ function executar(instrucao) {
                 return ("ERRO NO SQL SERVER (Azure): ", erro);
              });
         });
-    } else if(process.env.WeGrowffee == "desenvolvimento"){    
+    } else if(process.env.AMBIENTE_PROCESSO == "desenvolvimento"){    
         return new Promise(function (resolve, reject) {
             var conexao = mysql.createConnection(mySqlConfig);
             conexao.connect();

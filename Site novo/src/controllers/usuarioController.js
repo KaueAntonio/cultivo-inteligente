@@ -89,9 +89,36 @@ function cadastrar(req, res) {
     }
 }
 
+function inserir_dados(req, res) {
+    var temp = req.body.valor_temperatura;
+    var umi = req.body.valor_umidade;
+    if (temp == undefined) {
+        res.status(400).send("Sua temperatura está undefined!");
+    } else if (umi == undefined) {
+        res.status(400).send("Sua temperatura está undefined!");
+    } else{
+        usuarioModel.inserir_dados(temp, umi)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a inserção de valores! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,   
-    testar
+    testar,
+    inserir_dados
 }

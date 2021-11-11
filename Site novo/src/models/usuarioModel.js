@@ -29,9 +29,9 @@ function cadastrar(nome, email, senha) {
 
 function inserir_dados(temp, umi) {
     console.log("ACESSEI O O INSERIR DADOS \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():");
-    
+    let data = new Date();
     var instrucao = `
-        INSERT INTO dados (temp, umi) VALUES (${temp}, ${umi});
+        INSERT INTO dados (temp, umi, dia, mes, ano, hora) VALUES (${temp}, ${umi}, '${data.getDate()}', '${data.getMonth() + 1}', '${data.getFullYear()}', '${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}');
     `;
     console.log("Executando a instrução SQL: \n"+instrucao);
     return database.executar(instrucao);

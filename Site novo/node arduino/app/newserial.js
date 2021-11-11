@@ -28,6 +28,7 @@ class ArduinoRead {
             console.log(dht11[0]);
             console.log(dht11[1]);
             this.listData.push(dht11);
+            
         }, 2000);
     }
 

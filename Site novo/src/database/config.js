@@ -19,10 +19,10 @@ var sqlServerConfig = {
 
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
 var mySqlConfig = {
-    host: "127.0.0.1",
-    user: "urubu100",
+    host: "cultivo.mysql.database.azure.com",
+    user: "cultivo123@cultivo",
     database: "cultivo",
-    password: "urubu100",
+    password: "cultivo@123",
     port: "3306",
 };
 

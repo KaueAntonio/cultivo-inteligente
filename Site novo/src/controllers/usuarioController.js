@@ -95,7 +95,7 @@ function inserir_dados(req, res) {
     if (temp == undefined) {
         res.status(400).send("Sua temperatura está undefined!");
     } else if (umi == undefined) {
-        res.status(400).send("Sua temperatura está undefined!");
+        res.status(400).send("Sua umidade está undefined!");
     } else{
         usuarioModel.inserir_dados(temp, umi)
         .then(

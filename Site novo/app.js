@@ -26,7 +26,5 @@ app.use("/medidas", medidasRouter)
 
 app.listen(PORTA, function() {
     console.log(`Servidor do site está rodando rodando: http://localhost:${PORTA} \n
-    Você está rodando sua aplicação em ${process.env.AMBIENTE_PROCESSO} \n
-    \t\tSe "desenvolvimento", banco local (MySQL Workbench). \n
-    \t\tSe "producao", banco remoto (SQL Server em nuvem Azure)`);
+    Você está rodando sua aplicação em ${process.env.AMBIENTE_PROCESSO}`);
 });

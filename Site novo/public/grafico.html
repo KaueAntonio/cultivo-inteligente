@@ -537,24 +537,32 @@
                 console.log(`#ERRO: ${resposta}`);
             });
 
-        // var resultado = new URLSearchParams(new FormData(document.getElementById("form_infos")));
 
-        //     fetch("/selecionar/select", {
-        //     method: "GET",
-        //     body: resultado
-        //     }).then(function (resposta) {
+            fetch("/selecionar/select", {
+            method: "GET",
+            }).then(function (resposta) {
 
-        //         console.log("resposta: ", resposta);
+                console.log("resposta: ", resposta);
+                
+                resposta.json().then(function(data){
+                    let len = data.length;
+                    for (let i = 0; i <= len; i++){
+                        let arquivo = data[i];
 
-        //         if (resposta.ok) {
-        //             console.log("dados recebidos!");
+                        average.innerHTML = `${arquivo.mediatemp}`
+                        average2.innerHTML = `${arquivo.mediaumi}`
+                    }
+                })
 
-        //         } else {
-        //             throw ("Houve um erro ao tentar realizar o select!");
-        //         }
-        //     }).catch(function (resposta) {
-        //         console.log(`#ERRO: ${resposta}`);
-        //     });
+                if (resposta.ok) {
+                    console.log("dados recebidos!");
+
+                } else {
+                    throw ("Houve um erro ao tentar realizar o select!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
 
 
 

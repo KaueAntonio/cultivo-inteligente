@@ -18,15 +18,21 @@
 
 <body>
 	<div>
-		<h1>Dados Enviados: <span id="daosreais">0</span></h1>
+		<h1>Dados Lidos: <span id="dadosreais">0</span></h1>
+		<div>
+			<span>Média: <b id="med"></b></span>
+			<span>Max: <b id="max"></b></span>
+			<span>Min: <b id="min"></b></span>
+		</div>
 		
 	</div>
 	
 	<script>
 		var cont = 0;
+		
 		function sendSensorsData(){
 				var http = new XMLHttpRequest();
-				http.open('POST', 'http://localhost:3000/api/sendData', false);
+				http.open('GET', 'http://localhost:3000/api/sendData', false);
 				http.send(null);
 				cont++;
 				document.getElementById('dadosreais').textContent = cont;

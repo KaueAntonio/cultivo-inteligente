@@ -26,7 +26,7 @@
 </style>
 
 
-<body class="body2">
+<body class="body2" onload="validarSessao()">
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -246,6 +246,20 @@
     const velocity = 1000;
     var dados_temperatura = 0;
     var dados_umidade = 0;
+
+    function validarSessao() {
+    // aguardar();
+
+    var email = sessionStorage.EMAIL_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+    
+    if (email != null && nome != null) {
+        b_usuario.innerHTML = nome;       
+        // finalizarAguardar();
+    } else {
+        window.location = "../login.html";
+    }
+}
 
     var context = document.getElementById("chart").getContext("2d");
     context.canvas.width = 1000;

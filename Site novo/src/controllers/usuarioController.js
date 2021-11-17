@@ -138,5 +138,6 @@ module.exports = {
     cadastrar,
     listar,   
     testar,
-    inserir_dados
+    inserir_dados,
+    selecionar
 }

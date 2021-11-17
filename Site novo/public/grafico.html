@@ -63,7 +63,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="WeGrowffee.html#home" onclick="deslogar()">Sair</a>
+                            <a class="nav-link" href="WeGrowffee.html#home" onclick="limparSessao()">Sair</a>
                         </li>
                     </ul>
                 </div>
@@ -252,14 +252,50 @@
 
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
-    
-    if (email != null && nome != null) {
-        b_usuario.innerHTML = nome;       
-        // finalizarAguardar();
-    } else {
-        window.location = "../login.html";
-    }
+
+    fetch("/usuarios/select", {
+            method: "GET",
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+                
+                resposta.json().then(function(data){
+                    let len = data.length;
+                    for (let i = 0; i <= len; i++){
+                        let arquivo = data[i];
+
+                        average.innerHTML = `${arquivo.mediatemp}`
+                        average2.innerHTML = `${arquivo.mediaumi}`
+                    }
+                })
+
+                if (resposta.ok) {
+                    console.log("dados recebidos!");
+
+                } else {
+                    throw ("Houve um erro ao tentar realizar o select!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+
+            if (email != null && nome != null) {
+                b_usuario.innerHTML = nome;       
+                // finalizarAguardar();
+            } else {
+                window.location = "../login.html";
+            }
 }
+        function limparSessao() {
+            // aguardar();
+            sessionStorage.clear();
+        // finalizarAguardar();
+            window.location = "../login.html";
+        }
+    
+
+
 
     var context = document.getElementById("chart").getContext("2d");
     context.canvas.width = 1000;
@@ -552,32 +588,7 @@
             });
 
 
-            fetch("/usuarios/select", {
-            method: "GET",
-            }).then(function (resposta) {
-
-                console.log("resposta: ", resposta);
-                
-                resposta.json().then(function(data){
-                    let len = data.length;
-                    for (let i = 0; i <= len; i++){
-                        let arquivo = data[i];
-
-                        average.innerHTML = `${arquivo.mediatemp}`
-                        average2.innerHTML = `${arquivo.mediaumi}`
-                    }
-                })
-
-                if (resposta.ok) {
-                    console.log("dados recebidos!");
-
-                } else {
-                    throw ("Houve um erro ao tentar realizar o select!");
-                }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-
+            
 
 
            

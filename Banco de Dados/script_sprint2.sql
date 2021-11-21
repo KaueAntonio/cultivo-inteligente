@@ -1,6 +1,6 @@
-create database sprint2;
+create database cultivo;
 
-use sprint2;
+use cultivo;
 
 CREATE TABLE empresa (
 Idempresa int primary key auto_increment,
@@ -23,6 +23,21 @@ Email VARCHAR(40),
 Fkempresa INT, 
 FOREIGN KEY (Fkempresa) REFERENCES empresa (Idempresa)
 );
+
+create table avaliacoes(
+idAvaliacao int primary key auto_increment,
+titulo varchar(40),
+num_estrelas int,
+mensagem varchar(150),
+dia float, 
+mes float, 
+ano float, 
+Fkempresa INT, 
+FOREIGN KEY (Fkempresa) REFERENCES empresa (Idempresa)
+);
+
+insert into avaliacoes values
+(null, 'Muito Bom mesmo', 5, 'muio legal muito bom aprovado!', 20, 11, 2021, 1);
 
 insert into empresa (nome,cnpj,cep,endereço,numero,cidade,estado,site,telefone) values
 ('Coffe&ltda','98.155.730/0001-66','19580-970','Rua Domingos Ferreira de Medeiros','488','Anhumas','sp','coffeltda.net',1244-3333),
@@ -112,13 +127,18 @@ insert into sensor (nomeSensor, fkestufa) values
 
 create table dadosSensor (
 idDados int primary key auto_increment,
-dataHora datetime default current_timestamp,
-umidade float,
-temperatura float,
-fksensor int,
+umi float, 
+temp float, 
+dia float, 
+mes float, 
+ano float, 
+hora varchar(15), 
+fkSensor int,
 foreign key (fksensor) references sensor (idsensor)
 );
 
+
+drop table dadossensor;
 insert into dadosSensor (umidade, temperatura) values 
 (11.5, 20.7),
 (12.5, 21.2),
@@ -160,6 +180,7 @@ insert into dados_agua ( consumo ) values
 ('1101', 8),
 ('1078', 9),
 ('1092', 10);
+
 
 
 select * from usuario;

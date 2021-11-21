@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliações</title>
+    <style onload="ver()">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .container_avaliacao{
+            margin: 40px;
+            padding: 10px;
+            word-wrap: break-word;
+            border: 1px solid black;
+            width: 400px;
+            height: auto;
+            background-color: rgba(243, 240, 235, 0.315);
+        }
+
+        .avaliacao_estrela{
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body><div id="resultados">
+    
+</div>
+</body>
+</html>
+<script>
+
+resultados.innerHTML = '';
+fetch("/avaliacoes/listar", {
+    method: "GET",
+}).then(function (resposta) {
+
+    console.log("resposta: ", resposta);
+
+    resposta.json().then(function (data){
+       
+        let len = data.length;
+        for (let i = 0; i <= len; i++){
+        let arquivo = data[i];
+            console.log(JSON.stringify(arquivo));
+        
+            resultados.innerHTML += (`<div class="container_avaliacao">
+        <div class="container_estrelas" style="display: flex; align-items: center; flex-direction: row;">
+            <img class="avaliacao_estrela" src="./fotos/stary.png" alt="">
+            <img class="avaliacao_estrela" src="./fotos/stary.png" alt="">
+            <img class="avaliacao_estrela" src="./fotos/stary.png" alt="">
+            <img class="avaliacao_estrela" src="./fotos/stary.png" alt="">
+            <img class="avaliacao_estrela" src="./fotos/stary.png" alt="">
+            ${arquivo.num_estrelas}
+        </div>
+        <br>
+        <b style="padding: 6px;">${arquivo.titulo}</b><br><br>
+        ${arquivo.mensagem}<br><br>
+        <h4 style="margin-left: 20px;">${arquivo.Usuário} - ${arquivo.nome}
+            <br> ${arquivo.dia}/${arquivo.mes}/${arquivo.ano}</h4>
+    </div><br><br>`);
+        }
+    });
+}).catch(function(error){
+    console.error(`ERROR`, error);
+});
+    
+</script>

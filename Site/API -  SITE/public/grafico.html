@@ -18,7 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
-    
+
 </head>
 
 <style>
@@ -188,14 +188,14 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
@@ -432,9 +432,9 @@
     var chart = new Chart(context, configuration);
     this.lastIndexTemp = 0;
     this.time = 0;
-    
+
     function get_data() {
-        
+
         fetch("/medidas/listar", {
             method: "GET",
         }).then(function (resposta) {
@@ -442,99 +442,104 @@
             //console.log("resposta: ", resposta);
 
             resposta.json().then(function (data) {
-   
+
                 len = data.length;
-                
-                    arquivo = data;
-                    //    console.log(`Dados recebidos: ${JSON.stringify(arquivo[len-1])}`);
-                    temp_total = [];
-                    umi_total = [];
-                    if (arquivo[arquivo.length - 1].idDados == momento) {
-                        logs1.innerHTML = (`<BR><BR><h3 style="color: #9e1515;">ATENÇÃO!! NENHUM DADO SENDO ATUALIZADO NO BANCO!!<br><BR>ENTRE EM CONTATO COM O SUPORTE<br>CLICANDO <a class="" href="WeGrowffee1.html#faleconosco">AQUI</a></h3><br>`);
-                            logs2.innerHTML = (`<BR><BR><h3 style="color: #9e1515;">ATENÇÃO!! NENHUM DADO SENDO ATUALIZADO NO BANCO!!<br><BR>ENTRE EM CONTATO COM O SUPORTE<br>CLICANDO <a class="" href="WeGrowffee1.html#faleconosco">AQUI</a> </h3><br>`);
-                                return false;
-                            }
-                            momento = arquivo[arquivo.length - 1].idDados;
-                   
-                    for (j = 0; j < data.length; j++) {
 
-                        if (arquivo[j].temp != undefined) {
-                            temp_total.push(parseFloat(arquivo[j].temp));
-                        }
-                        if (arquivo[j].umi != undefined) {
-                            umi_total.push(parseFloat(arquivo[j].umi));
+                arquivo = data;
+                //    console.log(`Dados recebidos: ${JSON.stringify(arquivo[len-1])}`);
+                temp_total = [];
+                umi_total = [];
+                if (arquivo[arquivo.length - 1].idDados == momento) {
+                    logs1.innerHTML = (
+                        `<BR><BR><h3 style="color: #9e1515;">ATENÇÃO!! NENHUM DADO SENDO ATUALIZADO NO BANCO!!<br><BR>ENTRE EM CONTATO COM O SUPORTE<br>CLICANDO <a class="" href="WeGrowffee1.html#faleconosco">AQUI</a></h3><br>`
+                        );
+                    logs2.innerHTML = (
+                        `<BR><BR><h3 style="color: #9e1515;">ATENÇÃO!! NENHUM DADO SENDO ATUALIZADO NO BANCO!!<br><BR>ENTRE EM CONTATO COM O SUPORTE<br>CLICANDO <a class="" href="WeGrowffee1.html#faleconosco">AQUI</a> </h3><br>`
+                        );
+                    return false;
+                }
+                momento = arquivo[arquivo.length - 1].idDados;
 
-                        }
+                for (j = 0; j < data.length; j++) {
+
+                    if (arquivo[j].temp != undefined) {
+                        temp_total.push(parseFloat(arquivo[j].temp));
                     }
+                    if (arquivo[j].umi != undefined) {
+                        umi_total.push(parseFloat(arquivo[j].umi));
 
-                    
-        
-
-        
-                    temp.push(parseFloat(arquivo[len - 1].temp));
-                    umi.push(parseFloat(arquivo[len - 1].umi));
-
-
-                    document.getElementById('realtime_temp').textContent = temp_total[temp_total.length - 1];
-                    document.getElementById('realtime_umid').textContent = umi_total[umi_total.length - 1];
-
-                    cont = temp.length;
-                    if (chart.data.labels.length == 10 && chart.data.datasets[0].data.length == 10) {
-                        chart.data.labels.shift();
-                        chart.data.datasets[0].data.shift();
                     }
-
-                    chart.data.labels.push(this.time++);
-                    chart.data.datasets[0].data.push(parseFloat(umi_total[umi_total.length - 1]));
-                    chart.update();
-
-                    if (chart2.data.labels.length == 10 && chart2.data.datasets[0].data.length == 10) {
-                        chart2.data.labels.shift();
-                        chart2.data.datasets[0].data.shift();
-                    }
-
-                    chart2.data.labels.push(this.time++);
-                    chart2.data.datasets[0].data.push(parseFloat(temp_total[temp_total.length - 1]));
-                    chart2.update();
-
-                    if (chart3.data.labels.length == 10 && chart3.data.datasets[0].data.length == 10) {
-                        chart3.data.labels.shift();
-                        chart3.data.datasets[0].data.shift();
-                        chart3.data.datasets[1].data.shift();
-                        chart3.data.datasets[2].data.shift();
-                    }
-
-                    chart3.data.labels.push(this.time++);
-                    chart3.data.datasets[0].data.push(parseFloat(temp_contr));
-                    chart3.update();
-                    chart3.data.datasets[1].data.push(parseFloat(temp_conto));
-                    chart3.update();
-                    chart3.data.datasets[2].data.push(parseFloat(temp_conty));
-                    chart3.update();
-
-                    if (chart4.data.labels.length == 10 && chart4.data.datasets[0].data.length == 10) {
-                        chart4.data.labels.shift();
-                        chart4.data.datasets[0].data.shift();
-                        chart4.data.datasets[1].data.shift();
-                        chart4.data.datasets[2].data.shift();
-                    }
-
-                    chart4.data.labels.push(this.time++);
-                    chart4.data.datasets[0].data.push(parseFloat(umi_contr));
-                    chart4.update();
-                    chart4.data.datasets[1].data.push(parseFloat(umi_conto));
-                    chart4.update();
-                    chart4.data.datasets[2].data.push(parseFloat(umi_conty));
-                    chart4.update();
-
-
-                    
+                }
 
 
 
-                  
-                    
-                
+
+
+                temp.push(parseFloat(arquivo[len - 1].temp));
+                umi.push(parseFloat(arquivo[len - 1].umi));
+
+
+                document.getElementById('realtime_temp').textContent = temp_total[temp_total.length -
+                1];
+                document.getElementById('realtime_umid').textContent = umi_total[umi_total.length - 1];
+
+                cont = temp.length;
+                if (chart.data.labels.length == 10 && chart.data.datasets[0].data.length == 10) {
+                    chart.data.labels.shift();
+                    chart.data.datasets[0].data.shift();
+                }
+
+                chart.data.labels.push(this.time++);
+                chart.data.datasets[0].data.push(parseFloat(umi_total[umi_total.length - 1]));
+                chart.update();
+
+                if (chart2.data.labels.length == 10 && chart2.data.datasets[0].data.length == 10) {
+                    chart2.data.labels.shift();
+                    chart2.data.datasets[0].data.shift();
+                }
+
+                chart2.data.labels.push(this.time++);
+                chart2.data.datasets[0].data.push(parseFloat(temp_total[temp_total.length - 1]));
+                chart2.update();
+
+                if (chart3.data.labels.length == 10 && chart3.data.datasets[0].data.length == 10) {
+                    chart3.data.labels.shift();
+                    chart3.data.datasets[0].data.shift();
+                    chart3.data.datasets[1].data.shift();
+                    chart3.data.datasets[2].data.shift();
+                }
+
+                chart3.data.labels.push(this.time++);
+                chart3.data.datasets[0].data.push(parseFloat(temp_contr));
+                chart3.update();
+                chart3.data.datasets[1].data.push(parseFloat(temp_conto));
+                chart3.update();
+                chart3.data.datasets[2].data.push(parseFloat(temp_conty));
+                chart3.update();
+
+                if (chart4.data.labels.length == 10 && chart4.data.datasets[0].data.length == 10) {
+                    chart4.data.labels.shift();
+                    chart4.data.datasets[0].data.shift();
+                    chart4.data.datasets[1].data.shift();
+                    chart4.data.datasets[2].data.shift();
+                }
+
+                chart4.data.labels.push(this.time++);
+                chart4.data.datasets[0].data.push(parseFloat(umi_contr));
+                chart4.update();
+                chart4.data.datasets[1].data.push(parseFloat(umi_conto));
+                chart4.update();
+                chart4.data.datasets[2].data.push(parseFloat(umi_conty));
+                chart4.update();
+
+
+
+
+
+
+
+
+
 
             });
         }).catch(function (error) {
@@ -547,223 +552,254 @@
 
 
     }
- function get_data2(){
-    for (let k = 0; k <=1; k++){
-if (temp_total[temp_total.length - 1] >= 24.5) {
-    temp_contr++;//ADICIONA 1 NA CONTAGEM DE ALERTAS VERMELHOS
-    let data_realtime = new Date();//PEGA A DATA ATUAL
-    document.getElementById('status_temp').style.backgroundColor = 'red';//MUDA A COR DE FUNDO DO STATUS PRA VERMELHO
-    logs2.innerHTML += (`<p style="color: red">ATENÇÃO!! A Temperatura da sua estufa está em estado crítico! (x${temp_contr}) - ${data_realtime}</p><br>`);//ADICIONA UMA MENSAGEM NO LOG
-    logs2.scroll(0, scrollPosition += velocity);//SCROLLA O LOG PRA BAIXO TODA VEZ QUE É ADICIONADO MENSAGEM
-}
 
+    function get_data2() {
+        for (let k = 0; k <= 1; k++) {
+            if (temp_total[temp_total.length - 1] >= 24.5) {
+                temp_contr++; //ADICIONA 1 NA CONTAGEM DE ALERTAS VERMELHOS
+                let data_realtime = new Date(); //PEGA A DATA ATUAL
+                document.getElementById('status_temp').style.backgroundColor =
+                'red'; //MUDA A COR DE FUNDO DO STATUS PRA VERMELHO
+                logs2.innerHTML += (
+                    `<p style="color: red">ATENÇÃO!! A Temperatura da sua estufa está em estado crítico! (x${temp_contr}) - ${data_realtime}</p><br>`
+                    ); //ADICIONA UMA MENSAGEM NO LOG
+                logs2.scroll(0, scrollPosition +=
+                velocity); //SCROLLA O LOG PRA BAIXO TODA VEZ QUE É ADICIONADO MENSAGEM
+            }
+
+
+
+            if (temp_total[temp_total.length - 1] >= 23.5 && temp_total[temp_total.length - 1] < 24.5) {
+                temp_conto++;
+                let data_realtime = new Date();
+                document.getElementById('status_temp').style.backgroundColor = 'orange';
+                logs2.innerHTML += (
+                    `<p style="color: orange">ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência! (x${temp_conto}) - ${data_realtime}</p><br>`
+                    );
+                logs2.scroll(0, scrollPosition += velocity);
+            }
+
+
+
+
+            if (temp_total[temp_total.length - 1] < 23.5 && temp_total[temp_total.length - 1] > 21) {
+                temp_conty++;
+                let data_realtime = new Date();
+                document.getElementById('status_temp').style.backgroundColor = '#9da832';
+                logs2.innerHTML += (
+                    `<p style="color: yellow">ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta! (x${temp_conty}) - ${data_realtime}</p><br>`
+                    );
+                logs2.scroll(0, scrollPosition += velocity);
+            }
+
+
+
+            if (temp_total[temp_total.length - 1] < 19 && temp_total[temp_total.length - 1] > 16.5) {
+                temp_conty++;
+                let data_realtime = new Date();
+                document.getElementById('status_temp').style.backgroundColor = '#9da832';
+                logs2.innerHTML += (
+                    `<p style="color: yellow">ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta! (x${temp_conty}) - ${data_realtime}</p><br>`
+                    );
+                logs2.scroll(0, scrollPosition += velocity);
+            }
+
+
+
+            if (temp_total[temp_total.length - 1] <= 16.5 && temp_total[temp_total.length - 1] > 15.5) {
+                temp_conto++;
+                let data_realtime = new Date();
+                document.getElementById('status_temp').style.backgroundColor = 'orange';
+                logs2.innerHTML += (
+                    `<p style="color: orange">ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência! (x${temp_conto}) - ${data_realtime}</p><br>`
+                    );
+                logs2.scroll(0, scrollPosition += velocity);
+            }
 
 
-if (temp_total[temp_total.length - 1] >= 23.5 && temp_total[temp_total.length - 1] < 24.5) {
-    temp_conto++;
-    let data_realtime = new Date();
-    document.getElementById('status_temp').style.backgroundColor = 'orange';
-    logs2.innerHTML += (`<p style="color: orange">ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência! (x${temp_conto}) - ${data_realtime}</p><br>`);
-    logs2.scroll(0, scrollPosition += velocity);
-}
 
+            if (temp_total[temp_total.length - 1] <= 15.5) {
+                temp_contr++;
+                let data_realtime = new Date();
+                document.getElementById('status_temp').style.backgroundColor = 'red';
+                logs2.innerHTML += (
+                    `<p style="color: red">ATENÇÃO!! A Temperatura da sua estufa está em estado crítico! (x${temp_contr}) - ${data_realtime}</p><br>`
+                    );
+                logs2.scroll(0, scrollPosition += velocity);
+            }
 
 
 
-if (temp_total[temp_total.length - 1] < 23.5 && temp_total[temp_total.length - 1] > 21) {
-    temp_conty++;
-    let data_realtime = new Date();
-    document.getElementById('status_temp').style.backgroundColor = '#9da832';
-    logs2.innerHTML += (`<p style="color: yellow">ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta! (x${temp_conty}) - ${data_realtime}</p><br>`);
-    logs2.scroll(0, scrollPosition += velocity);
-}
+            if (temp_total[temp_total.length - 1] >= 19 && temp_total[temp_total.length - 1] <= 21) {
+                document.getElementById('status_temp').style.backgroundColor = 'green';
+            }
 
+            if (umi_total[umi_total.length - 1] >= 16.2) {
+                umi_contr++;
+                let data_realtime = new Date();
+                document.getElementById('status_umid').style.backgroundColor = 'red';
+                logs1.innerHTML += (
+                    `<p style="color: red">ATENÇÃO!! A Umidade da sua estufa está em estado crítico! (x${umi_contr}) - ${data_realtime}</p><br>`
+                    );
+                logs1.scroll(0, scrollPosition += velocity);
+            }
 
 
-if (temp_total[temp_total.length - 1] < 19 && temp_total[temp_total.length - 1] > 16.5) {
-    temp_conty++;
-    let data_realtime = new Date();
-    document.getElementById('status_temp').style.backgroundColor = '#9da832';
-    logs2.innerHTML += (`<p style="color: yellow">ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta! (x${temp_conty}) - ${data_realtime}</p><br>`);
-    logs2.scroll(0, scrollPosition += velocity);
-}
 
+            if (umi_total[umi_total.length - 1] >= 14.2 && umi_total[umi_total.length - 1] < 16.2) {
+                umi_conto++;
+                let data_realtime = new Date();
+                document.getElementById('status_umid').style.backgroundColor = 'orange';
+                logs1.innerHTML += (
+                    `<p style="color: orange">ATENÇÃO!! A Umidade da sua estufa está em estado de emergência! (x${umi_conto}) - ${data_realtime}</p><br>`
+                    );
+                logs1.scroll(0, scrollPosition += velocity);
+            }
 
 
-if (temp_total[temp_total.length - 1] <= 16.5 && temp_total[temp_total.length - 1] > 15.5) {
-    temp_conto++;
-    let data_realtime = new Date();
-    document.getElementById('status_temp').style.backgroundColor = 'orange';
-    logs2.innerHTML += (`<p style="color: orange">ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência! (x${temp_conto}) - ${data_realtime}</p><br>`);
-    logs2.scroll(0, scrollPosition += velocity);
-}
 
+            if (umi_total[umi_total.length - 1] < 14.2 && umi_total[umi_total.length - 1] > 11.2) {
+                umi_conty++;
+                let data_realtime = new Date();
+                document.getElementById('status_umid').style.backgroundColor = '#9da832';
+                logs1.innerHTML += (
+                    `<p style="color: yellow">ATENÇÃO!! A Umidade da sua estufa está em estado de alerta! (x${umi_conty}) - ${data_realtime}</p><br>`
+                    );
+                logs1.scroll(0, scrollPosition += velocity);
+            }
 
 
-if (temp_total[temp_total.length - 1] <= 15.5) {
-    temp_contr++;
-    let data_realtime = new Date();
-    document.getElementById('status_temp').style.backgroundColor = 'red';
-    logs2.innerHTML += (`<p style="color: red">ATENÇÃO!! A Temperatura da sua estufa está em estado crítico! (x${temp_contr}) - ${data_realtime}</p><br>`);
-    logs2.scroll(0, scrollPosition += velocity);
-}
 
+            if (umi_total[umi_total.length - 1] < 10.8 && umi_total[umi_total.length - 1] > 7.8) {
+                umi_conty++;
+                let data_realtime = new Date();
+                document.getElementById('status_umid').style.backgroundColor = '#9da832';
+                logs1.innerHTML += (
+                    `<p style="color: yellow">ATENÇÃO!! A Umidade da sua estufa está em estado de alerta! (x${umi_conty}) - ${data_realtime}</p><br>`
+                    );
+                logs1.scroll(0, scrollPosition += velocity);
+            }
 
 
-if (temp_total[temp_total.length - 1] >= 19 && temp_total[temp_total.length - 1] <= 21) {
-    document.getElementById('status_temp').style.backgroundColor = 'green';
-}
 
-if (umi_total[umi_total.length - 1] >= 16.2) {
-    umi_contr++;
-    let data_realtime = new Date();
-    document.getElementById('status_umid').style.backgroundColor = 'red';
-    logs1.innerHTML += (`<p style="color: red">ATENÇÃO!! A Umidade da sua estufa está em estado crítico! (x${umi_contr}) - ${data_realtime}</p><br>`);
-    logs1.scroll(0, scrollPosition += velocity);
-}
+            if (umi_total[umi_total.length - 1] <= 7.8 && umi_total[umi_total.length - 1] > 5.8) {
+                umi_conto++;
+                let data_realtime = new Date();
+                document.getElementById('status_umid').style.backgroundColor = 'orange';
+                logs1.innerHTML += (
+                    `<p style="color: orange">ATENÇÃO!! A Umidade da sua estufa está em estado de emergência! (x${umi_conto}) - ${data_realtime}</p><br>`
+                    );
+                logs1.scroll(0, scrollPosition += velocity);
+            }
 
 
 
-if (umi_total[umi_total.length - 1] >= 14.2 && umi_total[umi_total.length - 1] < 16.2) {
-    umi_conto++;
-    let data_realtime = new Date();
-    document.getElementById('status_umid').style.backgroundColor = 'orange';
-    logs1.innerHTML += (`<p style="color: orange">ATENÇÃO!! A Umidade da sua estufa está em estado de emergência! (x${umi_conto}) - ${data_realtime}</p><br>`);
-    logs1.scroll(0, scrollPosition += velocity);
-}
+            if (umi_total[umi_total.length - 1] <= 5.8) {
+                umi_contr++;
+                let data_realtime = new Date();
+                document.getElementById('status_umid').style.backgroundColor = 'red';
+                logs1.innerHTML += (
+                    `<p style="color: red">ATENÇÃO!! A Umidade da sua estufa está em estado crítico! (x${umi_contr}) - ${data_realtime}</p><br>`
+                    );
+                logs1.scroll(0, scrollPosition += velocity);
+            }
 
 
+            if (umi_total[umi_total.length - 1] >= 10.8 && umi_total[umi_total.length - 1] <= 11.2) {
+                document.getElementById('status_umid').style.backgroundColor = 'green';
+            }
 
-if (umi_total[umi_total.length - 1] < 14.2 && umi_total[umi_total.length - 1] > 11.2) {
-    umi_conty++;
-    let data_realtime = new Date();
-    document.getElementById('status_umid').style.backgroundColor = '#9da832';
-    logs1.innerHTML += (`<p style="color: yellow">ATENÇÃO!! A Umidade da sua estufa está em estado de alerta! (x${umi_conty}) - ${data_realtime}</p><br>`);
-    logs1.scroll(0, scrollPosition += velocity);
-}
 
 
 
-if (umi_total[umi_total.length - 1] < 10.8 && umi_total[umi_total.length - 1] > 7.8) {
-    umi_conty++;
-    let data_realtime = new Date();
-    document.getElementById('status_umid').style.backgroundColor = '#9da832';
-    logs1.innerHTML += (`<p style="color: yellow">ATENÇÃO!! A Umidade da sua estufa está em estado de alerta! (x${umi_conty}) - ${data_realtime}</p><br>`);
-    logs1.scroll(0, scrollPosition += velocity);
-}
+            //FÓRMULA MÉDIA
+            let sum = umi_total.reduce((a, b) => a + b);
+            let sum2 = temp_total.reduce((a, b) => a + b);
 
 
+            mediaumi = sum / umi_total.length;
+            mediatemp = sum2 / umi_total.length;
+            document.getElementById('average').textContent = mediaumi.toFixed(1);
+            document.getElementById('average2').textContent = mediatemp.toFixed(1);
+            //-----------------------------------
 
-if (umi_total[umi_total.length - 1] <= 7.8 && umi_total[umi_total.length - 1] > 5.8) {
-    umi_conto++;
-    let data_realtime = new Date();
-    document.getElementById('status_umid').style.backgroundColor = 'orange';
-    logs1.innerHTML += (`<p style="color: orange">ATENÇÃO!! A Umidade da sua estufa está em estado de emergência! (x${umi_conto}) - ${data_realtime}</p><br>`);
-    logs1.scroll(0, scrollPosition += velocity);
-}
 
+            //FÓRMULA MEDIANA
+            dir_temp = temp_total.length - 1;
+            esq_temp = temp_total[0];
+            meio_temp = (dir_temp + esq_temp) / 2;
 
+            dir_umi = umi_total.length - 1;
+            esq_umi = umi_total[0];
+            meio_umi = (dir_umi + esq_umi) / 2;
 
-if (umi_total[umi_total.length - 1] <= 5.8) {
-    umi_contr++;
-    let data_realtime = new Date();
-    document.getElementById('status_umid').style.backgroundColor = 'red';
-    logs1.innerHTML += (`<p style="color: red">ATENÇÃO!! A Umidade da sua estufa está em estado crítico! (x${umi_contr}) - ${data_realtime}</p><br>`);
-    logs1.scroll(0, scrollPosition += velocity);
-}
+            document.getElementById('mediana_umid').textContent = umi_total[parseInt(meio_umi)];
+            document.getElementById('mediana_temp').textContent = temp_total[parseInt(meio_temp)];
+            //-----------------------------------
 
 
-if (umi_total[umi_total.length - 1] >= 10.8 && umi_total[umi_total.length - 1] <= 11.2) {
-    document.getElementById('status_umid').style.backgroundColor = 'green';
-}
+            //FÓRMULA 1ºQUARTIL
+            resto_temp = (dir_temp / 4) % 1;
+            f_temp = 1 - resto_temp;
+            prim_quartil_temp = temp_total[parseInt(dir_temp / 4)] + (resto_temp * (temp_total[parseInt(resto_temp +
+                f_temp)] - temp_total[parseInt(dir_temp / 4)]));
 
+            resto_umi = (dir_umi / 4) % 1;
+            f_umi = 1 - resto_umi;
+            prim_quartil_umid = umi_total[parseInt(dir_umi / 4)] + (resto_umi * (umi_total[parseInt(resto_umi +
+                f_umi)] - umi_total[parseInt(dir_umi / 4)]));
 
+            document.getElementById('1quartil_temp').textContent = prim_quartil_temp.toFixed(1);
+            document.getElementById('1quartil_umid').textContent = prim_quartil_umid.toFixed(1);
+            //-----------------------------------
 
 
-        //FÓRMULA MÉDIA
-        let sum = umi_total.reduce((a, b) => a + b);
-        let sum2 = temp_total.reduce((a, b) => a + b);
 
+            //FÓRMULA 3ºQUARTIL
+            terc_resto_temp = (3 * (dir_temp / 4)) % 1;
+            terc_f_temp = 1 - terc_resto_temp;
+            terc_quartil_temp = temp_total[parseInt(dir_temp / 4)] + (terc_resto_temp * (temp_total[parseInt(
+                terc_resto_temp + f_temp)] - temp_total[parseInt(dir_temp / 4)]));
 
-        mediaumi = sum / umi_total.length;
-        mediatemp = sum2 / umi_total.length;
-        document.getElementById('average').textContent = mediaumi.toFixed(1);
-        document.getElementById('average2').textContent = mediatemp.toFixed(1);
-        //-----------------------------------
+            terc_resto_umi = (3 * (dir_umi / 4)) % 1;
+            terc_f_temp = 1 - terc_resto_temp;
+            terc_quartil_umid = umi_total[parseInt(dir_umi / 4)] + (terc_resto_umi * (umi_total[parseInt(
+                terc_resto_umi + f_umi)] - umi_total[parseInt(dir_umi / 4)]));
 
+            document.getElementById('3quartil_temp').textContent = terc_quartil_temp.toFixed(1);
+            document.getElementById('3quartil_umid').textContent = terc_quartil_umid.toFixed(1);
+            //-----------------------------------
 
-        //FÓRMULA MEDIANA
-        dir_temp = temp_total.length - 1;
-        esq_temp = temp_total[0];
-        meio_temp = (dir_temp + esq_temp) / 2;
 
-        dir_umi = umi_total.length - 1;
-        esq_umi = umi_total[0];
-        meio_umi = (dir_umi + esq_umi) / 2;
 
-        document.getElementById('mediana_umid').textContent = umi_total[parseInt(meio_umi)];
-        document.getElementById('mediana_temp').textContent = temp_total[parseInt(meio_temp)];
-        //-----------------------------------
 
 
-        //FÓRMULA 1ºQUARTIL
-        resto_temp = (dir_temp / 4) % 1;
-        f_temp = 1 - resto_temp;
-        prim_quartil_temp = temp_total[parseInt(dir_temp / 4)] + (resto_temp * (temp_total[parseInt(resto_temp + f_temp)] - temp_total[parseInt(dir_temp / 4)]));
 
-        resto_umi = (dir_umi / 4) % 1;
-        f_umi = 1 - resto_umi;
-        prim_quartil_umid = umi_total[parseInt(dir_umi / 4)] + (resto_umi * (umi_total[parseInt(resto_umi + f_umi)] - umi_total[parseInt(dir_umi / 4)]));
 
-        document.getElementById('1quartil_temp').textContent = prim_quartil_temp.toFixed(1);
-        document.getElementById('1quartil_umid').textContent = prim_quartil_umid.toFixed(1);
-        //-----------------------------------
+            //FÓRMULA VALOR MÁXIMO E MÍNIMO
+            max_dados_temp = temp_total.reduce(function (a, b) {
+                return Math.max(a, b);
+            });
+            max_dados_umi = umi_total.reduce(function (a, b) {
+                return Math.max(a, b);
+            });
 
+            document.getElementById('max_temp').textContent = max_dados_temp.toFixed(1);
+            document.getElementById('max_umi').textContent = max_dados_umi.toFixed(1);
 
+            min_dados_temp = temp_total.reduce(function (a, b) {
+                return Math.min(a, b);
+            });
+            min_dados_umi = umi_total.reduce(function (a, b) {
+                return Math.min(a, b);
+            });
 
-        //FÓRMULA 3ºQUARTIL
-        terc_resto_temp = (3 * (dir_temp / 4)) % 1;
-        terc_f_temp = 1 - terc_resto_temp;
-        terc_quartil_temp = temp_total[parseInt(dir_temp / 4)] + (terc_resto_temp * (temp_total[parseInt(terc_resto_temp + f_temp)] - temp_total[parseInt(dir_temp / 4)]));
+            document.getElementById('min_temp').textContent = min_dados_temp.toFixed(1);
+            document.getElementById('min_umi').textContent = min_dados_umi.toFixed(1);
 
-        terc_resto_umi = (3 * (dir_umi / 4)) % 1;
-        terc_f_temp = 1 - terc_resto_temp;
-        terc_quartil_umid = umi_total[parseInt(dir_umi / 4)] + (terc_resto_umi * (umi_total[parseInt(terc_resto_umi + f_umi)] - umi_total[parseInt(dir_umi / 4)]));
 
-        document.getElementById('3quartil_temp').textContent = terc_quartil_temp.toFixed(1);
-        document.getElementById('3quartil_umid').textContent = terc_quartil_umid.toFixed(1);
-        //-----------------------------------
-
-
-
-
-
-
-
-        //FÓRMULA VALOR MÁXIMO E MÍNIMO
-        max_dados_temp = temp_total.reduce(function (a, b) {
-            return Math.max(a, b);
-        });
-        max_dados_umi = umi_total.reduce(function (a, b) {
-            return Math.max(a, b);
-        });
-
-        document.getElementById('max_temp').textContent = max_dados_temp.toFixed(1);
-        document.getElementById('max_umi').textContent = max_dados_umi.toFixed(1);
-
-        min_dados_temp = temp_total.reduce(function (a, b) {
-            return Math.min(a, b);
-        });
-        min_dados_umi = umi_total.reduce(function (a, b) {
-            return Math.min(a, b);
-        });
-
-        document.getElementById('min_temp').textContent = min_dados_temp.toFixed(1);
-        document.getElementById('min_umi').textContent = min_dados_umi.toFixed(1);
-        
-
+        }
     }
- }
 
     setInterval(() => {
         get_data2();
@@ -772,41 +808,38 @@ if (umi_total[umi_total.length - 1] >= 10.8 && umi_total[umi_total.length - 1] <
     setInterval(() => {
         get_data();
     }, 1000);
-
-
-
 </script>
 <script src="scripts.js"></script>
 <script>
     function validarSessao() {
         // aguardar();
-    
+
         var email = sessionStorage.EMAIL_USUARIO;
         var nome = sessionStorage.NOME_USUARIO;
         var fkEmpresa = sessionStorage.FK_EMPRESA;
         var estufa = sessionStorage.NOME_ESTUFA;
-        
+
         if (email != null && nome != null) {
-            b_usuario.innerHTML = (` ${nome} `);         
-            b_empresa.innerHTML = (` ${fkEmpresa} `);         
-            nomedaestufa.innerHTML = (` ${estufa} `);         
+            b_usuario.innerHTML = (` ${nome} `);
+            b_empresa.innerHTML = (` ${fkEmpresa} `);
+            nomedaestufa.innerHTML = (` ${estufa} `);
             // finalizarAguardar();
 
 
 
-            
+
         } else {
             alert('Você Não Está Logado!!');
             window.location = "login.html";
         }
     }
     validarSessao();
-    function deslogar(){
+
+    function deslogar() {
         delete sessionStorage.EMAIL_USUARIO;
         delete sessionStorage.NOME_USUARIO;
         delete sessionStorage.FK_EMPRESA;
         delete sessionStorage.NOME_ESTUFA;
 
     }
-    
-    </script>
+</script>

@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avaliações</title>
-    <style onload="ver()">
-        *{
+    <style>
+        * {
             margin: 0;
             padding: 0;
         }
 
-        .container_avaliacao{
+        .container_avaliacao {
             margin: 40px;
             padding: 10px;
             word-wrap: break-word;
@@ -21,52 +22,92 @@
             background-color: rgba(243, 240, 235, 0.315);
         }
 
-        .avaliacao_estrela{
+        .avaliacao_estrela {
             width: 20px;
             height: 20px;
         }
     </style>
 </head>
-<body><div id="resultados">
-    
-</div>
+
+<body onload="validarsessao()">
+    <div id="resultados">
+
+    </div>
 </body>
+
 </html>
 <script>
+    resultados.innerHTML = '';
+    fetch("/avaliacoes/listar", {
+        method: "GET",
+    }).then(function (resposta) {
 
-resultados.innerHTML = '';
-fetch("/avaliacoes/listar", {
-    method: "GET",
-}).then(function (resposta) {
+        console.log("resposta: ", resposta);
 
-    console.log("resposta: ", resposta);
+        resposta.json().then(function (data) {
 
-    resposta.json().then(function (data){
-       
-        let len = data.length;
-        for (let i = 0; i <= len; i++){
-        let arquivo = data[i];
-            console.log(JSON.stringify(arquivo));
-        
-            resultados.innerHTML += (`<div class="container_avaliacao">
+            let len = data.length;
+            for (let i = 0; i <= len; i++) {
+                let arquivo = data[i];
+                console.log(JSON.stringify(arquivo));
+                let estrelas = ["./fotos/star.png", "./fotos/star.png", "./fotos/star.png",
+                    "./fotos/star.png", "./fotos/star.png"
+                ];
+                let est = arquivo.estrelinhas;
+                for (let j = 0; j < est; j++) {
+                    estrelas[j] = "./fotos/stary.png";
+                }
+                resultados.innerHTML += (`<div class="container_avaliacao">
         <div class="container_estrelas" style="display: flex; align-items: center; flex-direction: row;">
-            <img class="avaliacao_estrela" src="./fotos/stary.png" alt="">
-            <img class="avaliacao_estrela" src="./fotos/stary.png" alt="">
-            <img class="avaliacao_estrela" src="./fotos/stary.png" alt="">
-            <img class="avaliacao_estrela" src="./fotos/stary.png" alt="">
-            <img class="avaliacao_estrela" src="./fotos/stary.png" alt="">
-            ${arquivo.num_estrelas}
+            <img class="avaliacao_estrela" src="${estrelas[0]}" alt="">
+            <img class="avaliacao_estrela" src="${estrelas[1]}" alt="">
+            <img class="avaliacao_estrela" src="${estrelas[2]}" alt="">
+            <img class="avaliacao_estrela" src="${estrelas[3]}" alt="">
+            <img class="avaliacao_estrela" src="${estrelas[4]}" alt="">
         </div>
         <br>
         <b style="padding: 6px;">${arquivo.titulo}</b><br><br>
         ${arquivo.mensagem}<br><br>
-        <h4 style="margin-left: 20px;">${arquivo.Usuário} - ${arquivo.nome}
-            <br> ${arquivo.dia}/${arquivo.mes}/${arquivo.ano}</h4>
+        <h4 style="margin-left: 20px;">${arquivo.Usuário} - ${arquivo.nomeempresa}
+             ${arquivo.dia}/${arquivo.mes}/${arquivo.ano}</h4>
     </div><br><br>`);
-        }
+            }
+        });
+    }).catch(function (error) {
+        console.error(`ERROR`, error);
     });
-}).catch(function(error){
-    console.error(`ERROR`, error);
-});
-    
+</script>
+<script src="scripts.js"></script>
+<script>
+    function validarSessao() {
+        // aguardar();
+
+        var email = sessionStorage.EMAIL_USUARIO;
+        var nome = sessionStorage.NOME_USUARIO;
+        var fkEmpresa = sessionStorage.FK_EMPRESA;
+        var estufa = sessionStorage.NOME_ESTUFA;
+
+        if (email != null && nome != null) {
+            b_usuario.innerHTML = (` ${nome} `);
+            b_empresa.innerHTML = (` ${fkEmpresa} `);
+            nomedaestufa.innerHTML = (` ${estufa} `);
+            // finalizarAguardar();
+
+
+
+
+        } else {
+            alert('Você Não Está Logado!!');
+            window.location = "login.html";
+        }
+    }
+    validarSessao();
+
+    function deslogar() {
+        delete sessionStorage.EMAIL_USUARIO;
+        delete sessionStorage.NOME_USUARIO;
+        delete sessionStorage.FK_EMPRESA;
+        delete sessionStorage.NOME_ESTUFA;
+
+    }
 </script>

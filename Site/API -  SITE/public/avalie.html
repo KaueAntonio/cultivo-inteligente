@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora</title>
+    <title>Avalie</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
     crossorigin="anonymous">
@@ -73,19 +73,22 @@
     <div class="container1">
         <div class="card">
             <div class="content">
-                <h1>Simule seus lucros e gastos com a WeGrowffee</h1>
+                <h1>Avalie a WeGrowffee! </h1>
                 <p>
-                    Qual o tamanho da sua plantação? <br><br>
-                    <input id="hectares" class="inputfc" type="text" placeholder="Em Hectares">
+                    Título: <br><br>
+                    <input name="titulo" class="inputfc" type="text" placeholder="Título">
                 </p>
                 <p>
-                    Qual o preço cobrado por m³ de água na sua região? <br/><br>
-                    <input id="valor_cubico" class="inputfc" type="text" placeholder="Metros cúbicos (x/m³)">
+                    Nota 0-5: <br><br>
+                    <input name="nota" class="inputfc" type="Number" placeholder="5">
                 </p>
                 <p>
-                    <button class="botao2" onclick="lucro()">Calcular Lucros</button>
+                    Mensagem: <br/><br>
+                    <textarea name="mensagem" class="inputfc" type="text" placeholder="Mensagem" style="word-wrap: break-word; height: auto; width: 400px;"></textarea>
                 </p>
-                <div id="div_msg" class="caixatexto4" style="display: none;"></div>
+                <p>
+                    <button class="botao2" onclick="enviar()" style="width: 150px;">Enviar Avaliação</button>
+                </p>
             </div>
         </div>
     </div>
@@ -110,3 +113,6 @@
 
 </html>
 <script src="scripts.js"></script>
+<script>
+    
+</script>

@@ -40,6 +40,9 @@
                         <a class="nav-link" href="#faleconosco">Fale Conosco</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#resultados">Avaliações</a>
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link" href="Login.html">Login</a>
                     </li>
                 </ul>
@@ -173,6 +176,9 @@
                 </div>
             </div>
         </div>
+        <div id="resultados" style="display: flex; word-wrap: break-word; margin-top: 30px;"  data-aos = "fade-up" data-aos-delay = "500" data-aos-duration = "1000">
+
+        </div>
     </section>
     <footer>
         <div class="container">
@@ -205,4 +211,53 @@
 </body>
 </html>
 
+<script>
+    fetch("/avaliacoes/listar", {
+        method: "GET",
+    }).then(function (resposta) {
+
+
+        resposta.json().then(function (data) {
+
+            let len = data.length;
+            for (let i = 0; i <= len; i++) {
+                let arquivo = data[i];
+                let estrelas = ["./fotos/star.png", "./fotos/star.png", "./fotos/star.png",
+                    "./fotos/star.png", "./fotos/star.png"
+                ];
+                let est = arquivo.estrelinhas;
+                for (let j = 0; j < est; j++) {
+                    estrelas[j] = "./fotos/stary.png";
+                }
+                resultados.innerHTML += (`<div class="container_avaliacao">
+        <div class="container_estrelas" style="display: flex; align-items: center; flex-direction: row;">
+            <img class="avaliacao_estrela" src="${estrelas[0]}" alt="">
+            <img class="avaliacao_estrela" src="${estrelas[1]}" alt="">
+            <img class="avaliacao_estrela" src="${estrelas[2]}" alt="">
+            <img class="avaliacao_estrela" src="${estrelas[3]}" alt="">
+            <img class="avaliacao_estrela" src="${estrelas[4]}" alt="">
+        </div>
+        <br>
+        <b style="padding: 6px;">${arquivo.titulo}</b><br><br>
+        ${arquivo.mensagem}<br><br>
+        <h4 style="margin-left: 20px;">${arquivo.Usuário} - ${arquivo.nomeempresa}
+             ${arquivo.dia}/${arquivo.mes}/${arquivo.ano}</h4>
+    </div><br><br>`);
+            }
+        });
+    }).catch(function (error) {
+        console.error(`ERROR`, error);
+    });
+</script>
 <script src="scripts.js"></script>
+<script>
+    
+
+    function deslogar() {
+        delete sessionStorage.EMAIL_USUARIO;
+        delete sessionStorage.NOME_USUARIO;
+        delete sessionStorage.FK_EMPRESA;
+        delete sessionStorage.NOME_ESTUFA;
+
+    }
+</script>

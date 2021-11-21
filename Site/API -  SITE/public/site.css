@@ -786,3 +786,18 @@ video{
 .h3, h3 {
     font-size: 1.4rem;
 }
+
+.container_avaliacao {
+    margin: 10px;
+    padding: 10px;
+    word-wrap: break-word;
+    border: 1px solid black;
+    width: 500px;
+    height: auto;
+    background-color: rgba(243, 240, 235, 0.315);
+}
+
+.avaliacao_estrela {
+    width: 20px;
+    height: 20px;
+}

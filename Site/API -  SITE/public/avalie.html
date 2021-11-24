@@ -26,8 +26,10 @@
 
 </style>
 
+<script>
 
-<body class="body3">
+</script>
+<body class="body3" onload="informacoes()">
     
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -73,6 +75,7 @@
     <div class="container1">
         <div class="card">
             <div class="content">
+                <form action="" id="form_avaliacao">
                 <h1>Avalie a WeGrowffee! </h1>
                 <p>
                     Título: <br><br>
@@ -86,6 +89,8 @@
                     Mensagem: <br/><br>
                     <textarea name="mensagem" class="inputfc" type="text" placeholder="Mensagem" style="word-wrap: break-word; height: auto; width: 400px;"></textarea>
                 </p>
+                <input type="text" id="fk" name="fkUsuario" style="display: none;">
+            </form>
                 <p>
                     <button class="botao2" onclick="enviar()" style="width: 150px;">Enviar Avaliação</button>
                 </p>
@@ -114,5 +119,107 @@
 </html>
 <script src="scripts.js"></script>
 <script>
+    function enviar(){
+    
+        
+        
+        var formulario = new URLSearchParams(new FormData(document.getElementById('form_avaliacao')));
+        
+        if (fks.indexOf(Number(sessionStorage.ID_USUARIO)) != -1){
+            alert('Você já fez uma avaliação!!');
+            return false;
+        }
+    var titulo = formulario.get('titulo');
+    var nota = formulario.get('nota');
+    var mensagem = formulario.get('mensagem');
+    var fkUsuario = formulario.get('fkUsuario');
+
+    
+        if(titulo.length > 45){
+            alert('Título muito grande!!');
+            return false;
+        }
+        if (nota < 0 || nota > 5){
+            alert('Nota tem que ser entre 0 e 5!!');
+            return false;
+        }
+
+        if (mensagem.length > 150){
+            alert('A mensagem tem um limite de 150 caracteres!!');
+            return false;
+        }
+
+        fetch("/avaliacoes/enviar", {
+            method: "POST",
+            body: formulario
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Avaliação enviada com sucesso!!");
+                window.location = "WeGrowffee1.html";
+            } else {
+                throw("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+    
+
+    function validarSessao() {
+        // aguardar();
+
+        var email = sessionStorage.EMAIL_USUARIO;
+        var nome = sessionStorage.NOME_USUARIO;
+        var fkEmpresa = sessionStorage.FK_EMPRESA;
+        var estufa = sessionStorage.NOME_ESTUFA;
+        
+        var fk_Usuario = sessionStorage.ID_USUARIO;
+
+        if (email != null && nome != null) {
+            // finalizarAguardar();
+
+
+            document.getElementById('fk').value = fk_Usuario;
+
+        } else {
+            alert('Você Não Está Logado!!');
+            window.location = "login.html";
+        }
+    }
+    validarSessao();
+    var fks = [];
+    function deslogar() {
+        delete sessionStorage.EMAIL_USUARIO;
+        delete sessionStorage.NOME_USUARIO;
+        delete sessionStorage.FK_EMPRESA;
+        delete sessionStorage.NOME_ESTUFA;
+
+    }
+
+
+    function informacoes(){
+        fetch("/avaliacoes/listar", {
+        method: "GET",
+    }).then(function (resposta) {
+
+
+        resposta.json().then(function (data) {
+            let len = data.length;
+            
+            for (let i = 0; i < len; i++){
+                let arquivo = data[i];
+                fks.push(arquivo.fkUsuario);
+            }
+            
+        });
+    }).catch(function (error) {
+        console.error(`ERROR`, error);
+    });
+    }
     
 </script>

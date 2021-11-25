@@ -17,6 +17,18 @@ class ArduinoRead {
             'data': [],
             'total': 0,
             "average": 0
+            },
+            {
+            'name': 'Luminosidade',
+            'data': [],
+            'total': 0,
+            "average": 0
+            },
+            {
+            'name': 'Temperatura_LM35',
+            'data': [],
+            'total': 0,
+            "average": 0
             }];
         this.__listDataTemp = [];
     }
@@ -27,26 +39,26 @@ class ArduinoRead {
         
     }
 
-    fake_data() {
-        setInterval(() => {
-            let dht11 = sensors.dht11(20, 80, 0, 50);
+    // fake_data() {
+    //     setInterval(() => {
+    //         let dht11 = sensors.dht11(20, 80, 0, 50);
 
-            if (this.listData.length === 59) {
-                while (this.listData.length > 0) {
-                    this.listData.pop();
-                } 
-            }
-            let temp = dht11;
-            if (temp.length === this.listData.length){
-                temp.map((item, index)=>{
-                    console.log('Leitura - ' + this.listData[index].name + ': ' + item);
-                    this.listData[index].data.push(parseInt(item))
-                })
-            }
+    //         if (this.listData.length === 59) {
+    //             while (this.listData.length > 0) {
+    //                 this.listData.pop();
+    //             } 
+    //         }
+    //         let temp = dht11;
+    //         if (temp.length === this.listData.length){
+    //             temp.map((item, index)=>{
+    //                 console.log('Leitura - ' + this.listData[index].name + ': ' + item);
+    //                 this.listData[index].data.push(parseInt(item))
+    //             })
+    //         }
             
             
-        }, 1000);
-    }
+    //     }, 1000);
+    // }
 
 
     SetConnection() {
@@ -74,7 +86,7 @@ class ArduinoRead {
                     this.fake_data();
                 });
                 parser.on('data', (data) => {
-                    console.log(data)
+                    //console.log(data)
                     let temp = data.replace(/\r/g,'').split(';');
                     if (temp.length === this.listData.length){
                         temp.map((item, index)=>{

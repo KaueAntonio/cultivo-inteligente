@@ -3,8 +3,8 @@ var sql = require('mysql2');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
-    user: "cultivo123@cultivo",
-    password: "cultivo@123",  
+    user: "root",
+    password: "bandtec",  
     database: "Cultivo",
     server: "cultivo.mysql.database.azure.com",
     pool: {
@@ -20,9 +20,9 @@ var sqlServerConfig = {
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
 var mySqlConfig = {
     host: "localhost",
-    user: "root",
+    user: "select",
     database: "cultivo",
-    password: "kaue4991",
+    password: "bandtec",
     port: "3306",
 };
 

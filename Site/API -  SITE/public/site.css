@@ -795,9 +795,11 @@ video{
     width: 500px;
     height: auto;
     background-color: rgba(243, 240, 235, 0.315);
+    z-index: 10000;
 }
 
 .avaliacao_estrela {
     width: 20px;
     height: 20px;
+    z-index: 10000;
 }

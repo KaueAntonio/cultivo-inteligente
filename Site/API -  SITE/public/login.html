@@ -134,11 +134,11 @@
                     sessionStorage.NOME_USUARIO = json.Usuário;
                     sessionStorage.FK_EMPRESA = json.Nome;
                     sessionStorage.NOME_ESTUFA = json.Nome_estufa;
-                    sessionStorage.ID_USUARIO = json.idUsuario;
-
+                    sessionStorage.ID_USUARIO = json.Idusuario;
+         
                     setTimeout(function () {
                         alert (`Olá ${sessionStorage.NOME_USUARIO}, seja bem vindo! Você será redirecionado a sua dashboard.`);
-                        window.location = "./grafico.html";
+                       window.location = "./grafico.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

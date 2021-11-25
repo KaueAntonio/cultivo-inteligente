@@ -141,13 +141,14 @@
 			http.open('POST', 'http://localhost:3000/api/sendData', false);
 			http.send(null);
 		}
-
+		
 
 		setInterval(() => {
 			leitura();
-			envio();
 		}, 1000);
-
+		setInterval(() => {
+			envio();
+		}, 500);
 
 		
 	</script>

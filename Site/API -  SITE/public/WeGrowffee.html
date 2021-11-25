@@ -176,8 +176,10 @@
                 </div>
             </div>
         </div>
-        <div id="resultados" style="display: flex; word-wrap: break-word; margin-top: 30px;"  data-aos = "fade-up" data-aos-delay = "500" data-aos-duration = "1000">
-
+        <div id="resultados" style="display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; margin-top: 30px;"  data-aos = "fade-up" data-aos-delay = "500" data-aos-duration = "1000">
+    
         </div>
     </section>
     <footer>
@@ -241,7 +243,7 @@
         <b style="padding: 6px;">${arquivo.titulo}</b><br><br>
         ${arquivo.mensagem}<br><br>
         <h4 style="margin-left: 20px;">${arquivo.Usuário} - ${arquivo.nomeempresa}
-             ${arquivo.dia}/${arquivo.mes}/${arquivo.ano}</h4>
+            ${arquivo.data_avaliacao}</h4>
     </div><br><br>`);
             }
         });

@@ -3,10 +3,10 @@ var sql = require('mysql2');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
-    user: "root",
-    password: "bandtec",  
-    database: "Cultivo",
-    server: "cultivo.mysql.database.azure.com",
+    user: "wegrowffee",
+    password: "wegrowfe@123",  
+    database: "WeGrowffee",
+    server: "wegrowffee.database.windows.net",
     pool: {
         max: 10,
         min: 0,
@@ -16,6 +16,7 @@ var sqlServerConfig = {
         encrypt: true, // for azure
     }
 }
+
 
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
 var mySqlConfig = {

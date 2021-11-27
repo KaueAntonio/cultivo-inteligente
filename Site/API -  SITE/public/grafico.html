@@ -331,6 +331,7 @@
         }
     };
 
+
     var context3 = document.getElementById("chart3").getContext("2d");
     context3.canvas.width = 1000;
     context3.canvas.height = 400;
@@ -338,6 +339,8 @@
     var configuration3 = {
         type: 'bar',
         data: {
+            labels: ['Estado Crítico', 'Estado de Emergência', 'Estado de Alerta'],
+            data: [temp_contr, temp_conto, temp_conty],
             datasets: [{
                 label: "Estado Crítico",
                 borderColor: '#eb4444',
@@ -387,6 +390,8 @@
     var configuration4 = {
         type: 'bar',
         data: {
+            labels: ['Estado Crítico', 'Estado de Emergência', 'Estado de Alerta'],
+            data: [umi_contr, umi_conto, umi_conty],
             datasets: [{
                 label: "Estado Crítico",
                 borderColor: '#eb4444',
@@ -432,6 +437,8 @@
 
     var chart4 = new Chart(context4, configuration4);
     var chart3 = new Chart(context3, configuration3);
+
+
     var chart2 = new Chart(context2, configuration2);
     var chart = new Chart(context, configuration);
     this.lastIndexTemp = 0;
@@ -453,15 +460,15 @@
                 //    console.log(`Dados recebidos: ${JSON.stringify(arquivo[len-1])}`);
                 temp_total = [];
                 umi_total = [];
-                if (arquivo[arquivo.length - 1].idDados == momento) {
-                    logs1.innerHTML = (
-                        `<BR><BR><h3 style="color: #9e1515;">ATENÇÃO!! NENHUM DADO SENDO ATUALIZADO NO BANCO!!<br><BR>ENTRE EM CONTATO COM O SUPORTE<br>CLICANDO <a class="" href="WeGrowffee1.html#faleconosco">AQUI</a></h3><br>`
-                        );
-                    logs2.innerHTML = (
-                        `<BR><BR><h3 style="color: #9e1515;">ATENÇÃO!! NENHUM DADO SENDO ATUALIZADO NO BANCO!!<br><BR>ENTRE EM CONTATO COM O SUPORTE<br>CLICANDO <a class="" href="WeGrowffee1.html#faleconosco">AQUI</a> </h3><br>`
-                        );
-                    return false;
-                }
+                // if (arquivo[arquivo.length - 1].idDados == momento) {
+                //     logs1.innerHTML = (
+                //         `<BR><BR><h3 style="color: #9e1515;">ATENÇÃO!! NENHUM DADO SENDO ATUALIZADO NO BANCO!!<br><BR>ENTRE EM CONTATO COM O SUPORTE<br>CLICANDO <a class="" href="WeGrowffee1.html#faleconosco">AQUI</a></h3><br>`
+                //         );
+                //     logs2.innerHTML = (
+                //         `<BR><BR><h3 style="color: #9e1515;">ATENÇÃO!! NENHUM DADO SENDO ATUALIZADO NO BANCO!!<br><BR>ENTRE EM CONTATO COM O SUPORTE<br>CLICANDO <a class="" href="WeGrowffee1.html#faleconosco">AQUI</a> </h3><br>`
+                //         );
+                //     return false;
+                // }
                 momento = arquivo[arquivo.length - 1].idDados;
 
                 for (j = 0; j < data.length; j++) {
@@ -483,9 +490,7 @@
                 umi.push(parseFloat(arquivo[len - 1].umi));
 
 
-                document.getElementById('realtime_temp').textContent = temp_total[temp_total.length -
-                1];
-                document.getElementById('realtime_umid').textContent = umi_total[umi_total.length - 1];
+                
 
                 cont = temp.length;
                 if (chart.data.labels.length == 10 && chart.data.datasets[0].data.length == 10) {
@@ -499,42 +504,43 @@
 
                 if (chart2.data.labels.length == 10 && chart2.data.datasets[0].data.length == 10) {
                     chart2.data.labels.shift();
+
                     chart2.data.datasets[0].data.shift();
+
                 }
 
                 chart2.data.labels.push(this.time++);
                 chart2.data.datasets[0].data.push(parseFloat(temp_total[temp_total.length - 1]));
+
                 chart2.update();
 
-                if (chart3.data.labels.length == 10 && chart3.data.datasets[0].data.length == 10) {
-                    chart3.data.labels.shift();
-                    chart3.data.datasets[0].data.shift();
-                    chart3.data.datasets[1].data.shift();
-                    chart3.data.datasets[2].data.shift();
-                }
 
-                chart3.data.labels.push(this.time++);
+
+
+
+                
+                chart3.data.labels.shift();
+                chart3.data.datasets[0].data.shift();
+                chart3.data.datasets[1].data.shift();
+                chart3.data.datasets[2].data.shift();
                 chart3.data.datasets[0].data.push(parseFloat(temp_contr));
-                chart3.update();
                 chart3.data.datasets[1].data.push(parseFloat(temp_conto));
-                chart3.update();
                 chart3.data.datasets[2].data.push(parseFloat(temp_conty));
                 chart3.update();
 
-                if (chart4.data.labels.length == 10 && chart4.data.datasets[0].data.length == 10) {
-                    chart4.data.labels.shift();
-                    chart4.data.datasets[0].data.shift();
-                    chart4.data.datasets[1].data.shift();
-                    chart4.data.datasets[2].data.shift();
-                }
 
-                chart4.data.labels.push(this.time++);
+
+                
+                chart4.data.labels.shift();
+                chart4.data.datasets[0].data.shift();
+                chart4.data.datasets[1].data.shift();
+                chart4.data.datasets[2].data.shift();                
                 chart4.data.datasets[0].data.push(parseFloat(umi_contr));
-                chart4.update();
                 chart4.data.datasets[1].data.push(parseFloat(umi_conto));
-                chart4.update();
                 chart4.data.datasets[2].data.push(parseFloat(umi_conty));
                 chart4.update();
+
+
 
 
 
@@ -554,7 +560,6 @@
 
 
 
-
     }
 
     function get_data2() {
@@ -563,12 +568,12 @@
                 temp_contr++; //ADICIONA 1 NA CONTAGEM DE ALERTAS VERMELHOS
                 let data_realtime = new Date(); //PEGA A DATA ATUAL
                 document.getElementById('status_temp').style.backgroundColor =
-                'red'; //MUDA A COR DE FUNDO DO STATUS PRA VERMELHO
+                    'red'; //MUDA A COR DE FUNDO DO STATUS PRA VERMELHO
                 logs2.innerHTML += (
                     `<p style="color: red">ATENÇÃO!! A Temperatura da sua estufa está em estado crítico! (x${temp_contr}) - ${data_realtime}</p><br>`
-                    ); //ADICIONA UMA MENSAGEM NO LOG
+                ); //ADICIONA UMA MENSAGEM NO LOG
                 logs2.scroll(0, scrollPosition +=
-                velocity); //SCROLLA O LOG PRA BAIXO TODA VEZ QUE É ADICIONADO MENSAGEM
+                    velocity); //SCROLLA O LOG PRA BAIXO TODA VEZ QUE É ADICIONADO MENSAGEM
             }
 
 
@@ -579,7 +584,7 @@
                 document.getElementById('status_temp').style.backgroundColor = 'orange';
                 logs2.innerHTML += (
                     `<p style="color: orange">ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência! (x${temp_conto}) - ${data_realtime}</p><br>`
-                    );
+                );
                 logs2.scroll(0, scrollPosition += velocity);
             }
 
@@ -592,7 +597,7 @@
                 document.getElementById('status_temp').style.backgroundColor = '#9da832';
                 logs2.innerHTML += (
                     `<p style="color: yellow">ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta! (x${temp_conty}) - ${data_realtime}</p><br>`
-                    );
+                );
                 logs2.scroll(0, scrollPosition += velocity);
             }
 
@@ -604,7 +609,7 @@
                 document.getElementById('status_temp').style.backgroundColor = '#9da832';
                 logs2.innerHTML += (
                     `<p style="color: yellow">ATENÇÃO!! A Temperatura da sua estufa está em estado de alerta! (x${temp_conty}) - ${data_realtime}</p><br>`
-                    );
+                );
                 logs2.scroll(0, scrollPosition += velocity);
             }
 
@@ -616,7 +621,7 @@
                 document.getElementById('status_temp').style.backgroundColor = 'orange';
                 logs2.innerHTML += (
                     `<p style="color: orange">ATENÇÃO!! A Temperatura da sua estufa está em estado de emergência! (x${temp_conto}) - ${data_realtime}</p><br>`
-                    );
+                );
                 logs2.scroll(0, scrollPosition += velocity);
             }
 
@@ -628,7 +633,7 @@
                 document.getElementById('status_temp').style.backgroundColor = 'red';
                 logs2.innerHTML += (
                     `<p style="color: red">ATENÇÃO!! A Temperatura da sua estufa está em estado crítico! (x${temp_contr}) - ${data_realtime}</p><br>`
-                    );
+                );
                 logs2.scroll(0, scrollPosition += velocity);
             }
 
@@ -644,7 +649,7 @@
                 document.getElementById('status_umid').style.backgroundColor = 'red';
                 logs1.innerHTML += (
                     `<p style="color: red">ATENÇÃO!! A Umidade da sua estufa está em estado crítico! (x${umi_contr}) - ${data_realtime}</p><br>`
-                    );
+                );
                 logs1.scroll(0, scrollPosition += velocity);
             }
 
@@ -656,7 +661,7 @@
                 document.getElementById('status_umid').style.backgroundColor = 'orange';
                 logs1.innerHTML += (
                     `<p style="color: orange">ATENÇÃO!! A Umidade da sua estufa está em estado de emergência! (x${umi_conto}) - ${data_realtime}</p><br>`
-                    );
+                );
                 logs1.scroll(0, scrollPosition += velocity);
             }
 
@@ -668,7 +673,7 @@
                 document.getElementById('status_umid').style.backgroundColor = '#9da832';
                 logs1.innerHTML += (
                     `<p style="color: yellow">ATENÇÃO!! A Umidade da sua estufa está em estado de alerta! (x${umi_conty}) - ${data_realtime}</p><br>`
-                    );
+                );
                 logs1.scroll(0, scrollPosition += velocity);
             }
 
@@ -680,7 +685,7 @@
                 document.getElementById('status_umid').style.backgroundColor = '#9da832';
                 logs1.innerHTML += (
                     `<p style="color: yellow">ATENÇÃO!! A Umidade da sua estufa está em estado de alerta! (x${umi_conty}) - ${data_realtime}</p><br>`
-                    );
+                );
                 logs1.scroll(0, scrollPosition += velocity);
             }
 
@@ -692,7 +697,7 @@
                 document.getElementById('status_umid').style.backgroundColor = 'orange';
                 logs1.innerHTML += (
                     `<p style="color: orange">ATENÇÃO!! A Umidade da sua estufa está em estado de emergência! (x${umi_conto}) - ${data_realtime}</p><br>`
-                    );
+                );
                 logs1.scroll(0, scrollPosition += velocity);
             }
 
@@ -704,7 +709,7 @@
                 document.getElementById('status_umid').style.backgroundColor = 'red';
                 logs1.innerHTML += (
                     `<p style="color: red">ATENÇÃO!! A Umidade da sua estufa está em estado crítico! (x${umi_contr}) - ${data_realtime}</p><br>`
-                    );
+                );
                 logs1.scroll(0, scrollPosition += velocity);
             }
 
@@ -713,8 +718,9 @@
                 document.getElementById('status_umid').style.backgroundColor = 'green';
             }
 
-
-
+            document.getElementById('realtime_temp').textContent = temp_total[temp_total.length -
+                    1];
+                document.getElementById('realtime_umid').textContent = umi_total[umi_total.length - 1];
 
             //FÓRMULA MÉDIA
             let sum = umi_total.reduce((a, b) => a + b);
@@ -803,6 +809,9 @@
 
 
         }
+
+
+
     }
 
     setInterval(() => {

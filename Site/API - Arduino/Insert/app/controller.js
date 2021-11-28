@@ -18,20 +18,11 @@ router.post("/sendData", (request, response) => {
   var fk = 1000;
   var umidade = ArduinoDataTemp.List[0].data;
   var temperaturadht = ArduinoDataTemp.List[1].data;
-  var sql =
-    "INSERT INTO dadosSensor (umi, temp, dia, mes, ano, hora, fkSensor) VALUES (?, ?, ?, ?, ? , ?, ?);";
   let data2 = new Date();
+  var sql =
+    `INSERT INTO dadosSensor (umi, temp, dia, mes, ano, hora, fkSensor) VALUES (${umidade[umidade.length - 1]}, ${temperaturadht[temperaturadht.length - 1]}, ${data2.getDate()}, ${data2.getMonth() + 1}, ${data2.getFullYear()}, ${data2.getHours()}, ${fk});`;
   db.query(
     sql,
-    [
-      umidade[umidade.length - 1],
-      temperaturadht[temperaturadht.length - 1],
-      data2.getDate(),
-      data2.getMonth() + 1,
-      data2.getFullYear(),
-      data2.getHours(),
-      fk,
-    ],
     function (err, result) {
       if (err) throw err;
       console.log(

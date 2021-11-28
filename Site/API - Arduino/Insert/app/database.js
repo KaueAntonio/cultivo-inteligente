@@ -1,11 +1,11 @@
 var mysql = require('mysql2');
-var sql = require('mssql')
+var sql = require('mssql');
 
-var connection = sql.createConnection({
+var connection = new sql.ConnectionPool({
     user: "wegrowffee",
     password: "wegrowfe@123",  
     database: "WeGrowffee",
-    server: "wegrowffee.database.windows.net",
+    server: "wegrowffeee.database.windows.net",
     pool: {
         max: 10,
         min: 0,

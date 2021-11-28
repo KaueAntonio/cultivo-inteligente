@@ -460,15 +460,15 @@
                 //    console.log(`Dados recebidos: ${JSON.stringify(arquivo[len-1])}`);
                 temp_total = [];
                 umi_total = [];
-                // if (arquivo[arquivo.length - 1].idDados == momento) {
-                //     logs1.innerHTML = (
-                //         `<BR><BR><h3 style="color: #9e1515;">ATENÇÃO!! NENHUM DADO SENDO ATUALIZADO NO BANCO!!<br><BR>ENTRE EM CONTATO COM O SUPORTE<br>CLICANDO <a class="" href="WeGrowffee1.html#faleconosco">AQUI</a></h3><br>`
-                //         );
-                //     logs2.innerHTML = (
-                //         `<BR><BR><h3 style="color: #9e1515;">ATENÇÃO!! NENHUM DADO SENDO ATUALIZADO NO BANCO!!<br><BR>ENTRE EM CONTATO COM O SUPORTE<br>CLICANDO <a class="" href="WeGrowffee1.html#faleconosco">AQUI</a> </h3><br>`
-                //         );
-                //     return false;
-                // }
+                if (arquivo[arquivo.length - 1].idDados == momento) {
+                    logs1.innerHTML = (
+                        `<BR><BR><h3 style="color: #9e1515;">ATENÇÃO!! NENHUM DADO SENDO ATUALIZADO NO BANCO!!<br><BR>ENTRE EM CONTATO COM O SUPORTE<br>CLICANDO <a class="" href="WeGrowffee1.html#faleconosco">AQUI</a></h3><br>`
+                        );
+                    logs2.innerHTML = (
+                        `<BR><BR><h3 style="color: #9e1515;">ATENÇÃO!! NENHUM DADO SENDO ATUALIZADO NO BANCO!!<br><BR>ENTRE EM CONTATO COM O SUPORTE<br>CLICANDO <a class="" href="WeGrowffee1.html#faleconosco">AQUI</a> </h3><br>`
+                        );
+                    return false;
+                }
                 momento = arquivo[arquivo.length - 1].idDados;
 
                 for (j = 0; j < data.length; j++) {

@@ -42,11 +42,13 @@
 		var umi_total = [];
 		var idreal = 0;
 		var antes = 0;
+
+
+
+
+
+
 		function leitura() {
-
-
-
-
 
 
 			fetch("/medidas/listar", {
@@ -94,12 +96,16 @@
 
 					}
 					antes = arq[arq.length - 1].idDados;
+
+
+
+
 					let sum = umi_total.reduce((a, b) => a + b);
 					let sum2 = temp_total.reduce((a, b) => a + b);
 
 
 					mediaumi = sum / umi_total.length;
-					mediatemp = sum2 / umi_total.length;
+					mediatemp = sum2 / temp_total.length;
 					document.getElementById('average2').textContent = mediaumi.toFixed(1);
 					document.getElementById('average').textContent = mediatemp.toFixed(1);
 					document.getElementById('total_linhas').textContent = arq[arq.length - 1].idDados.toFixed(0);
@@ -145,7 +151,7 @@
 
 		setInterval(() => {
 			leitura();
-		}, 1000);
+		}, 2000);
 		setInterval(() => {
 			envio();
 		}, 500);

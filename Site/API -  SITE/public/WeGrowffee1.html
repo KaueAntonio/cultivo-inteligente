@@ -243,7 +243,6 @@
                 for (let j = 0; j < est; j++) {
                     estrelas[j] = "./fotos/stary.png";
                 }
-                arquivo.data_avaliacao.split('t');
 
                 resultados.innerHTML += (`<div class="container_avaliacao">
         <div class="container_estrelas" style="display: flex; align-items: center; flex-direction: row;">
@@ -257,7 +256,7 @@
         <b style="padding: 6px;">${arquivo.titulo}</b><br><br>
         ${arquivo.mensagem}<br><br>
         <h4 style="margin-left: 20px; ">${arquivo.Usuário} - ${arquivo.nomeempresa}
-             ${arquivo.data_avaliacao}</h4>
+             ${arquivo.dia}/${arquivo.mes}/${arquivo.ano}</h4>
     </div><br><br>`);
             }
         });

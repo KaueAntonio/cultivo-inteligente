@@ -221,35 +221,36 @@
 
         resposta.json().then(function (data) {
 
-            let len = data.length;
-            for (let i = 0; i <= len; i++) {
-                let arquivo = data[i];
-                let estrelas = ["./fotos/star.png", "./fotos/star.png", "./fotos/star.png",
-                    "./fotos/star.png", "./fotos/star.png"
-                ];
-                let est = arquivo.estrelinhas;
-                for (let j = 0; j < est; j++) {
-                    estrelas[j] = "./fotos/stary.png";
-                }
-                resultados.innerHTML += (`<div class="container_avaliacao">
-        <div class="container_estrelas" style="display: flex; align-items: center; flex-direction: row;">
-            <img class="avaliacao_estrela" src="${estrelas[0]}" alt="">
-            <img class="avaliacao_estrela" src="${estrelas[1]}" alt="">
-            <img class="avaliacao_estrela" src="${estrelas[2]}" alt="">
-            <img class="avaliacao_estrela" src="${estrelas[3]}" alt="">
-            <img class="avaliacao_estrela" src="${estrelas[4]}" alt="">
-        </div>
-        <br>
-        <b style="padding: 6px;">${arquivo.titulo}</b><br><br>
-        ${arquivo.mensagem}<br><br>
-        <h4 style="margin-left: 20px;">${arquivo.Usuário} - ${arquivo.nomeempresa}
-             ${arquivo.data_avaliacao}</h4>
-    </div><br><br>`);
-            }
-        });
-    }).catch(function (error) {
-        console.error(`ERROR`, error);
-    });
+let len = data.length;
+for (let i = 0; i <= len; i++) {
+    let arquivo = data[i];
+    let estrelas = ["./fotos/star.png", "./fotos/star.png", "./fotos/star.png",
+        "./fotos/star.png", "./fotos/star.png"
+    ];
+    let est = arquivo.estrelinhas;
+    for (let j = 0; j < est; j++) {
+        estrelas[j] = "./fotos/stary.png";
+    }
+
+    resultados.innerHTML += (`<div class="container_avaliacao">
+<div class="container_estrelas" style="display: flex; align-items: center; flex-direction: row;">
+<img class="avaliacao_estrela" src="${estrelas[0]}" alt="">
+<img class="avaliacao_estrela" src="${estrelas[1]}" alt="">
+<img class="avaliacao_estrela" src="${estrelas[2]}" alt="">
+<img class="avaliacao_estrela" src="${estrelas[3]}" alt="">
+<img class="avaliacao_estrela" src="${estrelas[4]}" alt="">
+</div>
+<br>
+<b style="padding: 6px;">${arquivo.titulo}</b><br><br>
+${arquivo.mensagem}<br><br>
+<h4 style="margin-left: 20px; ">${arquivo.Usuário} - ${arquivo.nomeempresa}
+ ${arquivo.dia}/${arquivo.mes}/${arquivo.ano}</h4>
+</div><br><br>`);
+}
+});
+}).catch(function (error) {
+console.error(`ERROR`, error);
+});
 </script>
 <script src="scripts.js"></script>
 <script>

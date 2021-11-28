@@ -51,7 +51,7 @@
                         <p>Senha</p>
                         <input name="senha" class="inputt" type="password" placeholder="******">
                         <br>
-                        <input class="btnin" type="submit" value="Entrar" onclick="entrarlogin()">
+                        <input class="btnin" type="submit" value="Entrar">
                     </input>
                         <p class="textobaixol">Não é registrado? <a href="cadastro.html" onclick="mudarcadastro()">Cadastre-se!</a></p>
                     </form>
@@ -121,7 +121,6 @@
             method: "POST",
             body: formulario
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
 
             if (resposta.ok) {
                 console.log(resposta);
@@ -137,7 +136,7 @@
                     sessionStorage.ID_USUARIO = json.Idusuario;
          
                     setTimeout(function () {
-                        alert (`Olá ${sessionStorage.NOME_USUARIO}, seja bem vindo! Você será redirecionado a sua dashboard.`);
+                        alert (`Olá ${sessionStorage.NOME_USUARIO}, seja bem vindo! Você será redirecionado à página de controle.`);
                        window.location = "./grafico.html";
                     }, 1000); // apenas para exibir o loading
 
